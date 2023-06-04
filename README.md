@@ -65,7 +65,7 @@ After action **sa**:\
 **\_ \_**\
 **a b**
 
-After action **pb pb pb**:\
+After actions **pb pb pb**:\
 6 **3**\
 5 **2**\
 8 **1**\
@@ -80,8 +80,8 @@ After actions **ra rb** (equiv. to **rr**):\
 **a b**
 
 After actions **rra rrb** (equiv. to **rrr**):\
-**6 3**
-**5 2**
+**6 3**\
+**5 2**\
 8 1\
 **\_ \_**\
 **a b**
