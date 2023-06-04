@@ -53,9 +53,9 @@ Init a and b:\
 6\
 5\
 8\
-**a b**\
+**a b**
 
-Exec sa:\
+After a **sa**:\
 1\
 2\
 3\
