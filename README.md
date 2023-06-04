@@ -55,9 +55,9 @@ Init a and b:\
 8\
 **a b**
 
-After a **sa**:\
-1\
-2\
+After action **sa**:\
+**1**\
+**2**\
 3\
 6\
 5\
