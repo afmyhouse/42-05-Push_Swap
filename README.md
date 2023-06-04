@@ -43,7 +43,8 @@ To illustrate the effect of some of these instructions, let’s sort a random li
 In this example, we’ll consider that both stacks grow from the right.
 
 |Init a and b | `sa` |  `pb` `pb` `pb` |  `ra` `rb`  |  `rra` `rrb`  |  `sa`  |   `pa` `pa` `pa` |
-|2\|
+|---|---|---|---|---|---|---|
+|2\
 1\
 3\
 6\
