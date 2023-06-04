@@ -62,7 +62,7 @@ After action **sa**:\
 6\
 5\
 8\
-**\_ \_-**
+**\_ \_**\
 **a b**
 
 Exec pb pb pb:
