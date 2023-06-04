@@ -44,12 +44,12 @@ In this example, we’ll consider that both stacks grow from the right.
 
 |Init a and b |  `sa`        |`pb` `pb` `pb`| `ra` `rb`    | `rra` `rrb`  | `sa`         |`pa` `pa` `pa`|
 |-------------|--------------|--------------|--------------|--------------|--------------|--------------|
-|2\
-1\
-3\
-6\
-5\
-8\
+|2
+1
+3
+6
+5
+8
 **\_ \_**\
 **a b**
 
