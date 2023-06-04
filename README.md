@@ -45,17 +45,16 @@ Sorting values is simple. To sort them the fastest way possible is less simple. 
 #### Example
 To illustrate the effect of some of these instructions, let’s sort a random list of integers.
 In this example, we’ll consider that both stacks grow from the right.
-------------------------------
-Init a and b:       Exec sa:
-2                   1
-1                   2
-3                   3
-6                   6
-5                   5
-8                   8
-_ _                 _ _
-a b                 a b
-------------------------------
+
+Init a and b:
+2
+1
+3
+6
+5
+8
+a b
+
 Exec sa:
 1
 2
@@ -63,23 +62,20 @@ Exec sa:
 6
 5
 8
-_ _
-a b
-------------------------------
+**a b**
+
 Exec pb pb pb:
 6 3
 5 2
 8 1
-_ _
-a b
-------------------------------
+**a b**
+
 Exec ra rb (equiv. to rr):
 5 2
 8 1
 6 3
-_ _
-a b
-------------------------------
+**a b**
+
 Exec rra rrb (equiv. to rrr):
 6 3
 5 2
