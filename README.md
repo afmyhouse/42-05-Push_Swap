@@ -105,9 +105,9 @@ After actions **pa pa pa**:\
 **a b**
 
 Integers from a get sorted in 12 instructions. Can you do better?
-### V.3 The "push_swap" program
+### The "push_swap" program
 |Program name| push_swap|
-|---|---|
+|---|---------|
 |Turn in files| Makefile, *.h, *.c|
 |Makefile| NAME, all, clean, fclean, re|
 |Arguments| stack a: A list of integers|
