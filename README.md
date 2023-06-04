@@ -24,7 +24,7 @@ Sorting values is simple. To sort them the fastest way possible is less simple. 
 - [ ] At the beginning:
 - [ ] The stack a contains a random amount of negative and/or positive numbers which cannot be duplicated.
 - [ ] The stack b is empty.
-- [ ] The goal is to sort in ascending order numbers into stack a. 
+- [ ] The goal is to sort in ascending order numbers into stack a.
 - [ ] To do so you have the following operations at your disposal:\
 **` sa  `** (swap a): Swap the first 2 elements at the top of stack a. Do nothing if there is only one or no elements.\
 **` sb  `** (swap b): Swap the first 2 elements at the top of stack b. Do nothing if there is only one or no elements.\
@@ -44,13 +44,13 @@ In this example, we’ll consider that both stacks grow from the right.
 
 |Init a and b |`sa` |`pb` |`pb` |`pb` |`ra` |`rb` |`rra`|`rrb`|`sa` |`pa` |`pa` |`pa` |
 |-------------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| 2-----------| 1   |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-1---|
-| 1-----------| 2   |-2---|-----|-----|-----|-----|-----|-----|-----|-----|-2---|-2---|
-| 3-----------| 3   |-3---|-3---|-----|-----|-----|-----|-----|-----|-3---|-3---|-3---|
-| 6-----------| 6   |-6---|-6---|-6-3-|-5-3-|-5-2-|-6-3-|-6-3-|-5-3-|-5---|-5---|-5---|
-| 5-----------| 5   |-5---|-5-2-|-5-2-|-8-2-|-8-1-|-5-2-|-5-2-|-6-2-|-6-2-|-6---|-6---|
-| 8-----------| 8   |-8-1-|-8-1-|-8-1-|-6-1-|-6-3-|-8-1-|-8-1-|-8-1-|-8-1-|-8-1-|-8---|
-| a b---------| a b |-a-b-|-a-b-|-a-b-|-a-b-|-a-b-|-a-b-|-a-b-|-a-b-|-a-b-|-a-b-|-a-b-|
+| 2           | 1   |     |     |     |     |     |     |     |     |     |     | 1   |
+| 1           | 2   | 2   |     |     |     |     |     |     |     |     | 2   | 2   |
+| 3           | 3   | 3   | 3   |     |     |     |     |     |     | 3   | 3   | 3   |
+| 6           | 6   | 6   | 6   | 6 3 | 5 3 | 5 2 | 6 3 | 6 3 | 5 3 | 5   | 5   | 5   |
+| 5           | 5   | 5   | 5 2 | 5 2 | 8 2 | 8 1 | 5 2 | 5 2 | 6 2 | 6 2 | 6   | 6   |
+| 8           | 8   | 8 1 | 8 1 | 8 1 | 6 1 | 6 3 | 8 1 | 8 1 | 8 1 | 8 1 | 8 1 | 8   |
+| a b         | a b | a b | a b | a b | a b | a b | a b | a b | a b | a b | a b | a b |
 
 
 
@@ -83,19 +83,19 @@ Errors include for example: some arguments aren’t integers, some arguments are
 - [ ] Unicode characters support! **UTF-8**
 
 ## Evaluation
-The bonus part will only be assessed if the mandatory part is PERFECT. 
-Perfect means the mandatory part has been integrally done and works without malfunctioning. 
+The bonus part will only be assessed if the mandatory part is PERFECT.
+Perfect means the mandatory part has been integrally done and works without malfunctioning.
 If you have not passed ALL the mandatory requirements, your bonus part will not be evaluated at all.### Project instructions
 
 ## Project Specific Instructions
 - [ ] Name your executable files _client_ and _server_
 - [ ] You have to turn in a Makefile which will compile your source files. It must not relink.
 - [ ] You can definitely use your libft.
-- [ ] You have to handle errors thoroughly. 
+- [ ] You have to handle errors thoroughly.
 - [ ] In no way your program should quit unexpectedly (segmentation fault, bus error, double free, and so forth).
 - [ ] Your program mustn’t have memory leaks.
 - [ ] You can have one global variable per program (one for the client and one for the server), but you will have to justify their use.
-- [ ] In order to complete the mandatory part, you are allowed to use the following functions: 
+- [ ] In order to complete the mandatory part, you are allowed to use the following functions:
 
 
 ## Allowed Functions (manual)
@@ -122,7 +122,7 @@ _**Insertion sort**_ is a simple sorting algorithm that builds the final sorted 
     In-place; i.e., only requires a constant amount O(1) of additional memory space
     Online; i.e., can sort a list as it receives it
 
-When people manually sort cards in a bridge hand, most use a method that is similar to insertion sort.[2] 
+When people manually sort cards in a bridge hand, most use a method that is similar to insertion sort.[2]
 - __Maskable__: signals which can be changed or ignored by the user (e.g., Ctrl+C)
 - __None-Maskable__: Signals which cannot be changed or ignored by the user. These typically occurs when the user is signaled for non-recoverable hardware errors.
 
