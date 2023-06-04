@@ -107,17 +107,15 @@ After actions **pa pa pa**:\
 Integers from a get sorted in 12 instructions. Can you do better?
 ### V.3 The "push_swap" program
 |Program name| push_swap|
-|------------|------------|
+|---|---|
 |Turn in files| Makefile, *.h, *.c|
 |Makefile| NAME, all, clean, fclean, re|
-Arguments stack a: A list of integers
-External functs.
-• read, write, malloc, free,
-exit
-• ft_printf and any equivalent
-YOU coded
-Libft authorized Yes
-Description Sort stacks
+|Arguments| stack a: A list of integers|
+|External functs.|read, write, malloc, free,exit|
+|   |ft_printf and any equivalent YOU coded|
+|Libft authorized| Yes|
+|Description| Sort stacks|
+
 Your project must comply with the following rules:
 • You have to turn in a Makefile which will compile your source files. It must not relink.
 • Global variables are forbidden.
