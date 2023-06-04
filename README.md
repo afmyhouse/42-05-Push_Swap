@@ -73,7 +73,7 @@ After actions **pb pb pb**:\
 **a b**
 
 After actions **ra rb** (equiv. to **rr**):\
-**5 2**
+**5 2**\
 8 1\
 **6 3**
 **\_ \_**\
