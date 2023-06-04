@@ -19,7 +19,92 @@ Sorting values is simple. To sort them the fastest way possible is less simple. 
 
 ### Mandatory Part
 #### Mandatory task list
+##### The rules
+- [ ] You have 2 stacks named a and b.
+- [ ] At the beginning:
+- [ ] The stack a contains a random amount of negative and/or positive numbers which cannot be duplicated.
+- [ ] The stack b is empty.
+- [ ] The goal is to sort in ascending order numbers into stack a. 
+- [ ] To do so you have the following operations at your disposal:
+**sa** (swap a): Swap the first 2 elements at the top of stack a. Do nothing if there is only one or no elements.
+**sb** (swap b): Swap the first 2 elements at the top of stack b. Do nothing if there is only one or no elements.
+**ss** : **sa** and **sb** at the same time.
 
+**pa** (push a): Take the first element at the top of b and put it at the top of a. Do nothing if b is empty.
+
+**pb** (push b): Take the first element at the top of a and put it at the top of b. Do nothing if a is empty.
+
+**ra** (rotate a): Shift up all elements of stack a by 1. The first element becomes the last one.
+**rb** (rotate b): Shift up all elements of stack b by 1. The first element becomes the last one.
+**rr** : ra and rb at the same time.
+
+**rra** (reverse rotate a): Shift down all elements of stack a by 1. The last element becomes the first one.
+**rrb** (reverse rotate b): Shift down all elements of stack b by 1. The last element becomes the first one.
+**rrr** : rra and rrb at the same time.
+
+#### Example
+To illustrate the effect of some of these instructions, let’s sort a random list of integers.
+In this example, we’ll consider that both stacks grow from the right.
+------------------------------
+Init a and b:       Exec sa:
+2                   1
+1                   2
+3                   3
+6                   6
+5                   5
+8                   8
+_ _                 _ _
+a b                 a b
+------------------------------
+Exec sa:
+1
+2
+3
+6
+5
+8
+_ _
+a b
+------------------------------
+Exec pb pb pb:
+6 3
+5 2
+8 1
+_ _
+a b
+------------------------------
+Exec ra rb (equiv. to rr):
+5 2
+8 1
+6 3
+_ _
+a b
+------------------------------
+Exec rra rrb (equiv. to rrr):
+6 3
+5 2
+8 1
+_ _
+a b
+------------------------------
+Exec sa:
+5 3
+6 2
+8 1
+_ _
+a b
+------------------------------
+Exec pa pa pa:
+1
+2
+3
+5
+6
+8
+_ _
+a b
+------------------------------
+Integers from a get sorted in 12 instructions. Can you do better?
 
 ### Bonus part
 #### Bonus task list:
