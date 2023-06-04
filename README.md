@@ -53,6 +53,7 @@ Init a and b:\
 6\
 5\
 8\
+**\_ \_**\
 **a b**
 
 After action **sa**:\
@@ -75,7 +76,7 @@ After actions **pb pb pb**:\
 After actions **ra rb** (equiv. to **rr**):\
 **5 2**\
 8 1\
-**6 3**
+**6 3**\
 **\_ \_**\
 **a b**
 
