@@ -48,57 +48,11 @@ In this example, we’ll consider that both stacks grow from the right.
 |1|2|---|---|---|---|2|\
 |3|3|---|---|---|---|3|\
 |6|6|6  3|5  2|6  3|5  3|5|\
-|5|5|5  2|8  1|5  2|6  2|6|\
-|8|8|8  1|6  3|8  1|8  1|8|\
-|**a b**|**a b**|**a b**|**a b**|**a b**|**a b**|**a b**|**a b**|\
+| 5 | 5 | 5  2 | 8  1 | 5  2 | 6  2 | 6 |\
+| 8 | 8 | 8  1 | 6  3 | 8  1 | 8  1 | 8 |\
+|**a  b**|**a  b**|**a  b**|**a  b**|**a  b**|**a  b**|**a  b**|**a  b**|\
 
-After action **sa**:\
-**1**\
-**2**\
-3\
-6\
-5\
-8\
-**\_ \_**\
-**a b**
 
-After actions **pb pb pb**:\
-6 **3**\
-5 **2**\
-8 **1**\
-**\_ \_**\
-**a b**
-
-After actions **ra rb** (equiv. to **rr**):\
-**5 2**\
-8 1\
-**6 3**\
-**\_ \_**\
-**a b**
-
-After actions **rra rrb** (equiv. to **rrr**):\
-**6 3**\
-**5 2**\
-8 1\
-**\_ \_**\
-**a b**
-
-After action **sa**:\
-**5** 3\
-**6** 2\
-8 1\
-**\_ \_**\
-**a b**
-
-After actions **pa pa pa**:\
-**1\
-2\
-3**\
-5\
-6\
-8\
-**\_ \_**\
-**a b**
 
 Integers from a get sorted in 12 instructions. Can you do better?
 ### The "push_swap" program
