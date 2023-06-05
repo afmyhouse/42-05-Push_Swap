@@ -78,18 +78,18 @@ Your project must comply with the following rules:
 - [ ] In case of error, it must display "Error" followed by a ’\n’ on the standard error. Errors include for example: some arguments aren’t integers, some arguments are bigger than an integer and/or there are duplicates.
 
 #### Examples
->./push_swap 2 1 3 6 5 8
-sa
-pb
-pb
-pb
-sa
-pa
-pa
-pa
-$>./push_swap 0 one 2 3
-Error
-$>
+>./push_swap 2 1 3 6 5 8\
+sa\
+pb\
+pb\
+pb\
+sa\
+pa\
+pa\
+pa\
+$>./push_swap 0 one 2 3\
+Error\
+$>\
 
 During the evaluation process, a binary will be provided in order to properly check
 your program.
