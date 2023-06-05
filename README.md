@@ -100,7 +100,7 @@ It will work as follows:
 $>ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker_OS $ARG
 OK
 $>|
-
+|---|
 
 ### Bonus part
 #### Bonus task list:
