@@ -95,12 +95,11 @@ During the evaluation process, a binary will be provided in order to properly ch
 your program.
 It will work as follows:
 
->$>ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l \
+|>$>ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l \
 6\
 $>ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker_OS $ARG \
 OK \
-$>
-|---|
+$>\|
 
 ### Bonus part
 #### Bonus task list:
