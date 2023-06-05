@@ -77,6 +77,31 @@ Your project must comply with the following rules:
 - [ ] If no parameters are specified, the program must not display anything and give the prompt back.
 - [ ] In case of error, it must display "Error" followed by a ’\n’ on the standard error. Errors include for example: some arguments aren’t integers, some arguments are bigger than an integer and/or there are duplicates.
 
+#### Examples
+>./push_swap 2 1 3 6 5 8
+sa
+pb
+pb
+pb
+sa
+pa
+pa
+pa
+$>./push_swap 0 one 2 3
+Error
+$>
+
+During the evaluation process, a binary will be provided in order to properly check
+your program.
+It will work as follows:
+
+|$>ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l
+6
+$>ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker_OS $ARG
+OK
+$>|
+
+
 ### Bonus part
 #### Bonus task list:
 - [ ] The server acknowledges every message received by sending back a signal to the client.
