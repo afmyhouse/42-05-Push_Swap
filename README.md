@@ -79,7 +79,7 @@ Your project must comply with the following rules:
 
 #### Examples
 ```
->$>./push_swap 2 1 3 6 5 8
+**$>./push_swap 2 1 3 6 5 8**
 sa
 pb
 pb
@@ -88,9 +88,9 @@ sa
 pa
 pa
 pa
-$>./push_swap 0 one 2 3
+**$>./push_swap 0 one 2 3**
 Error
-$>
+**$>**
 ```
 During the evaluation process, a binary will be provided in order to properly check
 your program.
