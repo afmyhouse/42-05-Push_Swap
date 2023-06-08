@@ -153,13 +153,14 @@ When people manually sort cards in a bridge hand, most use a method that is simi
 - __Maskable__: signals which can be changed or ignored by the user (e.g., Ctrl+C)
 - __None-Maskable__: Signals which cannot be changed or ignored by the user. These typically occurs when the user is signaled for non-recoverable hardware errors.
 
-#### How to handle signals
+#### How to sort using push swap, internet resources
 
 ```
 
 ## Resources
 - [Examine and Change Signal Action](https://www.ibm.com/docs/en/i/7.2?topic=ssw_ibm_i_72/apis/sigactn.html)
 - [Insertion Algorithm] (https://en.wikipedia.org/wiki/Insertion_sort)
+- [Jamie Orber Approach] (https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a)
 
 
 
