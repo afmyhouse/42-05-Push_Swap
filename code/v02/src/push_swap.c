@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/06/09 19:39:58 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/06/10 00:07:05 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,20 +84,33 @@ void	ft_browse_stack(t_stack *p2s, int stack)
 	return ;
 }
 
-/// @brief 		FORWARD Rotates the stack top element to the bottom
+/// @brief 		FORWARD Rotates the A stack top element to the bottom
 /// @param p2s	Pointer to the stack
 void	ft_ra_stack(t_stack *p2s)
 {
 	p2s->ta = p2s->ta->na;
 }
 
-/// @brief 		REVERSE Rotates the stack bottom element to the top
+/// @brief 		FORWARD Rotates the B stack top element to the bottom
+/// @param p2s	Pointer to the stack
+void	ft_rb_stack(t_stack *p2s)
+{
+	p2s->tb = p2s->tb->nb;
+}
+
+/// @brief 		REVERSE Rotates the A stack bottom element to the top
 /// @param p2s	Pointer to the stack
 void	ft_rra_stack(t_stack *p2s)
 {
 	p2s->ta = p2s->ta->pa;
 }
 
+/// @brief 		REVERSE Rotates the B stack top element to the bottom
+/// @param p2s
+void	ft_rrb_stack(t_stack *p2s)
+{
+	p2s->tb = p2s->tb->pb;
+}
 /// @brief 		SWAP the top two elements of the stack
 /// @param p2s	Pointer to the stack
 void	ft_sa_stack(t_stack *p2s)
@@ -116,25 +129,46 @@ void	ft_sa_stack(t_stack *p2s)
 
 }
 
-void	ft_push_a(t_stack *p2s)
+/// @brief 		SWAP the top two elements of the stack
+/// @param p2s	Pointer to the stack
+void	ft_sb_stack(t_stack *p2s)
+{
+	p2s->tb->pb->nb = p2s->tb->nb;
+	p2s->tb->nb->pb = p2s->tb->pb;
+
+	p2s->tb->pb = p2s->tb->nb;
+	p2s->tb->nb = p2s->tb->nb->nb;
+
+	p2s->tb->nb->pb->nb = p2s->tb;
+	p2s->tb->nb->pb = p2s->tb;
+
+	p2s->tb = p2s->tb->pb;
+	return ;
+
+}
+
+/// @brief 		PUSH the top element of B stack to A stack
+/// @param p2s	Pointer to the stacks
+void	ft_pa_stack(t_stack *p2s)
 {
 	t_stack swap;
 
 	swap = *p2s;
 
 	if (!swap.tb)
-		return;
+		return ;
 
 	swap.ta = swap.tb;
 
 	if (p2s->tb->nb == p2s->tb)
 	{
-		p2s->tb = NULL; // it was the last element left of the B stack
+		p2s->tb = NULL;
 	}
 	else
 	{
 		p2s->tb = swap.tb->nb;
 		p2s->tb->pb = swap.tb->pb;
+		p2s->tb->pb->nb = p2s->tb;
 	}
 	if (!p2s->ta)
 	{
@@ -150,13 +184,16 @@ void	ft_push_a(t_stack *p2s)
 		p2s->ta->pa = swap.ta;
 
 		p2s->ta = swap.ta;
+		p2s->ta->pa->na = p2s->ta;
 	}
 	p2s->ta->nb = NULL;
 	p2s->ta->pb = NULL;
 	return;
 }
 
-void	ft_push_b(t_stack *p2s)
+/// @brief 		PUSH the top element of A stack to B stack
+/// @param p2s	Pointer to the stacks
+void	ft_pb_stack(t_stack *p2s)
 {
 	t_stack swap;
 
@@ -169,12 +206,13 @@ void	ft_push_b(t_stack *p2s)
 
 	if (p2s->ta->na == p2s->ta)
 	{
-		p2s->ta = NULL; // it was the last element left of the B stack
+		p2s->ta = NULL;
 	}
 	else
 	{
 		p2s->ta = swap.ta->na;
 		p2s->ta->pa = swap.ta->pa;
+		p2s->ta->pa->na = p2s->ta;
 	}
 	if (!p2s->tb)
 	{
@@ -190,135 +228,190 @@ void	ft_push_b(t_stack *p2s)
 		p2s->tb->pb = swap.tb;
 
 		p2s->tb = swap.tb;
+		p2s->tb->pb->nb = p2s->tb;
 	}
 	p2s->tb->na = NULL;
 	p2s->tb->pa = NULL;
 	return;
 }
 
-
-
-/*void	ft_push_b(t_stack *p2s)
+/// @brief 		FORWARD Rotates top element to the bottom on each stack A and B
+/// @param p2s	Pointer to the stacks
+void	ft_rr_stack(t_stack *p2s)
 {
-	t_stack	swap;
+	ft_ra_stack(p2s);
+	ft_rb_stack(p2s);
+}
 
-	swap = *p2s;
+/// @brief 		REVERSE Rotates top element to the bottom on each stack A and B
+/// @param p2s	Pointer to the stacks
+void ft_rrr_stack(t_stack *p2s)
+{
+	ft_rra_stack(p2s);
+	ft_rrb_stack(p2s);
+}
 
-	if (!swap.ta)
+/// @brief		SWAP the top two elements of the stack A and B
+/// @param p2s	Pointer to the stacks
+void ft_ss_stack(t_stack *p2s)
+{
+	ft_sa_stack(p2s);
+	ft_sb_stack(p2s);
+}
+
+void	ft_sort_stack(t_stack *p2s)
+{
+	if (!p2s->ta)
 		return ;
 
-	swap.tb = swap.ta;
+	printf("*sort list*\n");
+	ft_browse_stack(p2s, 0);
+	ft_browse_stack(p2s, 1);
+	printf("*\n");
+	ft_sa_stack(p2s);
+	ft_pb_stack(p2s);
+	ft_pb_stack(p2s);
+	ft_pb_stack(p2s);
+	ft_sa_stack(p2s);
+	ft_pa_stack(p2s);
+	ft_pa_stack(p2s);
+	ft_pa_stack(p2s);
+	printf("*sort result*\n");
+	ft_browse_stack(p2s, 0);
+	ft_browse_stack(p2s, 1);
+	printf("*\n");
 
-	if (p2s->ta->na == p2s->ta)
-	{
-		p2s->ta = NULL;				// if there is only one element left in the stack
-		p2s->ba = NULL;
-	}
-	else
-	{
-		p2s->ta = p2s->ta->na;
-		p2s->ta->pa = p2s->ba;
-		p2s->ba->na = p2s->ta;
-	}
-	if (!p2s->tb)
-	{
-		p2s->tb = swap.tb;
-		p2s->tb->nb = p2s->tb;
-		p2s->tb->pb = p2s->tb;
-		p2s->bb = p2s->tb;
-	}
-	else
-	{
-		p2s->bb->nb = swap.tb;
-		p2s->tb->pb = swap.tb;
-		swap.tb->nb = p2s->tb;
-		swap.tb->pb = p2s->bb;
-		p2s->tb = swap.tb;
-	}
-	p2s->tb->na = NULL;
-	p2s->tb->pa = NULL;
 	return ;
-}*/
+}
+
+void	ft_test_stack(t_stack *p2a)
+{
+	if (!p2a->ta)
+		return ;
+
+	printf("*test list*\n");
+	ft_browse_stack(p2a, 0);
+	ft_browse_stack(p2a, 1);
+	printf("*\n");
+
+	printf("* ra *\n");
+	ft_ra_stack(p2a);
+	ft_browse_stack(p2a, 0);
+	ft_browse_stack(p2a, 1);
+	printf("*\n");
+
+	printf("* ra *\n");
+	ft_ra_stack(p2a);
+	ft_browse_stack(p2a, 0);
+	ft_browse_stack(p2a, 1);
+	printf("*\n");
+
+	printf("*rra *\n");
+	ft_rra_stack(p2a);
+	ft_browse_stack(p2a, 0);
+	ft_browse_stack(p2a, 1);
+	printf("*\n");
+
+	printf("*rra *\n");
+	ft_rra_stack(p2a);
+	ft_browse_stack(p2a, 0);
+	ft_browse_stack(p2a, 1);
+	printf("*\n");
+
+	printf("* sa *\n");
+	ft_sa_stack(p2a);
+	ft_browse_stack(p2a, 0);
+	ft_browse_stack(p2a, 1);
+	printf("*\n");
+
+	printf("* sa *\n");
+	ft_sa_stack(p2a);
+	ft_browse_stack(p2a, 0);
+	ft_browse_stack(p2a, 1);
+	printf("*\n");
+
+	printf("* pb *\n");
+	ft_pb_stack(p2a);
+	ft_browse_stack(p2a, 0);
+	ft_browse_stack(p2a, 1);
+	printf("*\n");
+
+	printf("* pb *\n");
+	ft_pb_stack(p2a);
+	ft_browse_stack(p2a, 0);
+	ft_browse_stack(p2a, 1);
+	printf("*\n");
+
+	printf("* sb *\n");
+	ft_sb_stack(p2a);
+	ft_browse_stack(p2a, 0);
+	ft_browse_stack(p2a, 1);
+	printf("*\n");
+
+	printf("* sb *\n");
+	ft_sb_stack(p2a);
+	ft_browse_stack(p2a, 0);
+	ft_browse_stack(p2a, 1);
+	printf("*\n");
+
+	printf("* pb *\n");
+	ft_pb_stack(p2a);
+	ft_browse_stack(p2a, 0);
+	ft_browse_stack(p2a, 1);
+	printf("*\n");
+
+	printf("* pa *\n");
+	ft_pa_stack(p2a);
+	ft_browse_stack(p2a, 0);
+	ft_browse_stack(p2a, 1);
+	printf("*\n");
+
+	printf("* pa *\n");
+	ft_pa_stack(p2a);
+	ft_browse_stack(p2a, 0);
+	ft_browse_stack(p2a, 1);
+	printf("*\n");
+
+	printf("* pa *\n");
+	ft_pa_stack(p2a);
+	ft_browse_stack(p2a, 0);
+	ft_browse_stack(p2a, 1);
+	printf("*\n");
+
+	return ;
+}
 
 int	main(int ac, char **av)
 {
 	t_stack	*p2a;
-	ac = 7;
-	av[1] = "1";
-	av[2] = "2";
-	av[3] = "3";
-	av[4] = "4";
-	av[5] = "5";
-	av[6] = "6";
+	int mydebug;
+
+	if (ac > 2)
+		mydebug = 0;
+	else
+		mydebug = 1;
+	if (_DEBUG || mydebug)
+	{
+		printf("\n*** DEBUG MODE ***\n");
+		ac = 7;
+		av[1] = "2";
+		av[2] = "1";
+		av[3] = "3";
+		av[4] = "6";
+		av[5] = "5";
+		av[6] = "8";
+	}
 	if (ac >= 2)
+	{
+		printf("ac = %i\n", ac - 1);
 		p2a = ft_generate_list(av, ac);
-
-	printf("*list*\n");
-	ft_browse_stack(p2a, 0);
-	ft_browse_stack(p2a, 1);
-	printf("*\n");
-
-	printf("* ra *\n");
-	ft_ra_stack(p2a);
-	ft_browse_stack(p2a, 0);
-	ft_browse_stack(p2a, 1);
-	printf("*\n");
-
-	printf("* ra *\n");
-	ft_ra_stack(p2a);
-	ft_browse_stack(p2a, 0);
-	ft_browse_stack(p2a, 1);
-	printf("*\n");
-
-	printf("*rra *\n");
-	ft_rra_stack(p2a);
-	ft_browse_stack(p2a, 0);
-	ft_browse_stack(p2a, 1);
-	printf("*\n");
-
-	printf("*rra *\n");
-	ft_rra_stack(p2a);
-	ft_browse_stack(p2a, 0);
-	ft_browse_stack(p2a, 1);
-	printf("*\n");
-
-	printf("* sa *\n");
-	ft_sa_stack(p2a);
-	ft_browse_stack(p2a, 0);
-	ft_browse_stack(p2a, 1);
-	printf("*\n");
-
-	printf("* sa *\n");
-	ft_sa_stack(p2a);
-	ft_browse_stack(p2a, 0);
-	ft_browse_stack(p2a, 1);
-	printf("*\n");
-
-	printf("* pb *\n");
-	ft_push_b(p2a);
-	ft_browse_stack(p2a, 0);
-	ft_browse_stack(p2a, 1);
-	printf("*\n");
-
-	printf("* pb *\n");
-	ft_push_b(p2a);
-	ft_browse_stack(p2a, 0);
-	ft_browse_stack(p2a, 1);
-	printf("*\n");
-
-	printf("* pa *\n");
-	ft_push_a(p2a);
-	ft_browse_stack(p2a, 0);
-	ft_browse_stack(p2a, 1);
-	printf("*\n");
-
-	printf("* pa *\n");
-	ft_push_a(p2a);
-	ft_browse_stack(p2a, 0);
-	ft_browse_stack(p2a, 1);
-	printf("*\n");
+		if (_DEBUG)
+			ft_test_stack(p2a);
+		ft_sort_stack(p2a);
+	}
 
 	if (_DEBUG)
 		write(1, "Hello World!\n", 13);
+
 	return (0);
 }

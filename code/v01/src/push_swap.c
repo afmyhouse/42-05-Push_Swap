@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/06/09 00:36:28 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/06/09 23:25:13 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ void	ft_push_a(t_stack *p2s)
 	return ;
 }
 
-void	ft_push_b(t_stack *p2s)
+void	ft_pb_stack(t_stack *p2s)
 {
 	t_stack	swap;
 
@@ -245,13 +245,13 @@ int	main(int ac, char **av)
 	printf("*\n");
 
 	printf("* pb *\n");
-	ft_push_b(p2a);
+	ft_pb_stack(p2a);
 	ft_browse_stack(p2a, 0);
 	ft_browse_stack(p2a, 1);
 	printf("*\n");
 
 	printf("* pb *\n");
-	ft_push_b(p2a);
+	ft_pb_stack(p2a);
 	ft_browse_stack(p2a, 0);
 	ft_browse_stack(p2a, 1);
 	printf("*\n");
