@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/06/10 00:07:05 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/06/10 17:09:43 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -259,7 +259,7 @@ void ft_ss_stack(t_stack *p2s)
 	ft_sb_stack(p2s);
 }
 
-void	ft_sort_stack(t_stack *p2s)
+void	ft_sort_stack_test(t_stack *p2s)
 {
 	if (!p2s->ta)
 		return ;
@@ -284,7 +284,7 @@ void	ft_sort_stack(t_stack *p2s)
 	return ;
 }
 
-void	ft_test_stack(t_stack *p2a)
+void	ft_inital_stack_test(t_stack *p2a)
 {
 	if (!p2a->ta)
 		return ;
@@ -406,8 +406,8 @@ int	main(int ac, char **av)
 		printf("ac = %i\n", ac - 1);
 		p2a = ft_generate_list(av, ac);
 		if (_DEBUG)
-			ft_test_stack(p2a);
-		ft_sort_stack(p2a);
+			ft_inital_stack_test(p2a);
+		ft_sort_stack_test(p2a);
 	}
 
 	if (_DEBUG)
