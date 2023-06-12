@@ -127,6 +127,11 @@ If you have not passed ALL the mandatory requirements, your bonus part will not 
 
 ## Allowed Functions (manual)
 - [`write`](https://man7.org/linux/man-pages/man2/write.2.html)
+- [`read`](https://man7.org/linux/man-pages/man2/read.2.html)
+- [`malloc`](https://man7.org/linux/man-pages/man3/malloc.3.html)
+- [`free`](https://man7.org/linux/man-pages/man3/malloc.3.html)
+- [`exit`](https://man7.org/linux/man-pages/man2/exit.2.html)
+- [`ft_printf`](https://github.com/afmyhouse/42-01-ft_printf)
 
 
 ## Intro to sort algorithms
