@@ -161,9 +161,9 @@ When people manually sort cards in a bridge hand, most use a method that is simi
 #### How to sort using push swap, internet resources
 
 ```
-- [Examine and Change Signal Action](https://www.ibm.com/docs/en/i/7.2?topic=ssw_ibm_i_72/apis/sigactn.html)
-- [Insertion Algorithm] (https://en.wikipedia.org/wiki/Insertion_sort)
-- [Jamie Orber Approach] (https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a)
+- [`Examine and Change Signal Action`](https://www.ibm.com/docs/en/i/7.2?topic=ssw_ibm_i_72/apis/sigactn.html)
+- [`Insertion Algorithm`] (https://en.wikipedia.org/wiki/Insertion_sort)
+- [`Jamie Orber Approach to Push Swap`] (https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a)
 
 ```
 
