@@ -88,13 +88,13 @@ $>\
 ## Intro to sort algorithms
 ### What are sorting algorthms?
 Sorting algorithims are code mechanics to grab a set of information randomly ordere and process till it orderred according to a specoific criteria for ecample "ascending", "descending", etc
-### What types of sorting algorithims are there?
-#### BUBBLE
+## What types of sorting algorithims are there?
+### BUBBLE
 Bubble sort, sometimes referred to as sinking sort, is a simple sorting algorithm that repeatedly steps through the input list element by element, comparing the current element with the one after it, swapping their values if needed. These passes through the list are repeated until no swaps had to be performed during a pass, meaning that the list has become fully sorted. The algorithm, which is a comparison sort, is named for the way the larger elements "bubble" up to the top of the list.
 
 This simple algorithm performs poorly in real world use and is used primarily as an educational tool. More efficient algorithms such as quicksort, timsort, or merge sort are used by the sorting libraries built into popular programming languages such as Python and Java. However, if parallel processing is allowed, bubble sort sorts in O(n) time, making it considerably faster than parallel implementations of _insertion sort_ or _selection sort_ which do not parallelize as effectively.
 
-#### INSERTION
+### INSERTION
 _**Insertion sort**_ is a simple sorting algorithm that builds the final sorted array (or list) one item at a time by comparisons. It is much less efficient on large lists than more advanced algorithms such as _**quick sort**_, _**heap sort**_, or _**merge sort**_. However, _**insertion sort**_ provides several advantages:
 
 >**Simple implementation**: Jon Bentley shows a three-line C/C++ version that is five lines when optimized.[1]
@@ -113,15 +113,15 @@ When people manually sort cards in a bridge hand, most use a method that is simi
 - __Maskable__: signals which can be changed or ignored by the user (e.g., Ctrl+C)
 - __None-Maskable__: Signals which cannot be changed or ignored by the user. These typically occurs when the user is signaled for non-recoverable hardware errors.
 
-#### How to sort using push swap, internet resources
+### How to sort using push swap, internet resources
 
-```
-- [`Examine and Change Signal Action`](https://www.ibm.com/docs/en/i/7.2?topic=ssw_ibm_i_72/apis/sigactn.html)
+
+- [Examine and Change Signal Action](https://www.ibm.com/docs/en/i/7.2?topic=ssw_ibm_i_72/apis/sigactn.html)
 - [Random Number sequences generator](https://numbergenerator.org/numberlistrandomizer#!numbers=100&lines=1&range=1-100)
-- [`Insertion Algorithm`] (https://en.wikipedia.org/wiki/Insertion_sort)
-- [`Jamie Orber Approach to Push Swap`] (https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a)
+- [Insertion Algorithm](https://en.wikipedia.org/wiki/Insertion_sort)
+- [Jamie Orber Approach to Push Swap](https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a)
 
-```
+
 
 
 
