@@ -6,13 +6,13 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:52:10 by antoda-s          #+#    #+#              #
-#    Updated: 2023/06/16 14:54:46 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/06/16 16:16:46 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Executable File Name(s):
 M_NAME = push_swap
-B_NAME = push_swap_bonus
+B_NAME = checker
 
 #Compiling Variables:
 CC 			= cc
