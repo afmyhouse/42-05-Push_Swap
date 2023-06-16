@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:52:10 by antoda-s          #+#    #+#              #
-#    Updated: 2023/06/16 12:42:51 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/06/16 14:54:46 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,6 @@ _INFO		=	[$(YLW)INFO$(WTH)]
 all: $(M_NAME)
 
 $(M_NAME): $(LIBFT) $(M_OBJS)
-#	@echo $(M_OBJS)
 	@echo "$(_INFO)"
 	@echo "[$(BLU)Project MANDATORY : compile $(GRN)$(@) $(BLU)file$(WTH)]"
 	@$(CC) $(CFLAGS) $(M_OBJS) $(DLIB)/$(LIBFT) -o $@
@@ -99,11 +98,6 @@ $(M_OBJS): $(DBIN)/%.o: %.c
 	@$(CC) -c $(CFLAGS) $< -o $@
 
 clean:
-#	@echo "$(_INFO)"
-#	@echo "[$(RED)Clean Project Libs Objs$(WTH)]"
-#	@$(MAKE) clean --no-print-directory -C $(DLIB)
-#	@echo "$(_SUCCESS)"
-#	@echo
 	@echo "$(_INFO)"
 	@echo "[$(RED)Clean Project object files$(WTH)]"
 	@$(RM) $(M_OBJS)
@@ -130,14 +124,15 @@ fclean: clean
 
 re: fclean all
 
+# This is the bonus target invoked with >make bonus
 #bonus: $(B_NAME))
-
-#$(B_NAME): $(LIBFT) $(B_OBJS)
+#	$(B_NAME): $(LIBFT) $(B_OBJS)
 #	@echo "$(_INFO)"
 #	@echo "[$(BLU)Project BONUS : compile $(GRN)$(@) file$(WTH)]"
 #	@$(CC) $(CFLAGS) $(B_OBJS) $(LIBFT) -o $@
 #	@echo "$(_SUCCESS)"
 #	@echo
+# Show the paths taht are used by this project
 show:
 	@echo "$(YLW)[ALL PATHS  ]$(WTH) *make show*"
 	@echo "*******************************************"
@@ -152,7 +147,7 @@ show:
 	@echo "*******************************************"
 	@echo "$(YLW)[TARGET   = ]$(WTH)"$(PROJDIR)/$(M_NAME)
 
-# Every targe that's not a file is identified on .PHONY
+# Every target that's not a file is identified on .PHONY
 .PHONY: all clean fclean re show #bonus
 
 .SILENT:

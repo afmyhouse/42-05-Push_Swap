@@ -6,44 +6,54 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/06/13 01:31:24 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/06/16 15:31:58 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
+t_elem	*ft_stack_add_first(t_stack *p2s)
+{
+	t_elem	*stack;
+
+	stack = malloc(sizeof(t_elem));
+	p2s->ta = stack;
+	stack->p = p2s->ta;
+	stack->n = p2s->ta;
+	return (stack);
+}
+
+t_elem	*ft_stack_add_next(t_elem *stack)
+{
+	stack->n = malloc(sizeof(t_elem));
+	stack->n->p = stack;
+	stack = stack->n;
+	return (stack);
+}
+
 /// @brief 		Generates a list of elements
 /// @param av	Arguments
 /// @param ac	Number of arguments
 /// @return		Pointer to the stack
-t_stack	*ft_generate_list(int ac, char **av)
+t_stack	*ft_generate_list(int size, char **av)
 {
 	int		i;
-	t_elem	*stack;
+	t_elem	*stack_node;
 	t_stack	*p2s;
 
+	if (!av[1])
+		return (NULL);
 	i = 1;
-	while (i < ac)
+	p2s = malloc(sizeof(t_stack));
+	stack_node = ft_stack_add_first(p2s);
+	stack_node->data = atoi(av[i++]);
+	while (i < size)
 	{
-		if (i == 1)
-		{
-			stack = malloc(sizeof(t_elem));
-			p2s = malloc(sizeof(t_stack));
-			p2s->ta = stack;
-			stack->p = p2s->ta;
-			stack->n = p2s->ta;
-		}
-		else
-		{
-			stack->n = malloc(sizeof(t_elem));
-			stack->n->p = stack;
-			stack = stack->n;
-		}
-		stack->data = atoi(av[i]);
-		i++;
+		stack_node = ft_stack_add_next(stack_node);
+		stack_node->data = atoi(av[i++]);
 	}
-	stack->n = p2s->ta;
-	p2s->ta->p = stack;
+	stack_node->n = p2s->ta;
+	p2s->ta->p = stack_node;
 	return (p2s);
 }
 
