@@ -2,6 +2,7 @@
 42  common-core : "push swap" project
 
 ## specification
+- [`Push Swap Specification`](https://github.com/afmyhouse/42-05-Push_Swap/blob/b06/SPECIFICATION.md)
 ## Introduction
 The Push swap project is a very simple and a highly straightforward algorithm project: data must be sorted.
 You have at your disposal a set of integer values, 2 stacks, and a set of instructions to manipulate both stacks.
@@ -16,11 +17,7 @@ The learning objectives of this project are rigor, use of C, and use of basic al
 Especially focusing on their complexity.
 Sorting values is simple. To sort them the fastest way possible is less simple. Especially because from one integers configuration to another, the most efficient sorting solution can differ.
 
-## Subject
-
-### Mandatory Part
-#### Mandatory task list
-##### The rules
+## The rules
 - [ ] You have 2 stacks named a and b.
 - [ ] At the beginning:
 - [ ] The stack a contains a random amount of negative and/or positive numbers which cannot be duplicated.
@@ -56,27 +53,7 @@ In this example, we’ll consider that both stacks grow from the right.
 
 
 Integers from a get sorted in 12 instructions. Can you do better?
-### The "push_swap" program
-|Program name           | push_swap|
-|-----------------------|-------------------------------------------------------------|
-|Turn in files          | Makefile, *.h, *.c|
-|Makefile               | NAME, all, clean, fclean, re|
-|Arguments              | stack a: A list of integers|
-|External functions     |read, write, malloc, free, exit, ft_printf and any equivalent YOU coded|
-|Libft authorized       | Yes|
-|Description            | Sort stacks|
 
-Your project must comply with the following rules:
-- [ ] You have to turn in a Makefile which will compile your source files. It must not relink.
-- [ ] Global variables are forbidden.
-- [ ] You have to write a program named **push_swap** that takes as an argument, the _stack a_, formatted as a list of integers. The **first argument** should be at the **top of the stack** (be careful about the order).
-- [ ] The program must display the smallest list of instructions possible to sort the stack a, the smallest number being at the top.
-- [ ] Instructions must be separated by a ’\n’ and nothing else.
-- [ ] The goal is to sort the stack with the lowest possible number of operations.
-- [ ] During the evaluation process, the number of instructions found by your program will be compared against a limit: the maximum number of operations tolerated.
-- [ ] If your program either displays a longer list or if the numbers aren’t sorted properly, your grade will be 0.
-- [ ] If no parameters are specified, the program must not display anything and give the prompt back.
-- [ ] In case of error, it must display "Error" followed by a ’\n’ on the standard error. Errors include for example: some arguments aren’t integers, some arguments are bigger than an integer and/or there are duplicates.
 
 #### Examples
 ```
@@ -93,8 +70,7 @@ $>./push_swap 0 one 2 3
 Error
 $>
 ```
-During the evaluation process, a binary will be provided in order to properly check
-your program.
+During the evaluation process, a binary will be provided in order to properly check your program.
 It will work as follows:
 
 ```
@@ -105,35 +81,9 @@ OK \
 $>\
 ```
 
-### Bonus part
-#### Bonus task list:
-- [ ] The server acknowledges every message received by sending back a signal to the client.
-- [ ] Unicode characters support! **UTF-8**
-
-## Evaluation
-The bonus part will only be assessed if the mandatory part is PERFECT.
-Perfect means the mandatory part has been integrally done and works without malfunctioning.
-If you have not passed ALL the mandatory requirements, your bonus part will not be evaluated at all.### Project instructions
-
-## Project Specific Instructions
-- [ ] Name your executable files _client_ and _server_
-- [ ] You have to turn in a Makefile which will compile your source files. It must not relink.
-- [ ] You can definitely use your libft.
-- [ ] You have to handle errors thoroughly.
-- [ ] In no way your program should quit unexpectedly (segmentation fault, bus error, double free, and so forth).
-- [ ] Your program mustn’t have memory leaks.
-- [ ] You can have one global variable per program (one for the client and one for the server), but you will have to justify their use.
-- [ ] In order to complete the mandatory part, you are allowed to use the following functions:
-
-
-## Allowed Functions (manual)
-- [`write`](https://man7.org/linux/man-pages/man2/write.2.html)
-- [`read`](https://man7.org/linux/man-pages/man2/read.2.html)
-- [`malloc`](https://man7.org/linux/man-pages/man3/malloc.3.html)
-- [`free`](https://man7.org/linux/man-pages/man3/malloc.3.html)
-- [`exit`](https://man7.org/linux/man-pages/man2/exit.2.html)
-- [`ft_printf`](https://github.com/afmyhouse/42-01-ft_printf)
-
+### Bonus
+- [ ] Write your own checker program.
+- [ ] Using the push\swap output make a PROGRAMM THAT CHECKS IF THE LIST IS ORDERED
 
 ## Intro to sort algorithms
 ### What are sorting algorthms?

@@ -1,6 +1,7 @@
 # 42-05-Push_Swap : SPECIFICATION
 42  common-core : "push swap" project
-_Please refer to the original doc issued by 42 school. If any discrepancies are found between this document and the school edition, it is this last one whic prevails._
+
+_Please refer to the original document issued by 42 school. If any discrepancies are found between this document and the 42 school edition, it is this last which prevails._
 
 
 ## Introduction
@@ -164,7 +165,7 @@ $>
 ```
 
 #### ATENTION!
-You DO NOT have to reproduce the exact same behavior as the provided binary. It is **mandatory to manage errors but it is up to you to decide how you want to parse the arguments.
+You DO NOT have to reproduce the exact same behavior as the provided binary. It is **mandatory to manage errors** but it is up to you to decide how you want to parse the arguments.
 
 ## Evaluation
 The bonus part will only be assessed if the mandatory part is PERFECT.
