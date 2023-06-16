@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:52:10 by antoda-s          #+#    #+#              #
-#    Updated: 2023/06/13 01:53:55 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/06/16 12:42:51 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,7 @@ _INFO		=	[$(YLW)INFO$(WTH)]
 all: $(M_NAME)
 
 $(M_NAME): $(LIBFT) $(M_OBJS)
-	@echo $(M_OBJS)
+#	@echo $(M_OBJS)
 	@echo "$(_INFO)"
 	@echo "[$(BLU)Project MANDATORY : compile $(GRN)$(@) $(BLU)file$(WTH)]"
 	@$(CC) $(CFLAGS) $(M_OBJS) $(DLIB)/$(LIBFT) -o $@
