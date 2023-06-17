@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   a_push_swap_full.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/06/10 23:22:55 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/06/17 17:47:17 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	ft_browse_stacks(t_stack *p2s)
 
 /// @brief 			FORWARD Rotates the A stack top element to the bottom
 /// @param p2s		Pointer to the stack
-void	ft_ra_stack(t_stack *p2s)
+void	ft_ra(t_stack *p2s)
 {
 	write(1, "ra\n", 3);
 	p2s->ta = p2s->ta->n;
@@ -108,7 +108,7 @@ void	ft_ra_stack(t_stack *p2s)
 
 /// @brief 			FORWARD Rotates the B stack top element to the bottom
 /// @param p2s	Pointer to the stack
-void	ft_rb_stack(t_stack *p2s)
+void	ft_rb(t_stack *p2s)
 {
 	write(1, "rb\n", 3);
 	p2s->tb = p2s->tb->n;
@@ -116,7 +116,7 @@ void	ft_rb_stack(t_stack *p2s)
 
 /// @brief 			FORWARD Rotates top to bottom on both stack A and B
 /// @param p2s		Pointer to the stacks
-void	ft_rr_stack(t_stack *p2s)
+void	ft_rr(t_stack *p2s)
 {
 	write(1, "rr\n", 3);
 	p2s->ta = p2s->ta->n;
@@ -125,7 +125,7 @@ void	ft_rr_stack(t_stack *p2s)
 
 /// @brief 			REVERSE Rotates the A stack bottom element to the top
 /// @param p2s		Pointer to the stack
-void	ft_rra_stack(t_stack *p2s)
+void	ft_rra(t_stack *p2s)
 {
 	write(1, "rra\n", 4);
 	p2s->ta = p2s->ta->p;
@@ -133,7 +133,7 @@ void	ft_rra_stack(t_stack *p2s)
 
 /// @brief 			REVERSE Rotates the B stack bottom element to the top
 /// @param p2s		Pointer to the stack
-void	ft_rrb_stack(t_stack *p2s)
+void	ft_rrb(t_stack *p2s)
 {
 	write(1, "rrb\n", 4);
 	p2s->tb = p2s->tb->p;
@@ -141,7 +141,7 @@ void	ft_rrb_stack(t_stack *p2s)
 
 /// @brief 			REVERSE Rotates bottom to top on both stack A and B
 /// @param p2s		Pointer to the stacks
-void	ft_rrr_stack(t_stack *p2s)
+void	ft_rrr(t_stack *p2s)
 {
 	write(1, "rrr\n", 4);
 	p2s->ta = p2s->ta->p;
@@ -150,7 +150,7 @@ void	ft_rrr_stack(t_stack *p2s)
 
 /// @brief 			SWAP the top two elements of the stack
 /// @param stack	Pointer to the stack
-void	ft_sx(t_elem **stack)
+void	ft_sx_stack(t_elem **stack)
 {
 	(*stack)->p->n = (*stack)->n;
 	(*stack)->n->p = (*stack)->p;
@@ -168,7 +168,7 @@ void	ft_sx(t_elem **stack)
 /// @brief 			SWAP the top two elements of the stack
 /// @param p2s		Pointer to the stack
 /// @param stack	stack to swap
-void	ft_sx_stack(t_stack *p2s, char stack, int print)
+void	ft_sx(t_stack *p2s, char stack, int print)
 {
 	t_stack	swap;
 
@@ -177,13 +177,13 @@ void	ft_sx_stack(t_stack *p2s, char stack, int print)
 		printf("s%c error : stack '%c' empty\n", stack, stack);
 	if (stack == 'a' && swap.ta != NULL)
 	{
-		ft_sx(&swap.ta);
+		ft_sx_stack(&swap.ta);
 		if (print)
 			printf("s%c\n", stack);
 	}
 	else if (stack == 'b' && swap.tb != NULL)
 	{
-		ft_sx(&swap.tb);
+		ft_sx_stack(&swap.tb);
 		if (print)
 			printf("s%c\n", stack);
 	}
@@ -194,7 +194,7 @@ void	ft_sx_stack(t_stack *p2s, char stack, int print)
 
 /// @brief			SWAP the top two elements of the stack A and B
 /// @param p2s		Pointer to the stacks
-void	ft_ss_stack(t_stack *p2s)
+void	ft_ss(t_stack *p2s)
 {
 	write(1, "ss\n", 3);
 	ft_sx_stack(p2s, 'a', 0);
@@ -242,7 +242,7 @@ void	ft_px_dst(t_elem **top_src, t_elem **top_dst)
 /// @brief 			PUSH the top element of src stack to dst stack
 /// @param top_src	Pointer to the top of the src stack
 /// @param top_dst	Pointer to the top of the dst stack
-void	ft_px(t_elem **top_src, t_elem **top_dst)
+void	ft_px_stack(t_elem **top_src, t_elem **top_dst)
 {
 	t_elem	*new_top_src;
 
@@ -256,7 +256,7 @@ void	ft_px(t_elem **top_src, t_elem **top_dst)
 /// @brief 			PUSH the top element of A stack to B stack
 /// @param p2s		Pointer to the stacks
 /// @param stack	stack to push to ('A' | 'B')
-void	ft_px_stack(t_stack *p2s, char stack)
+void	ft_px(t_stack *p2s, char stack)
 {
 	t_stack	push;
 
@@ -267,12 +267,12 @@ void	ft_px_stack(t_stack *p2s, char stack)
 		printf("p%c error : stack 'b' empty\n", stack);
 	if (stack == 'a' && push.tb != NULL)
 	{
-		ft_px(&push.tb, &push.ta);
+		ft_px_stack(&push.tb, &push.ta);
 		printf("p%c\n", stack);
 	}
 	else if (stack == 'b' && push.ta != NULL)
 	{
-		ft_px(&push.ta, &push.tb);
+		ft_px_stack(&push.ta, &push.tb);
 		printf("p%c\n", stack);
 	}
 	*p2s = push;
@@ -294,21 +294,21 @@ void	ft_sort_stack_test(t_stack *p2s)
 	printf("*\n");
 	ft_sx_stack(p2s, 'a', 1);
 	ft_browse_stacks(p2s);
-	ft_px_stack(p2s, 'b');
+	ft_px(p2s, 'b');
 	ft_browse_stacks(p2s);
-	ft_px_stack(p2s, 'b');
+	ft_px(p2s, 'b');
 	ft_browse_stacks(p2s);
-	ft_px_stack(p2s, 'b');
+	ft_px(p2s, 'b');
 	ft_browse_stacks(p2s);
 	ft_sx_stack(p2s, 'a', 1);
 	ft_browse_stacks(p2s);
-	ft_px_stack(p2s, 'a');
+	ft_px(p2s, 'a');
 	ft_browse_stacks(p2s);
-	ft_px_stack(p2s, 'a');
+	ft_px(p2s, 'a');
 	ft_browse_stacks(p2s);
-	ft_px_stack(p2s, 'a');
+	ft_px(p2s, 'a');
 	ft_browse_stacks(p2s);
-	ft_ss_stack(p2s);
+	ft_ss(p2s);
 	printf("%s*sort result*%s\n", YLW, WTH);
 	ft_browse_stack(p2s, 'a');
 	ft_browse_stack(p2s, 'b');
@@ -328,28 +328,28 @@ void	ft_inital_stack_test(t_stack *p2s)
 	printf("*test list*\n");
 	ft_browse_stacks(p2s);
 
-	ft_ra_stack(p2s);
+	ft_ra(p2s);
 	ft_browse_stacks(p2s);
 
-	ft_ra_stack(p2s);
+	ft_ra(p2s);
 	ft_browse_stacks(p2s);
 
-	ft_rra_stack(p2s);
+	ft_rra(p2s);
 	ft_browse_stacks(p2s);
 
-	ft_rra_stack(p2s);
-	ft_browse_stacks(p2s);
-
-	ft_sx_stack(p2s, 'a', 1);
+	ft_rra(p2s);
 	ft_browse_stacks(p2s);
 
 	ft_sx_stack(p2s, 'a', 1);
 	ft_browse_stacks(p2s);
 
-	ft_px_stack(p2s, 'b');
+	ft_sx_stack(p2s, 'a', 1);
 	ft_browse_stacks(p2s);
 
-	ft_px_stack(p2s, 'b');
+	ft_px(p2s, 'b');
+	ft_browse_stacks(p2s);
+
+	ft_px(p2s, 'b');
 	ft_browse_stacks(p2s);
 
 	ft_sx_stack(p2s, 'b', 1);
@@ -358,16 +358,16 @@ void	ft_inital_stack_test(t_stack *p2s)
 	ft_sx_stack(p2s, 'b', 1);
 	ft_browse_stacks(p2s);
 
-	ft_px_stack(p2s, 'b');
+	ft_px(p2s, 'b');
 	ft_browse_stacks(p2s);
 
-	ft_px_stack(p2s, 'a');
+	ft_px(p2s, 'a');
 	ft_browse_stacks(p2s);
 
-	ft_px_stack(p2s, 'a');
+	ft_px(p2s, 'a');
 	ft_browse_stacks(p2s);
 
-	ft_px_stack(p2s, 'a');
+	ft_px(p2s, 'a');
 	ft_browse_stacks(p2s);
 
 	return ;
@@ -385,7 +385,7 @@ void	ft_sort_machine(t_stack *p2s, int size)
 		printf("%s*sort machine*%s\n", YLW, WTH);
 	while (i < size)
 	{
-		ft_px_stack(p2s, 'b');
+		ft_px(p2s, 'b');
 		i++;
 	}
 	ft_browse_stacks(p2s);

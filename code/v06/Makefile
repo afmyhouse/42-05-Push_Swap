@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:52:10 by antoda-s          #+#    #+#              #
-#    Updated: 2023/06/16 16:16:46 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/06/17 12:17:19 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,11 +81,11 @@ $(M_NAME): $(LIBFT) $(M_OBJS)
 	@$(CC) $(CFLAGS) $(M_OBJS) $(DLIB)/$(LIBFT) -o $@
 	@echo "$(_SUCCESS)"
 	@echo
-	@echo "$(_INFO)"
-	@echo "[$(RED)Clean Project Libs Objs$(WTH)]"
-	@$(MAKE) clean --no-print-directory -C $(DLIB)
-	@echo "$(_SUCCESS)"
-	@echo
+#	@echo "$(_INFO)"
+#	@echo "[$(RED)Clean Project Libs Objs$(WTH)]"
+#	@$(MAKE) clean --no-print-directory -C $(DLIB)
+#	@echo "$(_SUCCESS)"
+#	@echo
 
 $(LIBFT):
 	@echo "$(_INFO)"

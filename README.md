@@ -101,17 +101,15 @@ _**Insertion sort**_ is a simple sorting algorithm that builds the final sorted 
 
 >**Efficient for (quite) small data sets**, much like other quadratic (i.e., O(n^2)) sorting algorithms. More efficient in practice than most other simple quadratic algorithms such as _selection sort_ or _bubble sort_
 
->**Adaptive**, i.e., efficient for data sets that are already substantially sorted: the time complexity is O(kn) when each element in the input is no more than k places away from its sorted position
+- __Adaptive__, i.e., efficient for data sets that are already substantially sorted: the time complexity is O(kn) when each element in the input is no more than k places away from its sorted position
 
->**Stable**; i.e., does not change the relative order of elements with equal keys
+- __Stable__; i.e., does not change the relative order of elements with equal keys
 
->**In-place**; i.e., only requires a constant amount O(1) of additional memory space
+- __In-place__; i.e., only requires a constant amount O(1) of additional memory space
 
->**Online**; i.e., can sort a list as it receives it
+- __Online__; i.e., can sort a list as it receives it
 
 When people manually sort cards in a bridge hand, most use a method that is similar to insertion sort.[2]
-- __Maskable__: signals which can be changed or ignored by the user (e.g., Ctrl+C)
-- __None-Maskable__: Signals which cannot be changed or ignored by the user. These typically occurs when the user is signaled for non-recoverable hardware errors.
 
 ### How to sort using push swap, internet resources
 
