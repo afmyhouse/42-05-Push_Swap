@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/06/17 18:42:09 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/06/21 19:45:28 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_sx_stack(t_elem **swap_top)
 /// @brief 			SWAP the top two elements of the stack
 /// @param p2s		Pointer to the stack
 /// @param stack	stack to swap
-void	ft_sx(t_stack *p2s, char stack, int print)
+int	ft_sx(t_stack *p2s, char stack, int print)
 {
 	if (print)
 		ft_printf("s%c\n", stack);
@@ -53,7 +53,7 @@ void	ft_sx(t_stack *p2s, char stack, int print)
 	*p2s = swap;
 	ft_browse_stack(p2s, stack);
 
-	return ;
+	return (1);
 }
 
 /// @brief			SWAP the top two elements of the stack A and B

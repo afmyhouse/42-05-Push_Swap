@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/06/17 18:40:25 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/06/22 17:13:29 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,19 @@ t_stack	*ft_generate_list(int size, char **av)
 		return (NULL);
 	stack_node = ft_stack_add_first(p2s);
 	stack_node->data = atoi(av[i++]);
+	//ft_printf("%sfirst elem%s = %s%p%s : data = %s%i%s)\n",RED,WTH, YLW,p2s->ta,WTH, YLW,p2s->ta->data,WTH);
 	while (i < size)
 	{
 		stack_node = ft_stack_add_next(stack_node);
 		stack_node->data = atoi(av[i++]);
+	//	ft_printf("%snext  elem%s = %s%p%s : data = %s%i%s)\n",RED,WTH, YLW,stack_node,WTH, YLW,stack_node->data,WTH);
 	}
 	stack_node->n = p2s->ta;
 	p2s->ta->p = stack_node;
+	p2s->ta_size = size - 1;
+	printf("p2s->ta = %p\n", p2s->ta);
+	printf("p2s->ta_size = %i\n", p2s->ta_size);
+	printf("p2s->tb = %p\n", p2s->tb);
+	printf("p2s->tb_size = %i\n", p2s->tb_size);
 	return (p2s);
 }

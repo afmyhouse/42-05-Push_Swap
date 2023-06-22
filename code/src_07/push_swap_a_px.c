@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/06/17 18:08:05 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/06/22 17:20:42 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,17 @@ void	ft_px(t_stack *p2s, char stack)
 	if (stack == 'a' && push.tb != NULL)
 	{
 		ft_px_stack(&push.tb, &push.ta);
+		push.ta_size++;
+		push.tb_size--;
 	}
 	else if (stack == 'b' && push.ta != NULL)
 	{
 		ft_px_stack(&push.ta, &push.tb);
+		push.ta_size--;
+		push.tb_size++;
 	}
 	*p2s = push;
 	ft_browse_stacks(p2s);
+	ft_printf("size a : %d | size b : %d\n", p2s->ta_size, p2s->tb_size);
 	return ;
 }

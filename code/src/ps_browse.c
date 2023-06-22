@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/06/17 19:44:32 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/06/22 17:01:51 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 void	ft_browse_stack(t_stack *p2s, char stack)
 {
 	if(_SHOWFUNCTION)
-		ft_printf("void %sft_browse_stack%s(t_stack *p2s, char stack)\n",YLW,WTH);
+		ft_printf("void %sft_browse_stack%s(t_stack *p2s = (ta : %s%p%s)(tb : %s%p%s), char stack : %s%c%s)\n",YLW,WTH, BLU,p2s->ta,WTH, BLU,p2s->tb,WTH, BLU,stack,WTH);
 	t_elem	*top;
 	t_elem	*bottom;
 	if (!_SHOWLIST)
@@ -35,7 +35,8 @@ void	ft_browse_stack(t_stack *p2s, char stack)
 	}
 	else
 	{
-		ft_printf("%sStack %c: is empty, %s\n", GRN, stack, WTH);
+		if (_DEBUG)
+			ft_printf("%sStack %c: is empty, %s\n", GRN, stack, WTH);
 		return ;
 	}
 	if (_DEBUG && stack == 'a')
