@@ -1,6 +1,17 @@
 {
 	"files.associations": {
 		"libft.h": "c",
-		"push_swap.h": "c"
+		"push_swap.h": "c",
+		"*.tcc": "c",
+		"array": "c",
+		"concepts": "c",
+		"string": "c",
+		"unordered_map": "c",
+		"memory": "c",
+		"string_view": "c",
+		"ostream": "c",
+		"streambuf": "c",
+		"functional": "c",
+		"tuple": "c"
 	}
 }

@@ -6,13 +6,13 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/06/27 15:14:20 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/06/28 22:17:51 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void	ft_cost_calculation(t_stack *p2s)
+void	ft_cost_dst(t_stack *p2s)
 {
 	p2s->ta->p->p->cost = 3 + ft_cost_b(p2s, *(p2s->ta));
 	p2s->ta->p->cost = 2 + ft_cost_b(p2s, *(p2s->ta->p));
@@ -56,7 +56,7 @@ void	ft_cost_get(t_stack *p2s)
 	int		cost;
 	t_elem	*cur;
 
-	ft_cost_calculation(p2s);
+	ft_cost_dst(p2s);
 
 	cost = 0;
 	cur = p2s->ta;

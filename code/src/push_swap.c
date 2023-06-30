@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/06/22 17:47:46 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/06/22 17:19:49 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_sort_machine(t_stack *p2s, int size)
 			ft_ra(p2s);
 		ft_px(p2s, 'b');
 	}
-	//ft_browse_stacks(p2s);
+	ft_browse_stacks(p2s);
 	while (p2s->tb)
 		ft_px(p2s, 'a');
 	return ;
@@ -74,11 +74,25 @@ void	ft_sort_3(t_stack *h)
 	}
 }
 
+void	ft_banner(int mydebug, int ac)
+{
+	ft_printf("\n");
+	ft_printf("#########################################################################\n");
+	ft_printf("##                  push_swap : %s                                    ##\n", VERSION);
+	if (!mydebug)
+		ft_printf("##                  real mode : args OK                                ##\n");
+	else
+		ft_printf("##                 debug mode : no args                                ##\n");
+	ft_printf("##             number of args = %04i                                   ##\n", ac -1);
+	ft_printf("#########################################################################\n\n");
+}
+
 int	main(int ac, char **av)
 {
 	t_stack	*p2s;
 	int mydebug;
 
+	ft_printf("_DEBUG = %i\n", _DEBUG);
 	if (ac > 2)
 	{
 		mydebug = 0;
@@ -105,8 +119,9 @@ int	main(int ac, char **av)
 			ft_inital_stack_test(p2s);
 			ft_sort_stack_test(p2s);
 		}
-		//ft_sort_machine(p2s, ac - 1);
+		ft_sort_machine(p2s, ac - 1);
 		//p2s = ft_generate_list(ac, av);
+		ft_printf("*****************************************\n");
 		if (p2s->ta_size == 3)
 			ft_sort_3(p2s);
 	}
