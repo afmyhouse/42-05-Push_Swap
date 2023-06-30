@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:25:51 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/06/30 12:54:10 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/06/30 16:04:57 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 
 # define VERSION "0.7"
 # ifndef _DEBUG
-#  define _DEBUG 1
+#  define _DEBUG 0
 # endif
 # ifndef _TEST
 #  define _TEST 1
@@ -164,8 +164,8 @@ t_elem	*ft_stack_add_next(t_elem *stack, int data);
 t_stack	*ft_generate_list(int ac, char **av);;
 
 /* ps_costs.c *************************************************************** */
-int		ft_cost_a(t_stack *h, t_elem *node);
-int		ft_cost_b(t_stack *h, t_elem *node);
+int		ft_cost_push_a(t_stack *h, t_elem *node);
+int		ft_cost_push_b(t_stack *h, t_elem *node);
 int		ft_cost_src(t_stack *h, char stack);
 void	ft_cost_src_x(t_elem *cur, int range, char stack_src);
 void	ft_cost_dst(t_stack *h, char stack);

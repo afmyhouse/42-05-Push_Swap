@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/06/30 12:52:14 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/06/30 16:54:28 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -407,8 +407,7 @@ void	ft_browse_stack(t_stack *p2s, char stack)
 	}
 	else
 	{
-		if (_DEBUG)
-			printf("%sStack %c: is empty, %s\n", GRN, stack, WTH);
+		printf("%sStack %c: is empty, %s\n", GRN, stack, WTH);
 		return ;
 	}
 	if (_DEBUG && stack == 'a')
@@ -426,7 +425,7 @@ void	ft_browse_stack(t_stack *p2s, char stack)
 	}
 	printf("%d\n", top->data);
 	return ;
-}
+.0}
 
 /* ps_browse.c ********************************************************* */
 /// @brief 			Displays both stacks 'a' and 'b'
@@ -559,6 +558,27 @@ void	ft_banner(int mydebug, int ac)
 	printf("#########################################################################\n\n");
 }
 
+/// @brief 		Initialize the information about the stack
+/// @param h	Information regarding :
+///				POINTERS to A and top of stack B
+///				MIN and MAX values in each stack,
+///				SIZE of each stacks, and quantity of moves
+void	ft_init_stack_status(t_stack *h)
+{
+	h->ta = NULL;
+	h->size_a = 0;
+	h->min_a = 0;
+	h->max_a = 0;
+	h->tb = NULL;
+	h->size_b = 0;
+	h->min_b = 0;
+	h->max_b = 0;
+	h->moves = 0;
+	return ;
+}
+
+/// @brief 		Display the information about the stack
+/// @param h	Struct with information about the stack
 void	ft_display_head(t_stack *h)
 {
 	printf("%s",YLW);
@@ -576,6 +596,10 @@ void	ft_display_head(t_stack *h)
 	return ;
 }
 /* ps_stacker.c ************************************************************* */
+
+/// @brief 			Check for new values of min and max after push
+/// @param h		Pointer to stacks
+/// @param stack	Stack pushed
 void	ft_check_min_max(t_stack *h, char stack)
 {
 	if (stack == 'a')
@@ -682,10 +706,10 @@ t_elem	*ft_stack_add_next(t_elem *stack, int data)
 	return (stack);
 }
 
-/// @brief 		Generates a list of elements
+/// @brief 			Generates a list of elements from an array of arguments
 /// @param array	Arguments
-/// @param ac	Number of arguments
-/// @return		Pointer to the stack
+/// @param ac		Number of arguments
+/// @return			Pointer to the stack
 t_stack	*ft_generate_list(int size, char **array)
 {
 	int		i;
@@ -701,6 +725,9 @@ t_stack	*ft_generate_list(int size, char **array)
 	h = malloc(sizeof(t_stack));
 	if (!h)
 		return (NULL);
+	ft_init_stack_status(h);
+	if (_DEBUG)
+		ft_display_head(h);
 	node = ft_stack_add_first(h, atoi(array[i++]));
 	while (i < size)
 		node = ft_stack_add_next(node, atoi(array[i++]));
@@ -804,11 +831,11 @@ void	ft_best2top(t_stack *h, t_elem *best)
 }
 
 /* ps_costs.c *************************************************************** */
-/// @brief 		Calculates the cost of placing node in the B stack
-/// @param p2s	Pointer to the stack
+/// @brief 		Calculates the cost of push node to the B stack
+/// @param h	Pointer to the stack
 /// @param node	Current node
 /// @return		Cost of the node
-int		ft_cost_b(t_stack *h, t_elem *node)
+int		ft_cost_push_b(t_stack *h, t_elem *node)
 {
 	int		cost;
 	t_elem	*cur;
@@ -825,12 +852,6 @@ int		ft_cost_b(t_stack *h, t_elem *node)
 	if (node->data > h->max_b || node->data < h->min_b)
 		while (cur->data < cur->p->data && cost++ < h->size_b)
 			cur = cur->n;
-	/*if (node->data > h->max_b)
-		while (cur->data < h->max_b && cost++ < h->size_b)
-			cur = cur->n;
-	else if (node->data < h->min_b)
-		while (++cost < h->size_b && cur->data > h->min_b)
-			cur = cur->n;*/
 	else
 	{
 		while (cur->data != h->max_b && cost++ < h->size_b)
@@ -860,11 +881,11 @@ int		ft_cost_b(t_stack *h, t_elem *node)
 	return (cost);
 }
 
-/// @brief 		Calculates the cost of placing node in the A stack
+/// @brief 		Calculates the cost of push node to the A stack
 /// @param h	Pointer to the stack
 /// @param node	Current node
 /// @return		Cost of the node
-int		ft_cost_a(t_stack *h, t_elem *node)
+int		ft_cost_push_a(t_stack *h, t_elem *node)
 {
 	int		cost;
 	t_elem	*cur;
@@ -878,17 +899,9 @@ int		ft_cost_a(t_stack *h, t_elem *node)
 	}
 	cur = h->ta;
 	mid = h->size_a / 2 + h->size_a % 2;
-	/**** BIG or SMALL****/
 	if (node->data > h->max_a || node->data < h->min_a)
 		while (cur->p->data < cur->data && cost++ < h->size_a)
 			cur = cur->n;
-	/**/
-	/*if (node->data > h->max_a)
-		while (cur->data < h->max_a && cost++ < h->size_a)
-			cur = cur->n;
-	else if (node->data < h->min_a)
-		while (++cost < h->size_a && cur->data > h->min_a)
-			cur = cur->n;*/
 	else
 	{
 		while (cur->data != h->min_a && cost++ < h->size_a)
@@ -898,10 +911,7 @@ int		ft_cost_a(t_stack *h, t_elem *node)
 	}
 	cost = cost % h->size_a;
 	if (!cost)
-	{
 		node->move_a = HALT;
-		//cost = 0;
-	}
 	else if (cost == (mid) && !(h->size_a % 2))
 	{
 		if (node->move_b == RX || node->move_b == RRX)
@@ -921,6 +931,11 @@ int		ft_cost_a(t_stack *h, t_elem *node)
 	return (cost);
 }
 
+/// @brief 			Saves the cost A and B and the MOVE A and B of the node
+/// @param node		Current node
+/// @param move		Move to save
+/// @param cost		Cost to save
+/// @param stack	Stack to save
 void	ft_cost_src_save(t_elem *node, char move, int cost, char stack)
 {
 	if (stack == 'a')
@@ -941,6 +956,54 @@ void	ft_cost_src_save(t_elem *node, char move, int cost, char stack)
 /// @param range		range of nodes to calculate cost
 /// @param stack_src
 void	ft_cost_src_x(t_elem *node, int range, char stack_src)
+/*{
+	t_elem	*tmp;
+
+	if (_SHOWFUNCTION)
+		printf("void %sft_find_min_max%s\
+		(t_stack *h = %s%p%s, int max = %s%i%s, int min = %s%i%s)\n", \
+		YLW, WTH, YLW, node, WTH, YLW, *max, WTH, YLW, *max, WTH);
+	tmp = node;
+	*min = tmp->data;
+	*max = tmp->data;
+	while (tmp->n != node)
+	{
+		if (tmp->data < *min)
+		{
+			printf("NEW MIN = %i\n", tmp->data);
+			*min = tmp->data;
+		}
+		if (tmp->data > *max)
+		{
+			printf("NEW MAX = %i\n", tmp->data);
+			*max = tmp->data;
+		}
+		tmp = tmp->n;
+	}
+	if (tmp->data < *min)
+		*min = tmp->data;
+	if (tmp->data > *max)
+		*max = tmp->data;
+	return ;
+
+
+	t_elem	*cur;
+	int		i;
+
+	i = range;
+	while (i >= -range)
+	{
+		cur = ft_get_location(node, i);
+		if ( i > 0)
+			ft_cost_src_save(cur, 'F', i, stack_src);
+		else if (i < 0)
+			ft_cost_src_save(cur, 'R', -i, stack_src);
+		else
+			ft_cost_src_save(cur, 0, 0, stack_src);
+		i--;
+	}
+	return ;
+}*/
 {
 	t_elem	*cur;
 	int		i;
@@ -988,9 +1051,9 @@ void	ft_cost_dst_x(t_stack *h, t_elem *node, int range, char stack_src)
 	{
 		tmp = ft_get_location(node, i);
 		if (stack_src == 'a')
-			tmp->cost_b = ft_cost_b(h, tmp);
+			tmp->cost_b = ft_cost_push_b(h, tmp);
 		else if (stack_src == 'b')
-			tmp->cost_a = ft_cost_a(h, tmp);
+			tmp->cost_a = ft_cost_push_a(h, tmp);
 		i--;
 	}
 }
@@ -1425,16 +1488,9 @@ int	main(int ac, char **av)
 			p2s = ft_generate_list(len, array);
 		}
 		ft_browse_stacks(p2s);
-		if (_TEST)
-		{
-			ft_inital_stack_test(p2s);
-			//ft_sort_stack_test(p2s);
-		}
-		//ft_sort_machine(p2s, ac - 1);
-		//p2s = ft_generate_list(ac, av);
+		//if (_TEST)
+		//	ft_inital_stack_test(p2s);
 		ft_sort_ai(p2s);
-		/**if (p2s->size_b == 3)
-			ft_sort_3(p2s, 'b');*/
 		ft_browse_stacks(p2s);
 	}
 	printf("Number of operations: %d\n", p2s->moves);
