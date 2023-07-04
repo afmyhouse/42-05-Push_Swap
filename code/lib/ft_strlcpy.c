@@ -6,12 +6,17 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:59:06 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/29 00:18:57 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/03 23:25:54 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief 			Copy strings
+/// @param dst		Destination string
+/// @param src			Source string
+/// @param dst_size	Maximum size of the destination string
+/// @return			The total length of the string they tried to create
 size_t	ft_strlcpy(char *dst, const char *src, size_t dst_size)
 {
 	size_t	src_size;

@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:25:51 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/06/30 16:04:57 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/05 00:15:32 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,15 @@
 /* ************************************************************************** */
 ///	DEBUG
 /* ************************************************************************** */
-
-# define VERSION "0.7"
-# ifndef _DEBUG
-#  define _DEBUG 0
-# endif
-# ifndef _TEST
-#  define _TEST 1
-# endif
-# ifndef _SHOWLIST
-#  define _SHOWLIST 1
-# endif
 # ifndef _PRINT
 #  define _PRINT 1
 #  define _NOPRINT 0
 # endif
-# ifndef _SHOWFUNCTION
-#  define _SHOWFUNCTION 0
+# ifndef _SHOW_STACKS_
+#  define _SHOW_STACKS_ 0
+# endif
+# ifndef _SHORT_SIZE_
+#  define _SHORT_SIZE_ 5
 # endif
 
 /* ************************************************************************** */
@@ -52,25 +44,16 @@
 # define SUCCESS 0
 # define TRUE 1
 # define FALSE 0
-# define SA 11
-# define SB 21
 # define SX 'S'
-# define PA 12
-# define PB 22
 # define PX 'P'
-# define RA 13
-# define RB 23
 # define RX 'F'
-# define RRA 14
-# define RRB 24
 # define RRX 'R'
-# define HALT 0
+# define HOLD 0
 # define RANGE 2
 
 /* ************************************************************************** */
 ///	COLORS
 /* ************************************************************************** */
-
 # define RED "\033[0;31m"
 # define GRN "\033[0;32m"
 # define YLW "\033[0;33m"
@@ -106,14 +89,6 @@ typedef struct s_stack
 	int				moves;
 }					t_stack;
 
-typedef struct s_data
-{
-	struct s_stack	*a;
-	struct s_stack	*b;
-	int				*sorted;
-	int				size;
-}					t_data;
-
 /* ************************************************************************** */
 ///	FUNCTIONS PROTOTYPES
 /* ************************************************************************** */
@@ -148,7 +123,7 @@ void	ft_browse_stacks(t_stack *p2s);
 /* ps_debug.c *************************************************************** */
 void	ft_sort_stack_test(t_stack *p2s);
 void	ft_inital_stack_test(t_stack *p2s);
-void	ft_sort_machine(t_stack *p2s, int size);
+//void	ft_sort_machine(t_stack *p2s, int size);
 void	ft_sort_3t(t_stack *h);
 void	ft_sort_3(t_stack *h, char stack);
 void	ft_sort_3a(t_stack *h);
@@ -168,12 +143,13 @@ int		ft_cost_push_a(t_stack *h, t_elem *node);
 int		ft_cost_push_b(t_stack *h, t_elem *node);
 int		ft_cost_src(t_stack *h, char stack);
 void	ft_cost_src_x(t_elem *cur, int range, char stack_src);
-void	ft_cost_dst(t_stack *h, char stack);
+int		ft_cost_dst(t_stack *h, char stack);
+void	ft_cost_dst_nine(t_stack *h, char stack_src);
 void	ft_cost_dst_x(t_stack *h, t_elem *cur, int range, char stack_src);
 t_elem	*ft_get_cost(t_stack *h, char stack);
 
 /* ps_action.c ************************************************************** */
-void	ft_best2top(t_stack *h, t_elem *best);
+void	ft_move_best2top(t_stack *h, t_elem *best);
 void	ft_insert2a(t_stack *h);
 void	ft_insert2b(t_stack *h);
 void	ft_action_x(t_stack *h, t_elem *best);

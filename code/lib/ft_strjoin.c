@@ -6,12 +6,16 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 00:28:11 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/29 01:06:36 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/03 23:26:39 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief 			Concatenate strings
+/// @param s1		Destination string
+/// @param s2		Source string
+/// @return			The new string
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	len;
