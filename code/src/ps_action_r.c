@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_action_rrx.c                                    :+:      :+:    :+:   */
+/*   ps_action_r.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:04:44 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/04 23:06:52 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/05 23:10:06 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,15 @@ int	ft_rrx(t_stack *h, char stack)
 	|| (stack == 'b' && !h->tb))
 		return (ERROR);
 	if (stack == 'a' && h->size_a > 1)
+	{
 		h->ta = h->ta->p;
+		write(1, "rra\n", 4);
+	}
 	else if (stack == 'b' && h->size_b > 1)
+	{
 		h->tb = h->tb->p;
-	printf("rr%c\n", stack);
+		write(1, "rrb\n", 4);
+	}
 	return (SUCCESS);
 }
 
@@ -45,7 +50,7 @@ int	ft_rrr(t_stack *h)
 		h->ta = h->ta->p;
 	if (h->size_b > 1)
 		h->tb = h->tb->p;
-	printf("rrr\n");
+	write(1, "rrr\n", 4);
 	return (SUCCESS);
 }
 
@@ -60,13 +65,13 @@ int	ft_rx(t_stack *h, char stack)
 {
 	if (stack == 'a' && h->size_a > 1)
 	{
-		printf("r%c\n", stack);
+		write(1, "ra\n", 3);
 		h->ta = h->ta->n;
 		return (SUCCESS);
 	}
 	else if (stack == 'b' && h->size_b > 1)
 	{
-		printf("r%c\n", stack);
+		write(1, "rb\n", 3);
 		h->tb = h->tb->n;
 		return (SUCCESS);
 	}
@@ -87,7 +92,7 @@ int	ft_rr(t_stack *h)
 		h->tb = h->tb->n;
 	if (h->size_a > 1 || h->size_b > 1)
 	{
-		printf("rr\n");
+		write(1, "rr\n", 3);
 		return (1);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/04 22:45:01 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/05 22:10:25 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -805,7 +805,7 @@ int		ft_cost_rrr(t_stack *h, t_elem *node)
 ///				SIZE of the STACKS A and B, and quantity of moves
 /// @param node	Pointer to the node
 /// @return		SUCCESS or ERROR
-int		ft_cost_best(t_stack *h, t_elem *node)
+int		ft_cost_optimizer(t_stack *h, t_elem *node)
 {
 	int	raw_cost;
 	int	rr_cost;
@@ -853,7 +853,7 @@ int		ft_cost_optimizer(t_stack *h, char stack_src)
 	}
 	while (i++ < size)
 	{
-		ft_cost_best(h, node);
+		ft_cost_optimizer(h, node);
 		node = node->n;
 	}
 	return (SUCCESS);
@@ -991,7 +991,7 @@ int		ft_cost_src(t_stack *h, char stack_src)
 /// @param cur		head of the stack
 /// @param offset	offset to head
 /// @return			lowest cost
-int		ft_min_cost(t_elem *cur)
+int		ft_cost_min(t_elem *cur)
 {
 	int		max;
 
@@ -1020,8 +1020,8 @@ t_elem	*ft_get_best2x(t_elem *cur, int size, char stack_src)
 	best = cur;
 	while (i++ < size)
 	{
-		best_cost = ft_min_cost(best);
-		cur_cost = ft_min_cost(cur);
+		best_cost = ft_cost_min(best);
+		cur_cost = ft_cost_min(cur);
 		if ((cur_cost < best_cost) ||\
 			(cur_cost == best_cost && (\
 			(cur->data < best->data && stack_src == 'a') ||\

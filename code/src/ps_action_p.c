@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_action_px.c                                     :+:      :+:    :+:   */
+/*   ps_action_p.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 22:43:43 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/04 22:44:02 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/05 22:45:09 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,15 @@ int	ft_px(t_stack *h, char stack)
 		ft_px_stack(&push.tb, &push.ta);
 		push.size_a++;
 		push.size_b--;
+		write(1, "pa\n", 3);
 	}
 	else if (stack == 'b' && push.ta != NULL)
 	{
 		ft_px_stack(&push.ta, &push.tb);
 		push.size_a--;
 		push.size_b++;
+		write(1, "pb\n", 3);
 	}
-	printf("p%c\n", stack);
 	*h = push;
 	ft_check_min_max(h, stack);
 	return (SUCCESS);

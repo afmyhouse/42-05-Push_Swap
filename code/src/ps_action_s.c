@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 22:51:13 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/04 23:12:44 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/05 22:55:40 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,19 @@ int	ft_sx(t_stack *h, char stack, int print)
 	else
 	{
 		if (stack == 'a' && swap.ta != NULL && swap.size_a > 1)
+		{
 			ft_sx_stack(&swap.ta);
+			if (print)
+				write(1, "sa\n", 3);
+		}
 		if (stack == 'b' && swap.tb != NULL && swap.size_b > 1)
+		{
 			ft_sx_stack(&swap.tb);
+			if (print)
+				write(1, "sb\n", 3);
+		}
 		*h = swap;
-		if (print && ((stack == 'a' && swap.size_a > 1) \
-		|| (stack == 'b' && swap.size_b > 1)))
-			printf("s%c\n", stack);
+
 		return (SUCCESS);
 	}
 }
@@ -62,6 +68,6 @@ int	ft_ss(t_stack *h)
 {
 	ft_sx(h, 'a', _NOPRINT);
 	ft_sx(h, 'b', _NOPRINT);
-	printf("ss\n");
+	write(1, "ss\n", 3);
 	return (1);
 }

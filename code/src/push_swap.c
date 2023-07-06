@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/05 00:03:39 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/05 23:34:08 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*ft_args_build_2(char **av)
 	if (!av[1][0])
 	{
 		ft_error();
-		printf("check args void\n");
+		printf("check args : void\n");
 		return (NULL);
 	}
 	return (av[1]);
@@ -63,12 +63,16 @@ char	**ft_args_build(int ac, char **av)
 	char	*s1;
 	char	**array;
 
-	if (ac > 2)
+	if (ac == 1)
+	{
+		ft_error();
+		printf("check args : empty\n");
+		return (NULL);
+	}
+	else if (ac > 2)
 		s1 = ft_args_build_n(ac, av);
-
 	else if (ac == 2)
 		s1 = ft_args_build_2(av);
-
 	if (!s1)
 		return (NULL);
 	array = ft_split(s1, ' ');
@@ -89,17 +93,17 @@ int	main(int ac, char **av)
 	char	**array;
 	int		len;
 
-	if (ac >= 2)
-	{
-		array = ft_args_build(ac, av);
-		if (!array)
-			return (ft_error());
-		len = ft_array_len(array);
-		if (ft_args_check(len, array))
-			return (ft_error());
-		h = ft_generate_list(len, array);
-		free(array);
-		ft_sort_machine(h);
-	}
+	array = ft_args_build(ac, av);
+	if (!array)
+		return (0);
+	len = ft_array_len(array);
+	if (ft_args_check(len, array))
+		return (ft_error());
+	h = ft_generate_list(len, array);
+	free(array);
+	ft_browse_stacks(h);
+	ft_sort_machine(h);
+	ft_browse_stacks(h);
+
 	return (SUCCESS);
 }

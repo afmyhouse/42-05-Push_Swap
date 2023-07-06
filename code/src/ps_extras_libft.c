@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_libft_extras.c                                  :+:      :+:    :+:   */
+/*   ps_extras_libft.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 22:52:14 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/04 23:02:13 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/05 23:50:31 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	ft_issign(char c)
 /// @brief 		Checks if a char is a space
 /// @param c	The char to check
 /// @return		TRUE if is sapce, FALSE otherwise
-static int	ft_isspace(char c)
+int	ft_isspace(char c)
 {
 	if (c == ' ' || c == '\n' || c == '\t' \
 	|| c == '\v' || c == '\f' || c == '\r')
@@ -113,6 +113,25 @@ int	ft_atoi(const char *nptr)
 {
 	int	signal;
 	int	number;
+
+	signal = 1;
+	number = 0;
+	while (ft_isspace(*nptr))
+		nptr++;
+	if (ft_issign(*nptr))
+		signal *= ft_issign(*nptr++);
+	while (ft_isdigit(*nptr))
+		number = number * 10 + (*nptr++ - '0');
+	return (number * signal);
+}
+
+/// @brief 		Converts the initial portion of the string pointed to by nptr to int
+/// @param nptr	The string to convert
+/// @return		The converted int
+long	ft_atol(const char *nptr)
+{
+	int			signal;
+	long int	number;
 
 	signal = 1;
 	number = 0;

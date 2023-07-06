@@ -6,12 +6,28 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:21:17 by hmaciel-          #+#    #+#             */
-/*   Updated: 2023/06/08 16:00:21 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/06 00:05:59 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+/* ************************************************************************** */
+///	CONSTANTS
+/* ************************************************************************** */
+# ifndef ERROR
+#  define ERROR 1
+# endif
+# ifndef SUCCESS
+#  define SUCCESS 0
+# endif
+# ifndef TRUE
+#  define TRUE 1
+# endif
+# ifndef FALSE
+#  define FALSE 0
+# endif
 
 /**********************
 	LIBS
@@ -58,6 +74,7 @@ typedef struct s_printf
 **********************/
 
 int				ft_atoi(const char *nptr);
+long			ft_atol(const char *nptr);
 void			ft_bzero(void *s, size_t n);
 void			*ft_calloc(size_t nmemb, size_t size);
 char			*ft_charjoin(char const *s1, char const c);

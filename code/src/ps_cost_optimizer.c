@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:32:53 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/05 00:07:22 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/05 22:10:25 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	ft_cost_rrr(t_stack *h, t_elem *node)
 ///				SIZE of the STACKS A and B, and quantity of moves
 /// @param node	Pointer to the node
 /// @return		SUCCESS or ERROR
-int	ft_cost_best(t_stack *h, t_elem *node)
+int	ft_cost_optimizer(t_stack *h, t_elem *node)
 {
 	int	raw_cost;
 	int	rr_cost;
@@ -123,7 +123,7 @@ int	ft_cost_best(t_stack *h, t_elem *node)
 ///				SIZE of the STACKS A and B, and quantity of moves
 /// @param node	Pointer to the element to be cost optimized
 /// @return		SUCCESS or ERROR
-int	ft_cost_optimizer(t_stack *h, char stack_src)
+int	ft_cost_best(t_stack *h, char stack_src)
 {
 	t_elem	*node;
 	int		i;
@@ -144,7 +144,7 @@ int	ft_cost_optimizer(t_stack *h, char stack_src)
 	}
 	while (i++ < size)
 	{
-		ft_cost_best(h, node);
+		ft_cost_optimizer(h, node);
 		node = node->n;
 	}
 	return (SUCCESS);

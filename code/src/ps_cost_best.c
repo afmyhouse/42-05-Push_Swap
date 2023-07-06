@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:38:20 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/05 00:06:59 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/05 22:10:10 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ t_elem	*ft_get_best2x(t_elem *cur, int size, char stack_src)
 	best = cur;
 	while (i++ < size)
 	{
-		best_cost = ft_min_cost(best);
-		cur_cost = ft_min_cost(cur);
-		if ((cur_cost < best_cost) ||\
+		best_cost = ft_cost_min(best);
+		cur_cost = ft_cost_min(cur);
+		if ((cur_cost < best_cost) || \
 			(cur_cost == best_cost && (\
-			(cur->data < best->data && stack_src == 'a') ||\
+			(cur->data < best->data && stack_src == 'a') || \
 			(cur->data > best->data && stack_src == 'b'))))
 			best = cur;
 		cur = cur->n;
@@ -52,7 +52,7 @@ t_elem	*ft_get_cost(t_stack *h, char stack_src)
 	{
 		ft_cost_src(h, stack_src);
 		ft_cost_dst(h, stack_src);
-		ft_cost_optimizer(h, stack_src);
+		ft_cost_best(h, stack_src);
 		if (stack_src == 'a')
 			return (ft_get_best2x(h->ta, h->size_a, stack_src));
 		else if (stack_src == 'b')

@@ -3,52 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 13:05:46 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/17 13:18:03 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/06 01:05:23 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_itoa_len(int n)
-{
-	int	i;
-
-	i = 0;
-	if (n <= 0)
-		i++;
-	while (n && i++ >= 0)
-		n /= 10;
-	return (i);
-}
-
+/// @brief 		Converts the integer n to a string
+/// @param n	The integer to convert
+/// @return		The string representation of the integer
 char	*ft_itoa(int n)
 {
 	char		*res;
-	int			a_len;
+	int			len;
 	long int	ln;
 
 	ln = n;
-	a_len = ft_itoa_len(n);
-	res = (char *)malloc((a_len + 1) * sizeof(char));
-	if (res)
+	len = 0;
+	if (n <= 0)
+		len++;
+	while (n && len++ >= 0)
+		n /= 10;
+	res = (char *)malloc((len + 1) * sizeof(char));
+	if (!res)
+		return (NULL);
+	res[len] = '\0';
+	n = ln;
+	if (ln < 0)
+		ln = -ln;
+	while (--len >= 0)
 	{
-		res[a_len] = '\0';
-		if (!ln)
-			res[0] = '0';
-		if (ln < 0)
-		{
-			ln = -ln;
-			res[0] = '-';
-		}
-		while (ln && a_len-- >= 0)
-		{
-			res[a_len] = ln % 10 + 48;
-			ln /= 10;
-		}
-		return (res);
+		res[len] = ln % 10 + 48;
+		ln /= 10;
 	}
-	return (NULL);
+	if (n < 0)
+		res[0] = '-';
+	return (res);
 }
+

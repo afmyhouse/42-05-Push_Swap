@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:35:40 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/04 23:36:58 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/05 22:03:38 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ int	ft_cost_src(t_stack *h, char stack_src)
 /// @param cur		head of the stack
 /// @param offset	offset to head
 /// @return			lowest cost
-int	ft_min_cost(t_elem *cur)
+int	ft_cost_min(t_elem *cur)
 {
 	int		max;
 
