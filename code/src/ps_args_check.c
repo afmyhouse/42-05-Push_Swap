@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:58:00 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/05 23:49:37 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/06 14:57:35 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	ft_args_check_norepeat(int len, char **array)
 	int		cmp;
 
 	i = 0;
-
 	while (i < len)
 	{
 		j = i + 1;
@@ -31,10 +30,7 @@ int	ft_args_check_norepeat(int len, char **array)
 		while (j < len)
 		{
 			if (cmp == atoi(array[j]))
-			{
-				write(1, "check args : repeat\n", 20);
 				return (ERROR);
-			}
 			j++;
 		}
 		i++;
@@ -54,10 +50,7 @@ int	ft_args_check_void(int len, char **array)
 	while (i < len)
 	{
 		if (!array[i][0])
-		{
-			write(1, "check args : void\n", 18);
 			return (ERROR);
-		}
 		i++;
 	}
 	return (SUCCESS);
@@ -80,16 +73,10 @@ int	ft_args_check_isnum(int len, char **array)
 		while (array[i][j])
 		{
 			c = array[i][j];
-			if (!ft_isdigit(c) && c != ' ' && !ft_issign(c))
-			{
-				write(1, "check args : not int\n", 21);
+			if (!ft_isdigit(c) && !ft_isspace(c) && !ft_issign(c))
 				return (ERROR);
-			}
 			if (ft_issign(c) && !ft_isdigit(array[i][j + 1]))
-			{
-				write(1, "check args : sign?\n", 19);
 				return (ERROR);
-			}
 			j++;
 		}
 		i++;
@@ -105,26 +92,13 @@ int	ft_args_check_limits(int len, char **array)
 {
 	int		i;
 	long int	nb1;
-	//long int	nb2;
-	//int		sign;
 
 	i = 0;
-	//sign = 1;
 	while (i < len)
 	{
-		//if (array[i][0] == '-')
-		//	sign = -1;
-		nb1 = ft_atol(array[i]);// + ft_strlen(array[i]) - 1);
-		//printf("%lu\n", nb1);
-		//nb2 = (ft_atoi(array[i]) % 10) * sign;
-		//printf("%lu\n", nb1);
-		//sign = 1;
-		//if (nb1 != nb2)
-		if (nb1 > INT_MAX || nb1 < INT_MIN/* condition */)
-		{
-			write(1, "check args : limits\n", 20);
+		nb1 = ft_atol(array[i]);
+		if (nb1 > INT_MAX || nb1 < INT_MIN)
 			return (ERROR);
-		}
 		i++;
 	}
 	return (SUCCESS);
@@ -137,10 +111,7 @@ int	ft_args_check_limits(int len, char **array)
 int	ft_args_check(int len, char **array)
 {
 	if (len <= 1)
-	{
-		printf("check args : len <= 1\n");
 		return (ERROR);
-	}
 	if (ft_args_check_isnum(len, array))
 		return (ERROR);
 	if (ft_args_check_void(len, array))

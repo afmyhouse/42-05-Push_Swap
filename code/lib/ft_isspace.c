@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 00:02:10 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/06 00:02:29 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/06 15:30:18 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /// @brief 		Checks if a char is a space
 /// @param c	The char to check
 /// @return		TRUE if is sapce, FALSE otherwise
-int	ft_isspace(char c)
+int	ft_isspace(int c)
 {
 	if (c == ' ' || c == '\n' || c == '\t' \
 	|| c == '\v' || c == '\f' || c == '\r')

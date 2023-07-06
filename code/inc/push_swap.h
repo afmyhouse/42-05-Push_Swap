@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:25:51 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/06 00:04:49 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/06 16:54:32 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,7 @@ void	ft_updt_min_max(t_elem *node, int *max, int *min);
 t_elem	*ft_stack_add_first(t_stack *h, int data);
 t_elem	*ft_stack_add_next(t_elem *stack, int data);
 t_stack	*ft_generate_list(int size, char **array);
+void	 ft_free_list(t_stack *h);
 
 /* ps_utils.c *************************************************************** */
 int		ft_error(void);
@@ -185,18 +186,18 @@ char	*ft_args_build_2(char **av);
 char	**ft_args_build(int ac, char **av);
 int		main(int ac, char **av);
 
-/* ps_extras_libft.c********************************************************* */
-size_t	ft_strlen(const char *s);
-int		ft_isdigit(int c);
-int		ft_issign(char c);
-int		ft_isspace(char c);
-int		ft_itoa_len(int n);
-char	*ft_itoa(int n);
-int		ft_atoi(const char *nptr);
-long	ft_atol(const char *nptr);
-char	*ft_strjoin(char const *s1, char const *s2);
-size_t	ft_split_count(const char *s, char c);
-char	*ft_split_slice(const char *s, char c);
-char	**ft_split(char const *s, char c);
+// /* ps_extras_libft.c********************************************************* */
+// size_t	ft_strlen(const char *s);
+// int		ft_isdigit(int c);
+// int		ft_issign(char c);
+// int		ft_isspace(char c);
+// int		ft_itoa_len(int n);
+// char	*ft_itoa(int n);
+// int		ft_atoi(const char *nptr);
+// long	ft_atol(const char *nptr);
+// char	*ft_strjoin(char const *s1, char const *s2);
+// size_t	ft_split_count(const char *s, char c);
+// char	*ft_split_slice(const char *s, char c);
+// char	**ft_split(char const *s, char c);
 
 #endif

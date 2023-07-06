@@ -1,0 +1,153 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
+/*   Updated: 2023/07/06 14:39:33 by antoda-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../inc/push_swap.h"
+
+/// @brief 		Builds a string from the arguments passed to the program
+/// @param ac	Number of arguments
+/// @param av	Pointer to the array of arguments
+/// @return		Pointer to the string built
+char	*ft_args_build_n(int ac, char **av)
+{
+	int		i;
+	char	*s1;
+	char	*s2;
+	char	*tmp;
+
+	i = 1;
+	s1 = malloc(sizeof(char) * 1);
+	s1[0] = '\0';
+	s2 = av[i];
+	while (i < (ac))
+	{
+		if (i - 1)
+		s1 = ft_strjoin(s1, " ");
+		tmp = s1;
+		s1 = ft_strjoin(s1, s2);
+		s2 = av[i + 1];
+		if (tmp)
+			free(tmp);
+		i++;
+	}
+	return (s1);
+}
+
+/// @brief 			Builds a string from the arguments passed to the program
+/// @param av		Pointer to the array of arguments
+/// @return			Pointer to the string built
+char	*ft_args_build_2(char **av)
+{
+		if (!av[1][0])
+	{
+		ft_error();
+		printf("check args : void\n");
+		return (NULL);
+	}
+	return (av[1]);
+}
+
+/// @brief 			Builds int array from the arguments passed to the program
+/// @param ac		Number of arguments
+/// @param av		Pointer to the array of arguments
+/// @return			Pointer to the int array built
+char	**ft_args_build(int ac, char **av)
+{
+	//char	*s1;
+	char	**array;
+	int i = 0;
+
+	array = 0x0;
+	printf("******av  = %p\n", *av);
+
+	if (ac == 0)
+	{
+		ft_error();
+		printf("check args : empty\n");
+		return (NULL);
+	}
+	else if (ac > 1)
+	{
+		while (av[i])
+		{
+			printf("& av[%i] %p | %s\n", i, av[i], av[i]);
+			i++;
+		}
+		printf("return array = %p\n\n", av);
+		return (av);
+	}
+	else if (ac == 1)
+	{
+		printf("& av[%i] %p | %s\n", ac - 1, av[ac - 1], av[ac-1]);
+				array = ft_split(av[0], ' ');
+		if(!array)
+			return (NULL);
+		//free(s1);
+	}
+	return (array);
+}
+
+/// @brief 		STARTS THE PROGRAM
+/// @param ac	args count
+/// @param av	args array (expected a string o ints)
+/// @return		SUCCESS - no errors, ERROR - otherwise
+int	main(int ac, char **av)
+{
+	t_stack	*h;
+	char	**array;
+	int		len;
+	int i = 0;
+
+	printf("main *av  = %p\n", *av);
+	printf("main av[0]  = %p\n", av[0]);
+	printf("main av[1]  = %p\n", av[1]);
+	printf("main *(av + 1) = %p\n", *(av+1));
+	printf("main *av[1] = %s\n\n", av[1]);
+	array = ft_args_build(ac - 1, ++av);
+	printf("returned array = %p\n", array);
+	if (!array)
+		return (0);
+	if ( array == (char **)*(av))
+		len = ac - 1;//ft_array_len(array);
+	else
+		len = ft_array_len(array);
+	printf("len = %d\n", len);
+	while (i < len)
+	{
+		printf("& ***********************\n");
+		printf("& av[%i] %p | %s\n", i, array[i], array[i]);
+		i++;
+	}
+	printf("%s2 ***********************\n", RED);
+	printf("array (%%p) = %p \n", array);
+	printf("array[0] (%%p) = %p | array[0] = %s\n", array[0], array[0]);
+	printf("len = %d%s\n", len, WTH);
+	if (ft_args_check(len, array))
+		return (ft_error());
+	printf("%s3 ***********************\n", BLU);
+	printf("array (%%p) = %p \n", array);
+	printf("array[0] (%%p) = %p | array[0] = %s\n", array[0], array[0]);
+	printf("len = %d%s\n", len, WTH);
+	h = ft_generate_list(len, array);
+	printf("%s4 ***********************\n", GRN);
+	printf("av (%%p) = %p \n", av);
+	printf("array (%%p) = %p \n", array);
+	printf("array[0] (%%p) = %p | array[0] = %s\n", array[0], array[0]);
+	printf("len = %d%s\n", len, WTH);
+	if ( array != av)
+		free(array);
+	printf("%s5 ***********************%s\n", RED, WTH);
+	ft_browse_stacks(h);
+	ft_sort_machine(h);
+	ft_browse_stacks(h);
+	ft_free_list(h);
+	return (SUCCESS);
+}

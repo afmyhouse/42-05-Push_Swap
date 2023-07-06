@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 22:50:17 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/22 11:24:48 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/06 15:42:23 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		if (p_dest < p_src)
 		{
 			while (n--)
-			*p_dest++ = *p_src++;
+				*p_dest++ = *p_src++;
 		}
 		else if (p_dest > p_src)
 		{

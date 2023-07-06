@@ -3,32 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 12:54:38 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/22 11:42:41 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/06 15:29:49 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	ft_isspace(char c)
-{
-	if (c == ' ' || c == '\n' || c == '\t' \
-	|| c == '\v' || c == '\f' || c == '\r')
-		return (1);
-	return (0);
-}
-
-int	ft_issign(char c)
-{
-	if (c == '-')
-		return (-1);
-	else if (c == '+')
-		return (1);
-	else
-		return (0);
-}
 
 int	ft_atoi(const char *nptr)
 {

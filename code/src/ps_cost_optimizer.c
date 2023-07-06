@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:32:53 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/05 22:10:25 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/06 13:01:53 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ int	ft_cost_best(t_stack *h, char stack_src)
 	int		size;
 
 	i = 0;
+	size = 0;
 	if (stack_src != 'a' && stack_src != 'b')
 		return (ERROR);
 	else if (stack_src == 'a')

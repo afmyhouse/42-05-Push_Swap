@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:52:10 by antoda-s          #+#    #+#              #
-#    Updated: 2023/06/17 12:17:19 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/07/06 16:58:33 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,6 @@ VPATH 		= $(DSRC)
 #functions & variables libraries:
 #LIBFT = $(DLIBS)/libft.a
 LIBFT 		= libft.a
-
 #Sources
 # Multiple directories with *c *.h files
 #M_SRCS = $(foreach dir,$(SOURCEDIRS),$(wildcard $(dir)/*.c))

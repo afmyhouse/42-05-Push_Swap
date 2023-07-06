@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:22:18 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/05 00:13:33 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/06 16:12:48 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,42 +101,42 @@ void	ft_updt_min_max(t_elem *node, int *max, int *min)
 /// @return			Pointer to first element of the stack, NULL if error malloc
 t_elem	*ft_stack_add_first(t_stack *h, int data)
 {
-	t_elem	*stack;
+	t_elem	*node;
 
-	stack = malloc(sizeof(t_elem));
-	if (!stack)
+	node = malloc(sizeof(t_elem));
+	if (!node)
 		return (NULL);
-	h->ta = stack;
-	stack->p = h->ta;
-	stack->n = h->ta;
-	stack->cost_a = 0;
-	stack->cost_b = 0;
-	stack->data = data;
-	stack->move_a = HOLD;
-	stack->move_b = HOLD;
+	h->ta = node;
+	node->p = h->ta;
+	node->n = h->ta;
+	node->cost_a = 0;
+	node->cost_b = 0;
+	node->data = data;
+	node->move_a = HOLD;
+	node->move_b = HOLD;
 	h->min_a = data;
 	h->max_a = data;
 	h->min_b = 0;
 	h->max_b = 0;
-	return (stack);
+	return (node);
 }
 
 /// @brief 			Adds a new element to the circular stack
 /// @param stack	Pointer to the stack last added element
 /// @return			Pointer to the stack current element, NULL if error malloc
-t_elem	*ft_stack_add_next(t_elem *stack, int data)
+t_elem	*ft_stack_add_next(t_elem *node, int data)
 {
-	stack->n = malloc(sizeof(t_elem));
-	if (!stack)
+	node->n = malloc(sizeof(t_elem));
+	if (!node)
 		return (NULL);
-	stack->n->p = stack;
-	stack = stack->n;
-	stack->cost_a = 0;
-	stack->cost_b = 0;
-	stack->data = data;
-	stack->move_a = HOLD;
-	stack->move_b = HOLD;
-	return (stack);
+	node->n->p = node;
+	node = node->n;
+	node->cost_a = 0;
+	node->cost_b = 0;
+	node->data = data;
+	node->move_a = HOLD;
+	node->move_b = HOLD;
+	return (node);
 }
 
 /// @brief 			Generates a list of elements from an array of arguments
@@ -157,12 +157,10 @@ t_stack	*ft_generate_list(int size, char **array)
 		return (NULL);
 	ft_init_stack_status(h);
 	node = ft_stack_add_first(h, atoi(array[i]));
-	free(array[i]);
 	i++;
 	while (i < size)
 	{
 		node = ft_stack_add_next(node, atoi(array[i]));
-		free(array[i]);
 		i++;
 	}
 	node->n = h->ta;
@@ -170,5 +168,36 @@ t_stack	*ft_generate_list(int size, char **array)
 	h->size_a = size;
 	ft_updt_min_max(h->ta, &h->max_a, &h->min_a);
 	return (h);
+}
+
+/// @brief 			Generates a list of elements from an array of arguments
+/// @param array	Arguments
+/// @param ac		Number of arguments
+/// @return			Pointer to the stack
+void ft_free_list(t_stack *h)
+{
+	t_elem	*node;
+	t_elem	*tmp;
+
+	if (!h->ta)
+		return ;
+	node = h->ta;
+	node->p->n = NULL;
+	while(node)
+	{
+		tmp = node->n;
+		node->n = 0;
+		node->p = 0;
+		node->cost_a = 0;
+		node->cost_b = 0;
+		node->data = 0;
+		node->move_a = HOLD;
+		node->move_b = HOLD;
+		free(node);
+		node = tmp;
+	}
+	ft_init_stack_status(h);
+	free(h);
+	return ;
 }
 
