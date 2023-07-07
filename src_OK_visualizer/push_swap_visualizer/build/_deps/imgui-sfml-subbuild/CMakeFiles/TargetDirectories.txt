@@ -1,3 +1,0 @@
-/home/anton/Learn/42/common-core/42-05-Push_Swap/code/src_cur/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/CMakeFiles/imgui-sfml-populate.dir
-/home/anton/Learn/42/common-core/42-05-Push_Swap/code/src_cur/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/CMakeFiles/edit_cache.dir
-/home/anton/Learn/42/common-core/42-05-Push_Swap/code/src_cur/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/CMakeFiles/rebuild_cache.dir
