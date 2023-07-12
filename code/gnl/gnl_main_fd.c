@@ -6,32 +6,26 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 04:12:07 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/13 00:19:32 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/13 00:34:17 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "../lib/libft.h"
-#include "../inc/gnl.h"
+#include "../lib/gnl.h"
 
 int	main(void)
 {
 	char	*line;
 	int		fd;
-	//int		i;
 
 	fd = open("test.txt", O_RDONLY);
-	//i = 0;
-	//while (i < 10)
 	line = get_next_line(fd);
 	while (line)
 	{
-		//line = gnl(fd);
-		//line = gnl(0);
 		printf("*%s", line);
 		if (line)
 			ft_free_str(&line);
 		line = get_next_line(fd);
-		//i++;
 	}
 	close(fd);
 	return (0);

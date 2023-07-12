@@ -6,13 +6,11 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 04:12:07 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/13 00:10:10 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/13 00:30:00 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-//#include "../inc/gnl.h"
-//#include "gnl.h"
+#include "gnl.h"
 
 /// @brief 		Allocs & returns a string ending w/ a \n, read from a file fd
 ///				Each fd should be managed independently of the others

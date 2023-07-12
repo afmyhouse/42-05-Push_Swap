@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:21:17 by hmaciel-          #+#    #+#             */
-/*   Updated: 2023/07/13 00:10:51 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/13 00:32:17 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@
 # ifndef FALSE
 #  define FALSE 0
 # endif
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100000000
-# endif
+
 /**********************
 	LIBS
 **********************/
@@ -74,18 +72,6 @@ typedef struct s_printf
 	int		res_len;
 	int		pf_len;
 }	t_printf;
-
-/* ************************************************************************** */
-///	structure required by get next line functions
-/* ************************************************************************** */
-typedef struct s_fd_lst
-{
-	int				fd;
-	char			*raw;
-	char			*nl;
-	int				ret;
-	struct s_fd_lst	*next;
-}				t_fd_lst;
 
 /* ************************************************************************** */
 ///	LIBFT BASE FUNCTIONS
@@ -190,13 +176,5 @@ int				ft_pf_type_p2s(t_printf *f, char *res, unsigned long long arg);
 int				ft_printf(const char *format, ...);
 const char		*ft_pf_type(t_printf *flgs, const char *s);
 void			ft_pf_f_init(t_printf *f);
-/* ************************************************************************** */
-///	GET NEXT LINE SPECIFIC FUNCTIONS
-/* ************************************************************************** */
-/*	ft_printf.c -  where the printf and most directly functions reside */
-char			*get_next_line(int fd);
-t_fd_lst		*gnl_check_fd(int fd, t_fd_lst **list);
-void			gnl_check_reading(t_fd_lst *node, char *buff);
-int				gnl_new_reading(t_fd_lst *node);
-int				gnl_next_line(t_fd_lst *node);
+
 #endif

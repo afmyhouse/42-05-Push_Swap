@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:25:51 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/12 22:02:16 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/13 00:23:33 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,6 @@ void	ft_stack_limits_updt(t_elem *node, int *max, int *min);
 /* ************************************************************************** */
 ///	CHECKER SPECIFIC FUNCTIONS
 /* ************************************************************************** */
-int	check_mover(t_stack *h, char *m);
-int	check_machine(t_stack *h);
+int		check_mover(t_stack *h, char *m);
+int		check_machine(t_stack *h);
 #endif
