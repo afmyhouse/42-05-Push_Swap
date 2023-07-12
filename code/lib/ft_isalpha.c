@@ -6,12 +6,15 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 22:45:42 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/21 23:12:42 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/12 23:27:04 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief 		Checks is an alphabetic upper case character.
+/// @param c	Character to check
+/// @return		1 if c is alphabetic, 0 otherwise
 static int	ft_isupper(int c)
 {
 	if (c >= 'A' && c <= 'Z')
@@ -19,6 +22,9 @@ static int	ft_isupper(int c)
 	return (0);
 }
 
+/// @brief 		Checks is an alphabetic lower case character.
+/// @param c	Character to check
+/// @return		1 if c is alphabetic, 0 otherwise
 static int	ft_islower(int c)
 {
 	if (c >= 'a' && c <= 'z')
@@ -26,6 +32,9 @@ static int	ft_islower(int c)
 	return (0);
 }
 
+/// @brief 		Checks for an alphabetic character.
+/// @param c	Character to check
+/// @return		1 if c is alphabetic, 0 otherwise
 int	ft_isalpha(int c)
 {
 	if (ft_islower(c) || ft_isupper(c))

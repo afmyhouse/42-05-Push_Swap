@@ -6,13 +6,15 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 00:01:03 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/06 15:43:11 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/12 23:28:31 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 /// @brief 		Checks if a char is a sign
 /// @param c	The char to check
-/// @return		 -1 if '-', 1 if '+', 0 otherwise
+/// @return		-1 if '-', 1 if '+', 0 otherwise
 int	ft_issign(char c)
 {
 	if (c == '-')

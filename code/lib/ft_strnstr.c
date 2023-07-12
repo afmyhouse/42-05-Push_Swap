@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:27:02 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/22 11:39:47 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/13 00:00:48 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief 			Locates the first occurrence of the null-terminated string
+/// @param big		String where to search occurences of `little` string
+/// @param little	Substring to search for
+/// @param len		Number of bytes to search
+/// @return			Pointer to the located character, or NULL if not found
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	char	*phs;

@@ -3,15 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 00:49:13 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/22 11:34:48 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/12 23:59:34 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief 		Compares byte string s1 against byte string s2.
+/// @param s1	Pointer to memory area 1
+/// @param s2	Pointer to memory area 2
+/// @param n	Number of bytes to compare
+/// @return		An integer less than, equal to, or greater than zero if the
+///				first n bytes of s1 is found, respectively, to be less than,
+///				to match, or be greater than the first n bytes of s2.
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	unsigned char	*p_str1;

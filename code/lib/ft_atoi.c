@@ -6,12 +6,15 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 12:54:38 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/06 15:29:49 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/12 23:24:23 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief 		Converts the initial portion of the string pointed to by nptr
+/// @param nptr	Pointer to string
+/// @return		The converted integer
 int	ft_atoi(const char *nptr)
 {
 	int	signal;

@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 11:20:00 by antoda-s          #+#    #+#              #
-#    Updated: 2023/07/06 15:44:00 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/07/13 00:11:21 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS			= -Wall -Wextra -Werror -I.
 ARCH			= ar rcs
 RM				= rm -f
 
-SRCS	=	ft_atoi.c ft_atol.c \
+SRCS	=	ft_free_str.c ft_atoi.c ft_atol.c \
 			\
 			ft_bzero.c ft_calloc.c \
 			\
@@ -41,9 +41,10 @@ SRCS	=	ft_atoi.c ft_atol.c \
 			ft_lstnew.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c \
 			ft_lstiter.c ft_lstlast.c ft_lstnew.c ft_lstmap.c \
 			ft_lstsize.c ft_lstadd_back.c \
-
-
-
+			\
+			get_next_line.c
+#			 gnl_check_fd.c gnl_check_reading.c \
+#			gnl_new_reading.c gnl_next_line.c
 
 OBJS			= $(SRCS:%.c=%.o)
 

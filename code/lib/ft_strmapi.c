@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 10:18:28 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/17 13:49:38 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/12 23:56:36 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief 		Applies the function f to each character of the string passed
+/// @param s	String to iterate
+/// @param f	Function to apply
+/// @return		The string created from the successive applications of f
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char	*p_s;

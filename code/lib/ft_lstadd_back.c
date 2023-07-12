@@ -6,12 +6,15 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 18:41:34 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/21 00:31:10 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/12 23:29:16 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief 		Adds the element ’new’ at the end of the list.
+/// @param lst	The address of a pointer to the first link of a list.
+/// @param		The address of a pointer to the element to be added to the list.
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*lst_back;

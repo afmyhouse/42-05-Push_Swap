@@ -6,12 +6,17 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 22:50:17 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/06 15:42:23 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/12 23:48:01 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief 		Moves n bytes from memory area src to memory area dest.
+/// @param dest	Pointer to destination memory area
+/// @param src	Pointer to source memory area
+/// @param n	Number of bytes to move
+/// @return		Pointer to destination
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	unsigned char	*p_dest;

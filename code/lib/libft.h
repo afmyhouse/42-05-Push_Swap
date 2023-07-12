@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:21:17 by hmaciel-          #+#    #+#             */
-/*   Updated: 2023/07/06 15:29:19 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/13 00:10:51 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@
 # ifndef FALSE
 #  define FALSE 0
 # endif
-
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 100000000
+# endif
 /**********************
 	LIBS
 **********************/
@@ -46,6 +48,10 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+/* ************************************************************************** */
+///	structure required by printf functions
+/* ************************************************************************** */
 
 typedef struct s_printf
 {
@@ -69,10 +75,23 @@ typedef struct s_printf
 	int		pf_len;
 }	t_printf;
 
-/**********************
- FUNCTIONS PROTOTYPES
-**********************/
+/* ************************************************************************** */
+///	structure required by get next line functions
+/* ************************************************************************** */
+typedef struct s_fd_lst
+{
+	int				fd;
+	char			*raw;
+	char			*nl;
+	int				ret;
+	struct s_fd_lst	*next;
+}				t_fd_lst;
 
+/* ************************************************************************** */
+///	LIBFT BASE FUNCTIONS
+/* ************************************************************************** */
+
+void			ft_free_str(char **str);
 int				ft_atoi(const char *nptr);
 long			ft_atol(const char *nptr);
 void			ft_bzero(void *s, size_t n);
@@ -83,7 +102,7 @@ int				ft_isalpha(int c);
 int				ft_isascii(int c);
 int				ft_isdigit(int c);
 int				ft_isprint(int c);
-int				ft_issign(int c);
+int				ft_issign(char c);
 int				ft_isspace(int c);
 char			*ft_itoa(int n);
 void			*ft_memchr(const void *s, int c, size_t n);
@@ -121,6 +140,9 @@ void			ft_lstclear(t_list **lst, void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), \
 				void (*del)(void *));
+/* ************************************************************************** */
+///	FT_PRINTF SPECIFIC FUNCTIONS
+/* ************************************************************************** */
 /**********ft_pf_all2s_1.c**********/
 int				ft_pf_tools_d2s(t_printf *f, unsigned int n, char *str);
 int				ft_pf_tools_i2s(char arg_type, unsigned int n, char *str);
@@ -168,4 +190,13 @@ int				ft_pf_type_p2s(t_printf *f, char *res, unsigned long long arg);
 int				ft_printf(const char *format, ...);
 const char		*ft_pf_type(t_printf *flgs, const char *s);
 void			ft_pf_f_init(t_printf *f);
+/* ************************************************************************** */
+///	GET NEXT LINE SPECIFIC FUNCTIONS
+/* ************************************************************************** */
+/*	ft_printf.c -  where the printf and most directly functions reside */
+char			*get_next_line(int fd);
+t_fd_lst		*gnl_check_fd(int fd, t_fd_lst **list);
+void			gnl_check_reading(t_fd_lst *node, char *buff);
+int				gnl_new_reading(t_fd_lst *node);
+int				gnl_next_line(t_fd_lst *node);
 #endif

@@ -6,12 +6,16 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 20:36:34 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/03/14 23:42:56 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/12 23:53:11 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief 		Counts the number of splits in a string.
+/// @param s	Pointer to string
+/// @param c	Spliting character
+/// @return		Number of splits
 size_t	ft_split_count(const char *s, char c)
 {
 	size_t	splits;
@@ -33,6 +37,10 @@ size_t	ft_split_count(const char *s, char c)
 	return (splits);
 }
 
+/// @brief 		Slices a larger string at the occurence of char c.
+/// @param s	Pointer to original string
+/// @param c	Spliting character
+/// @return		Pointer to the slice
 char	*ft_split_slice(const char *s, char c)
 {
 	size_t	split_len;
@@ -53,6 +61,10 @@ char	*ft_split_slice(const char *s, char c)
 	return (split - split_len);
 }
 
+/// @brief 		Splits a string at every the occurence of char c.
+/// @param s	Pointer to original string
+/// @param c	Spliting character
+/// @return		Pointer to the array of slices
 char	**ft_split(char const *s, char c)
 {
 	char	**array;

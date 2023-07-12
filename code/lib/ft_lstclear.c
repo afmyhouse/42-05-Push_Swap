@@ -6,12 +6,15 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 19:41:59 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/21 00:49:50 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/12 23:30:56 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief 		Deletes and frees the given element and every successor of that element, using the function ’del’ and free(3).
+/// @param lst	The address of a pointer to an element.
+/// @param del	The address of the function used to delete the content of the element.
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*lstclear;
