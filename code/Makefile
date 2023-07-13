@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:52:10 by antoda-s          #+#    #+#              #
-#    Updated: 2023/07/13 14:20:26 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/07/13 14:35:24 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -114,18 +114,18 @@ m: $(M_NAME)
 b: $(B_NAME)
 
 $(M_NAME): $(LIBFT) $(M_OBJS) $(C_OBJS)
-	@echo "$(_INFO)"
-	@echo "[$(BLU)Project MANDATORY : compile $(GRN)$(@) $(BLU)file$(WTH)]"
+#	@echo "$(_INFO)"
+#	@echo "[$(BLU)Project MANDATORY : compile $(GRN)$(@) $(BLU)file$(WTH)]"
 	$(CC) $(CFLAGS) $(M_OBJS) $(C_OBJS) $(DLIB)/$(LIBFT) -o $@
-	@echo "$(_SUCCESS)"
-	@echo
+#	@echo "$(_SUCCESS)"
+#	@echo
 
 $(B_NAME): $(LIBFT) $(B_OBJS) $(C_OBJS)
-	@echo "$(_INFO)"
-	@echo "[$(BLU)Project BONUS : compile $(GRN)$(@) $(BLU)file$(WTH)]"
+#	@echo "$(_INFO)"
+#	@echo "[$(BLU)Project BONUS : compile $(GRN)$(@) $(BLU)file$(WTH)]"
 	$(CC) $(CFLAGS) $(B_OBJS) $(C_OBJS) $(DLIB)/$(LIBFT) -o $@
-	@echo "$(_SUCCESS)"
-	@echo
+#	@echo "$(_SUCCESS)"
+#	@echo
 
 
 $(LIBFT):
@@ -137,13 +137,13 @@ $(LIBFT):
 
 $(M_OBJS): $(DBIN_M)/%.o: $(DSRC_M)/%.c
 #	@echo "$(_INFO)"
-	@echo "[$(BLU)Compile objects Project Mandatory$(WTH)]"
+#	@echo "[$(BLU)Compile objects Project Mandatory$(WTH)]"
 	$(CC) -c $(CFLAGS) $< -o $@
 #	@echo "$(_SUCCESS)"
 
 $(C_OBJS): $(DBIN_M)/%.o: $(DSRC_C)/%.c
 #	@echo "$(_INFO)"
-	@echo "[$(BLU)Compile objects Project Common$(WTH)]"
+#	@echo "[$(BLU)Compile objects Project Common$(WTH)]"
 	$(CC) -c $(CFLAGS) $< -o $@
 #	@echo "$(_SUCCESS)"
 
