@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:52:10 by antoda-s          #+#    #+#              #
-#    Updated: 2023/07/13 14:20:26 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/07/13 09:28:54 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,61 +30,31 @@ VERBOSE = TRUE
 # PROJDIR 	:= $(realpath $(CURDIR)/..)
 # If Makefile if in the same folder as the project directory
 PROJDIR 	:= $(realpath $(CURDIR))
-DSRC_M		:= src/push_swap
-DSRC_C		:= src/common
-DSRC_B		:= src/checker
-DBIN_M		:= bin
-DINC		:= src/inc
+DSRC		:= src
+DBIN		:= bin
+DINC		:= inc
 DLIB		:= lib
-# VPATH 		= $(DSRC)
+VPATH 		= $(DSRC)
 
 #functions & variables libraries:
 #LIBFT = $(DLIBS)/libft.a
 LIBFT 		= libft.a
 #Sources
-M_SRCS 		= $(DSRC_M)/fm_0_start.c \
-				$(DSRC_M)/fm_cost_best.c \
-				$(DSRC_M)/fm_cost_dest.c \
-				$(DSRC_M)/fm_cost_eval.c \
-				$(DSRC_M)/fm_cost_get.c \
-				$(DSRC_M)/fm_cost_min.c \
-				$(DSRC_M)/fm_cost_optimizer.c \
-				$(DSRC_M)/fm_cost_raw.c \
-				$(DSRC_M)/fm_cost_rr.c \
-				$(DSRC_M)/fm_cost_rrr.c \
-				$(DSRC_M)/fm_cost_source.c \
-				$(DSRC_M)/fm_cost_to_pa.c \
-				$(DSRC_M)/fm_cost_to_pb.c \
-				$(DSRC_M)/fm_max_int.c \
-				$(DSRC_M)/fm_min_int.c \
-				$(DSRC_M)/fm_move.c \
-				$(DSRC_M)/fm_sort_3.c \
-				$(DSRC_M)/fm_sort_machine.c \
-				$(DSRC_M)/fm_stack_b_start.c
-
-C_SRCS 		= $(DSRC_C)/fc_action_px.c \
-				$(DSRC_C)/fc_action_rr.c \
-				$(DSRC_C)/fc_action_rrr.c \
-				$(DSRC_C)/fc_action_rrx.c \
-				$(DSRC_C)/fc_action_rx.c \
-				$(DSRC_C)/fc_action_ss.c \
-				$(DSRC_C)/fc_action_sx.c \
-				$(DSRC_C)/fc_args_build.c \
-				$(DSRC_C)/fc_args_check.c \
-				$(DSRC_C)/fc_sort_check.c \
-				$(DSRC_C)/fc_stack_init.c \
-				$(DSRC_C)/fc_stack_limits.c \
-				$(DSRC_C)/fc_utils.c
-
-B_SRCS		= $(DSRC_B)/fb_checker.c \
-				# $(DSRC_B)/fb_check_machine.c
+# Multiple directories with *c *.h files
+#M_SRCS = $(foreach dir,$(SOURCEDIRS),$(wildcard $(dir)/*.c))
+#M_SRCS = $(wildcard $(DSRC)/*.c)
+M_SRCS = $(shell find $(DSRC) -name *.c)
+#M_SRCS		= 	push_swap.c \
+				push_swap_a_rx.c push_swap_a_rrx.c \
+				push_swap_a_sx.c push_swap_a_px.c\
+				push_swap_u_1.c push_swap_u_2.c
+#B_SRCS		:= 	push_swap_bonus.c push_swap_action_1_bonus.c push_swap_action_2_bonus.c \
+				push_swap_utils1_bonus.c push_swap_utils2_bonus.c
 
 #Objects
-M_OBJS		:= $(subst $(DSRC_M),$(DBIN_M),$(M_SRCS:.c=.o))
-C_OBJS		:= $(subst $(DSRC_C),$(DBIN_M),$(C_SRCS:.c=.o))
-B_OBJS		:= $(subst $(DSRC_B),$(DBIN_M),$(B_SRCS:.c=.o))
-
-#Rules:
+M_OBJS		:= $(subst $(DSRC),$(DBIN),$(M_SRCS:.c=.o))
+#M_OBJS		:= $(M_SRCS:%.c=%.o)
+#B_OBJS		:= $(B_SRCS:.c=.o)
 
 # Hide or not the calls depending of VERBOSE
 ifeq ($(VERBOSE),TRUE)
@@ -99,59 +69,32 @@ YLW		=	\e[38;5;226m
 RED		=	\e[38;5;196m
 BLU		=	\e[38:5:31m
 WTH		=	\e[0m
-_INFO		=	[$(YLW)INFO$(WTH)]
 _SUCCESS	=	[$(GRN)DONE$(WTH)]
+_INFO		=	[$(YLW)INFO$(WTH)]
 
-#Rules:
-# This is the GLOBAL target invoked with >make
-all: m b
-#$(M_NAME) $(B_NAME)
+all: $(M_NAME)
 
-# This is the MANDATORY target invoked with >make m
-m: $(M_NAME)
-
-# This is the BONUS target invoked with >make b
-b: $(B_NAME)
-
-$(M_NAME): $(LIBFT) $(M_OBJS) $(C_OBJS)
+$(M_NAME): $(LIBFT) $(M_OBJS)
 	@echo "$(_INFO)"
 	@echo "[$(BLU)Project MANDATORY : compile $(GRN)$(@) $(BLU)file$(WTH)]"
-	$(CC) $(CFLAGS) $(M_OBJS) $(C_OBJS) $(DLIB)/$(LIBFT) -o $@
+	@$(CC) $(CFLAGS) $(M_OBJS) $(DLIB)/$(LIBFT) -o $@
 	@echo "$(_SUCCESS)"
 	@echo
-
-$(B_NAME): $(LIBFT) $(B_OBJS) $(C_OBJS)
-	@echo "$(_INFO)"
-	@echo "[$(BLU)Project BONUS : compile $(GRN)$(@) $(BLU)file$(WTH)]"
-	$(CC) $(CFLAGS) $(B_OBJS) $(C_OBJS) $(DLIB)/$(LIBFT) -o $@
-	@echo "$(_SUCCESS)"
-	@echo
-
+#	@echo "$(_INFO)"
+#	@echo "[$(RED)Clean Project Libs Objs$(WTH)]"
+#	@$(MAKE) clean --no-print-directory -C $(DLIB)
+#	@echo "$(_SUCCESS)"
+#	@echo
 
 $(LIBFT):
 	@echo "$(_INFO)"
-	@echo "[$(BLU)Compile Libft$(WTH)]"
+	@echo "[$(BLU)Compile Poject Libft$(WTH)]"
 	@$(MAKE) --no-print-directory -C $(DLIB)
 	@echo "$(_SUCCESS)"
 	@echo
 
-$(M_OBJS): $(DBIN_M)/%.o: $(DSRC_M)/%.c
-#	@echo "$(_INFO)"
-	@echo "[$(BLU)Compile objects Project Mandatory$(WTH)]"
-	$(CC) -c $(CFLAGS) $< -o $@
-#	@echo "$(_SUCCESS)"
-
-$(C_OBJS): $(DBIN_M)/%.o: $(DSRC_C)/%.c
-#	@echo "$(_INFO)"
-	@echo "[$(BLU)Compile objects Project Common$(WTH)]"
-	$(CC) -c $(CFLAGS) $< -o $@
-#	@echo "$(_SUCCESS)"
-
-$(B_OBJS): $(DBIN_M)/%.o: $(DSRC_B)/%.c
-#	@echo "$(_INFO)"
-	@echo "[$(BLU)Compile objects Project Bonus$(WTH)]"
-	$(CC) -c $(CFLAGS) $< -o $@
-#	@echo "$(_SUCCESS)"
+$(M_OBJS): $(DBIN)/%.o: %.c
+	@$(CC) -c $(CFLAGS) $< -o $@
 
 clean:
 	@echo "$(_INFO)"
@@ -161,8 +104,6 @@ clean:
 	@echo "[$(RED)Clean Project object files$(WTH)]"
 	@$(RM) $(M_OBJS)
 	@echo "$(M_OBJS) file removed!!"
-	@$(RM) $(C_OBJS)
-	@echo "$(C_OBJS) file removed!!"
 	@$(RM) $(B_OBJS)
 	@echo "$(B_OBJS) file removed!!"
 	@echo "$(_SUCCESS)"
@@ -209,6 +150,6 @@ show:
 	@echo "$(YLW)[TARGET   = ]$(WTH)"$(PROJDIR)/$(M_NAME)
 
 # Every target that's not a file is identified on .PHONY
-.PHONY: all clean fclean re show m b #bonus
+.PHONY: all clean fclean re show #bonus
 
-# .SILENT:
+.SILENT:
