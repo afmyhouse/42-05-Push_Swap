@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:52:10 by antoda-s          #+#    #+#              #
-#    Updated: 2023/07/13 14:35:24 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/07/13 14:44:23 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,14 +113,14 @@ m: $(M_NAME)
 # This is the BONUS target invoked with >make b
 b: $(B_NAME)
 
-$(M_NAME): $(LIBFT) $(M_OBJS) $(C_OBJS)
+$(M_NAME): $(DLIB)/$(LIBFT) $(M_OBJS) $(C_OBJS)
 #	@echo "$(_INFO)"
 #	@echo "[$(BLU)Project MANDATORY : compile $(GRN)$(@) $(BLU)file$(WTH)]"
 	$(CC) $(CFLAGS) $(M_OBJS) $(C_OBJS) $(DLIB)/$(LIBFT) -o $@
 #	@echo "$(_SUCCESS)"
 #	@echo
 
-$(B_NAME): $(LIBFT) $(B_OBJS) $(C_OBJS)
+$(B_NAME): $(DLIB)/$(LIBFT) $(B_OBJS) $(C_OBJS)
 #	@echo "$(_INFO)"
 #	@echo "[$(BLU)Project BONUS : compile $(GRN)$(@) $(BLU)file$(WTH)]"
 	$(CC) $(CFLAGS) $(B_OBJS) $(C_OBJS) $(DLIB)/$(LIBFT) -o $@
@@ -128,7 +128,7 @@ $(B_NAME): $(LIBFT) $(B_OBJS) $(C_OBJS)
 #	@echo
 
 
-$(LIBFT):
+$(DLIB)/$(LIBFT):
 	@echo "$(_INFO)"
 	@echo "[$(BLU)Compile Libft$(WTH)]"
 	@$(MAKE) --no-print-directory -C $(DLIB)
