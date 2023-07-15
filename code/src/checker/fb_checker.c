@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/13 14:05:59 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/15 15:29:58 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,9 @@ int	main(int ac, char **av)
 			free(array[i++]);
 		free(array);
 	}
-	ft_browse_stacks(h);
-	if (check_machine(h) == SUCCESS)
-		write(1, "OK\n", 3);
-	else
-		write(1, "KO\n", 3);
-	ft_browse_stacks(h);
-	if (h->size_b)
-		ft_stack_free_b(h);
-	ft_stack_free(h);
-	return (SUCCESS);
+	i = check_machine(h);
+	ft_stack_free_x(h);
+	return (i);
 }
 
 /// @brief			Head function of the 'push swap' function
@@ -62,32 +55,40 @@ int	check_machine(t_stack *h)
 	char	*line;
 
 	if (ft_sort_check(h))
-		return (SUCCESS);
+		return (ft_checker_result(ERROR));
 	else
 	{
 		line = get_next_line(0);
 		while (line)
 		{
-			//printf("*%s",line);
 			if (check_mover(h, line) == ERROR)
-				return (ERROR);
+				return (ft_checker_result(ERROR));
 			if (line)
 				ft_free_str(&line);
 			line = get_next_line(0);
 		}
-		// if (line)
-		// 	ft_free_str(&line);
 		if (h->size_b || !ft_sort_check(h))
-			return (ERROR);
+			return (ft_checker_result(ERROR));
 		else if (ft_sort_check(h))
-			return (SUCCESS);
+			return (ft_checker_result(SUCCESS));
 	}
-	return (SUCCESS);
+	return (ft_checker_result(ERROR));
+}
+
+/// @brief 			Checks if the stack is sorted
+/// @param result	Pointer to the stack
+/// @return			0 if sorted, 1 otherwise
+int	ft_checker_result(int result)
+{
+	if (result == SUCCESS)
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
+	return (result);
 }
 
 int	check_mover(t_stack *h, char *m)
 {
-
 	if (m[0] == 's' && (m[1] == 'a' || m[1] == 'b') && m[2] == '\n')
 		ft_sx(h, m[1], 0);
 	else if (m[0] == 's' && m[1] == 's' && m[2] == '\n')
@@ -106,35 +107,4 @@ int	check_mover(t_stack *h, char *m)
 	else
 		return (ERROR);
 	return (SUCCESS);
-}
-
-/// @brief 			Generates a list of elements from an array of arguments
-/// @param array	Arguments
-/// @param ac		Number of arguments
-/// @return			Pointer to the stack
-void	ft_stack_free_b(t_stack *h)
-{
-	t_elem	*node;
-	t_elem	*tmp;
-
-	if (!h->tb)
-		return ;
-	node = h->tb;
-	node->p->n = NULL;
-	while (node)
-	{
-		tmp = node->n;
-		node->n = 0;
-		node->p = 0;
-		node->cost_a = 0;
-		node->cost_b = 0;
-		node->data = 0;
-		node->move_a = HOLD;
-		node->move_b = HOLD;
-		free(node);
-		node = tmp;
-	}
-	//ft_stack_init_status(h);
-	//free(h);
-	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:25:51 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/13 13:09:30 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/15 15:21:46 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 #  define _NOPRINT 0
 # endif
 # ifndef _SHOW_STACKS_
-#  define _SHOW_STACKS_ 1
+#  define _SHOW_STACKS_ 0
 # endif
 # ifndef _SHORT_SIZE_
 #  define _SHORT_SIZE_ 5
@@ -150,7 +150,6 @@ void	ft_sx_stack(t_elem **swap_top);
 t_elem	*ft_stack_add_first(t_stack *h, int data);
 t_elem	*ft_stack_add_next(t_elem *stack, int data);
 void	ft_stack_b_start(t_stack *h);
-void	ft_stack_free(t_stack *h);
 void	ft_stack_init_status(t_stack *h);
 t_stack	*ft_stack_init(int size, char **array);
 void	ft_stack_limits_chk(t_stack *h, char stack);
@@ -163,5 +162,9 @@ void	ft_stack_limits_updt(t_elem *node, int *max, int *min);
 /* ************************************************************************** */
 int		check_mover(t_stack *h, char *m);
 int		check_machine(t_stack *h);
+void	ft_stack_free(t_stack *h);
+void	ft_stack_free_a(t_stack *h);
 void	ft_stack_free_b(t_stack *h);
+void	ft_stack_free_x(t_stack *h);
+int		ft_checker_result(int result);
 #endif
