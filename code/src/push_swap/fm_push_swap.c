@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/15 15:26:12 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/16 20:03:13 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,17 @@ int	main(int ac, char **av)
 
 	array = ft_args_build(ac - 1, ++av);
 	if (!array)
-		return (ft_error());
+		return (0);
 	if (array == (char **)*(av))
 		len = ac - 1;
 	else
 		len = ft_array_len(array);
 	if (ft_args_check(len, array))
+	{
+		if (_DEBUG_)
+			printf("main -> args_check : len = %d\n", len);
 		return (ft_error());
+	}
 	h = ft_stack_init(len, array);
 	if (array != av)
 	{

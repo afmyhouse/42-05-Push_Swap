@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:25:51 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/15 15:21:46 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/16 20:09:11 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@
 # ifndef _SHORT_SIZE_
 #  define _SHORT_SIZE_ 5
 # endif
-
+# ifndef _DEBUG_
+#  define _DEBUG_ 0
+# endif
 /* ************************************************************************** */
 ///	CONSTANTS
 /* ************************************************************************** */
@@ -167,4 +169,5 @@ void	ft_stack_free_a(t_stack *h);
 void	ft_stack_free_b(t_stack *h);
 void	ft_stack_free_x(t_stack *h);
 int		ft_checker_result(int result);
+int		ft_action(t_stack *h);
 #endif

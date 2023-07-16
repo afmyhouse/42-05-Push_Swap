@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_args_build.c                                    :+:      :+:    :+:   */
+/*   fc_args_build.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/07 02:16:22 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/16 20:08:37 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,30 @@ char	**ft_args_build(int ac, char **av)
 {
 	char	**array;
 
+	if (_DEBUG_)
+		printf("args_build : ac = %d\n", ac);
+
 	array = 0x0;
-	if (ac == 0)
-	{
-		ft_error();
-		return (NULL);
-	}
-	else if (ac > 1)
+	// if (ac == 0)
+	// {
+	// 	ft_error();
+	// 	return (NULL);
+	// }
+	//else if (ac > 1)
+	if (ac > 1)
 		return (av);
 	else if (ac == 1)
 	{
+		if (_DEBUG_)
+		{
+			printf("args_build : else if ac == 1 : ac    = %d\n", ac);
+			printf("args_build : else if ac == 1 : av[0] = %s\n", av[0]);
+		}
 		array = ft_split(av[0], ' ');
 		if (!array)
 			return (NULL);
 	}
+	if (_DEBUG_)
+		printf("args_build : return (array) : array = %p\n", array);
 	return (array);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_args_check.c                                    :+:      :+:    :+:   */
+/*   fc_args_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:58:00 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/12 21:22:43 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/16 19:59:54 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,8 @@ int	ft_args_check_isint(int len, char **array)
 /// @return			SUCCESS - valid, ERROR - otherwise
 int	ft_args_check(int len, char **array)
 {
-	if (len <= 1)
-		return (ERROR);
+	//if (len <= 1)
+	//	return (ERROR);
 	if (ft_args_check_isvalid(len, array))
 		return (ERROR);
 	if (ft_args_check_novoid(len, array))
