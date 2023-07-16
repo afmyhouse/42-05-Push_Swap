@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:52:10 by antoda-s          #+#    #+#              #
-#    Updated: 2023/07/14 20:09:08 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/07/16 20:27:57 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -137,14 +137,17 @@ $(LIBFT):
 	@echo
 
 $(M_OBJS): $(DBIN)/%.o: $(DSRC_M)/%.c
+	@mkdir -p $(DBIN)
 	@$(CC) -c $(CFLAGS) $< -o $@
 	@echo "[$(BLU)Compile Mandatory Objectos$(WTH)] : $< $(_SUCCESS)"
 
 $(C_OBJS): $(DBIN)/%.o: $(DSRC_C)/%.c
+	@mkdir -p $(DBIN)
 	@$(CC) -c $(CFLAGS) $< -o $@
 	@echo "[$(BLU)Compile Common Objects$(WTH)] : $< $(_SUCCESS)"
 
 $(B_OBJS): $(DBIN)/%.o: $(DSRC_B)/%.c
+	@mkdir -p $(DBIN)
 	@$(CC) -c $(CFLAGS) $< -o $@
 	@echo "[$(BLU)Compile BONUS Objects$(WTH)] : $< $(_SUCCESS)"
 
