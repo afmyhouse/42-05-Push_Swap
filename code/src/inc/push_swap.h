@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:25:51 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/16 20:09:11 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/19 15:07:47 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@
 # endif
 # ifndef _DEBUG_
 #  define _DEBUG_ 0
+# endif
+# ifndef _DEBUG_MALLOC_
+#  define _DEBUG_MALLOC_ 0
 # endif
 /* ************************************************************************** */
 ///	CONSTANTS
@@ -170,4 +173,8 @@ void	ft_stack_free_b(t_stack *h);
 void	ft_stack_free_x(t_stack *h);
 int		ft_checker_result(int result);
 int		ft_action(t_stack *h);
+//char	*ps_gnl(int buff_size, char c);
+char	*ps_gnl(void);
+void	ft_pause_key_nl(void);
+//char	**ft_args_build_n(int ac, char **av);
 #endif

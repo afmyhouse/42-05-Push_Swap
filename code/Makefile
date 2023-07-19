@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:52:10 by antoda-s          #+#    #+#              #
-#    Updated: 2023/07/16 20:27:57 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/07/19 12:35:29 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,8 @@ C_SRCS 		= $(DSRC_C)/fc_action_px.c \
 				$(DSRC_C)/fc_action_sx.c \
 				$(DSRC_C)/fc_args_build.c \
 				$(DSRC_C)/fc_args_check.c \
-				$(DSRC_C)/fc_browse_stacks.c \
+				$(DSRC_C)/fc_free.c \
+				$(DSRC_C)/fc_extra_tools.c \
 				$(DSRC_C)/fc_sort_check.c \
 				$(DSRC_C)/fc_stack_init.c \
 				$(DSRC_C)/fc_stack_limits.c \
@@ -108,13 +109,13 @@ _SUCCESS	=	[$(GRN)DONE$(WTH)]
 
 #Rules:
 # This is the GLOBAL target invoked with >make
-all: m b
+all: m
 
 # This is the MANDATORY target invoked with >make m
 m: $(M_NAME)
 
 # This is the BONUS target invoked with >make b
-b: $(B_NAME)
+bonus: $(B_NAME)
 
 $(M_NAME): $(LIBFT) $(M_OBJS) $(C_OBJS)
 	@echo "$(_INFO)"

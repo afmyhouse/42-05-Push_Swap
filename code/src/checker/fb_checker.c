@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/16 19:49:34 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/19 12:36:18 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int ac, char **av)
 		len = ac - 1;
 	else
 		len = ft_array_len(array);
-	if (ft_args_check(len, array))
+	if (ft_args_check(len, array) == ERROR)
 		return (ft_error());
 	h = ft_stack_init(len, array);
 	if (array != av)
@@ -52,10 +52,43 @@ int	main(int ac, char **av)
 ///					SIZE of the STACKS A and B, and quantity of moves
 int	check_machine(t_stack *h)
 {
-	if (ft_sort_check(h))
-		return (ft_checker_result(SUCCESS));
+	if (ft_action(h) == SUCCESS)
+	{
+		if (_DEBUG_)
+			ft_browse_stacks(h);
+		if (h->size_b || !ft_sort_check(h))
+			return (ft_checker_result(ERROR));
+		else if (ft_sort_check(h))
+			return (ft_checker_result(SUCCESS));
+	}
 	else
-		return (ft_action(h));
+		return (ft_error());
+	return (ERROR);
+}
+
+int	ft_action(t_stack *h)
+{
+	char	*line;
+	int		result;
+
+	result = SUCCESS;
+	line = ps_gnl();
+	while (*line)
+	{
+		ft_browse_stacks(h);
+		if (check_mover(h, line) == ERROR)
+		{
+			result = ERROR;
+			break ;
+		}
+		if (line)
+			ft_free_str(&line);
+		line = ps_gnl();
+	}
+	if (line)
+		ft_free_str(&line);
+	ft_browse_stacks(h);
+	return (result);
 }
 
 /// @brief 			Checks if the stack is sorted
@@ -72,6 +105,10 @@ int	ft_checker_result(int result)
 
 int	check_mover(t_stack *h, char *m)
 {
+	if (!*m)
+	{
+		return (SUCCESS);
+	}
 	if (m[0] == 's' && (m[1] == 'a' || m[1] == 'b') && m[2] == '\n')
 		ft_sx(h, m[1], 0);
 	else if (m[0] == 's' && m[1] == 's' && m[2] == '\n')
@@ -88,33 +125,8 @@ int	check_mover(t_stack *h, char *m)
 	else if (m[0] == 'r' && m[1] == 'r' && m[2] == 'r' && m[3] == '\n')
 		ft_rrr(h, 0);
 	else
-		return (ERROR);
-	return (SUCCESS);
-}
-
-int	ft_action(t_stack *h)
-{
-	char	*line;
-
-	line = get_next_line(0);
-	while (line)
 	{
-		if (check_mover(h, line) == ERROR)
-		{
-			while (line)
-			{
-				ft_free_str(&line);
-				line = get_next_line(0);
-			}
-			return (ft_error());
-		}
-		if (line)
-			ft_free_str(&line);
-		line = get_next_line(0);
+		return (ERROR);
 	}
-	if (h->size_b || !ft_sort_check(h))
-		return (ft_checker_result(ERROR));
-	else if (ft_sort_check(h))
-		return (ft_checker_result(SUCCESS));
-	return (ft_checker_result(ERROR));
+	return (SUCCESS);
 }
