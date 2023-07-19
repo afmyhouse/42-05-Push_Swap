@@ -1,0 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fb_flags_init.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
+/*   Updated: 2023/07/19 17:01:45 by antoda-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../inc/push_swap.h"
+
+/// @brief 			Generates a list of elements from an array of arguments
+/// @param array	Arguments
+/// @param ac		Number of arguments
+/// @return			Pointer to the stack
+t_flags	*ft_flags_init(int ac, char **av)
+{
+	t_flags	*f;
+
+	f = malloc(sizeof(t_flags));
+	if (!f)
+		return (NULL);
+	*f = (t_flags){0, 0, 0, 0, 0, ac, av};
+	return (f);
+}
+
+void	ft_flags_show(t_flags *f)
+{
+	ft_printf(f->show_stacks ? "f->show_stacks = TRUE\n" : "f->show_stacks = FALSE\n");
+	ft_printf(f->show_colors ? "f->show_colors = TRUE\n" : "f->show_colors = FALSE\n");
+	ft_printf(f->show_moves ? "f->show_moves = TRUE\n" : "f->show_moves = FALSE\n");
+	ft_printf(f->debug ? "f->debug = TRUE\n" : "f->debug = FALSE\n");
+	ft_printf(f->any_flag ? "f->any_flag = TRUE\n" : "f->any_flag = FALSE\n");
+	printf("f->len = %d\n", f->len);
+	printf("f->arg[0] = %s\n", f->arg[0]);
+	return ;
+}

@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:14:51 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/19 15:09:58 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/19 18:53:46 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,25 @@ void	ft_browse_stack_print(t_elem *t, t_elem *b, char stack, char *color)
 ///					MIN and MAX values of the STACKS A and B,
 ///					SIZE of the STACKS A and B, and quantity of moves
 /// @param stack	Stack to display
-void	ft_browse_stack(t_stack *h, char stack)
+void	ft_browse_stack(t_stack *h, t_flags *f, char stack)
 {
-	if (!_SHOW_STACKS_)
+	char	*color;
+
+	color = WTH;
+	if (!f->show_stacks)
 		return ;
+	if (f->show_colors && stack == 'a')
+		color = BLU;
+	else if (f->show_colors && stack == 'b')
+		color = GRN;
 	if (stack == 'a' && h->ta)
-		ft_browse_stack_print(h->ta, h->ta->p, stack, BLU);
+		ft_browse_stack_print(h->ta, h->ta->p, stack, color);
 	else if (stack == 'b' && h->tb)
-		ft_browse_stack_print(h->tb, h->tb->p, stack, GRN);
+		ft_browse_stack_print(h->tb, h->tb->p, stack, color);
 	else if (stack == 'a' && !h->ta)
-		ft_printf("%s%c -> stack is empty, %s\n", BLU, stack, WTH);
+		ft_printf("%s%c -> stack is empty, %s\n", color, stack, WTH);
 	else if (stack == 'b' && !h->tb)
-		ft_printf("%s%c -> stack is empty, %s\n-----\n", GRN, stack, WTH);
+		ft_printf("%s%c -> stack is empty, %s\n-----\n", color, stack, WTH);
 	return ;
 }
 
@@ -52,12 +59,12 @@ void	ft_browse_stack(t_stack *h, char stack)
 ///					POINTERS to top of the STACKS A and B
 ///					MIN and MAX values of the STACKS A and B,
 ///					SIZE of the STACKS A and B, and quantity of moves
-void	ft_browse_stacks(t_stack *h)
+void	ft_browse_stacks(t_stack *h, t_flags *f)
 {
-	if (!_SHOW_STACKS_)
+	if (!f->show_stacks)
 		return ;
-	ft_browse_stack(h, 'a');
-	ft_browse_stack(h, 'b');
+	ft_browse_stack(h, f, 'a');
+	ft_browse_stack(h, f, 'b');
 	return ;
 }
 

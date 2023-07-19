@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:52:10 by antoda-s          #+#    #+#              #
-#    Updated: 2023/07/19 12:35:29 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/07/19 19:11:23 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,7 @@ M_SRCS 		= $(DSRC_M)/fm_push_swap.c \
 				$(DSRC_M)/fm_move.c \
 				$(DSRC_M)/fm_sort_3.c \
 				$(DSRC_M)/fm_sort_machine.c \
+				$(DSRC_M)/fm_args_build.c \
 				$(DSRC_M)/fm_stack_b_start.c
 
 C_SRCS 		= $(DSRC_C)/fc_action_px.c \
@@ -73,7 +74,6 @@ C_SRCS 		= $(DSRC_C)/fc_action_px.c \
 				$(DSRC_C)/fc_action_rx.c \
 				$(DSRC_C)/fc_action_ss.c \
 				$(DSRC_C)/fc_action_sx.c \
-				$(DSRC_C)/fc_args_build.c \
 				$(DSRC_C)/fc_args_check.c \
 				$(DSRC_C)/fc_free.c \
 				$(DSRC_C)/fc_extra_tools.c \
@@ -83,6 +83,8 @@ C_SRCS 		= $(DSRC_C)/fc_action_px.c \
 				$(DSRC_C)/fc_utils.c
 
 B_SRCS		= $(DSRC_B)/fb_checker.c \
+				$(DSRC_B)/fb_args_build_flags.c \
+				$(DSRC_B)/fb_flags_init.c \
 
 #Objects
 M_OBJS		:= $(subst $(DSRC_M),$(DBIN),$(M_SRCS:.c=.o))
