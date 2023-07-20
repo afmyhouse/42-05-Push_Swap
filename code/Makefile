@@ -6,14 +6,14 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:52:10 by antoda-s          #+#    #+#              #
-#    Updated: 2023/07/19 19:11:23 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/07/20 14:34:31 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Executable File Name(s):
 M_NAME = push_swap
 B_NAME = checker
-
+EXTRA_FILE = moves.txt
 #Compiling Variables:
 CC 			= cc
 # without the debug flag -g
@@ -106,15 +106,26 @@ YLW		=	\e[38;5;226m
 RED		=	\e[38;5;196m
 BLU		=	\e[38:5:31m
 WTH		=	\e[0m
+
+RESET			:= \033[0m
+GREEN			=	\e[32m
+CYAN			:= \33[1;36m
+YELLOW			=	\e[033m
+BLUE			=	\e[34m
+WHITE			=	\e[00m
+RED				:= \033[1;31m
+BOLD			:= \033[1;1m
+
 _INFO		=	[$(YLW)INFO$(WTH)]
 _SUCCESS	=	[$(GRN)DONE$(WTH)]
 
 #Rules:
-# This is the GLOBAL target invoked with >make
-all: m
 
 # This is the MANDATORY target invoked with >make m
 m: $(M_NAME)
+
+# This is the GLOBAL target invoked with >make all
+all: m bonus
 
 # This is the BONUS target invoked with >make b
 bonus: $(B_NAME)
@@ -165,6 +176,8 @@ clean: cleanlibft
 	@echo "[$(RED)Cleaning BONUS Objects$(WTH)]"
 	@$(RM) $(B_OBJS)
 	@echo "$(B_OBJS) file removed!!"
+	@$(RM) $(EXTRA_FILE)
+	@echo "$(EXTRA_FILE) file removed!!"
 	@echo "$(_SUCCESS)"
 	@echo
 

@@ -6,13 +6,13 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/19 20:53:41 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/20 14:23:55 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-/// @brief 		STARTS THE PROGRAM
+/// @brief		STARTS THE PROGRAM
 /// @param ac	args count
 /// @param av	args array (expected a string o ints)
 /// @return		SUCCESS - no errors, ERROR - otherwise
@@ -24,9 +24,15 @@ int	main(int ac, char **av)
 
 	f = ft_flags_init(ac - 1, ++av);
 	if (ft_args_build_c(f) == ERROR || !f->arg)
+	{
+		ft_stack_free_f(f);
 		return (0);
+	}
 	if (ft_args_check(f->len, f->arg) == ERROR)
+	{
+		ft_stack_free_f(f);
 		return (ft_error());
+	}
 	h = ft_stack_init(f->len, f->arg);
 	i = check_machine(h, f);
 	ft_stack_free_x(h);
@@ -68,8 +74,8 @@ int	ft_action(t_stack *h, t_flags *f)
 			result = ERROR;
 			break ;
 		}
-		if (f->show_moves)
-			ft_extra_moves(f, line);
+		if (f->show_moves || f->save_moves)
+			ft_extra_moves_show(f, line);
 		ft_browse_stacks(h, f);
 		if (line)
 			ft_free_str(&line);

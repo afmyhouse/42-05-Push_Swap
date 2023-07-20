@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/19 21:13:31 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/20 14:46:58 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ int	ft_args_build_c(t_flags *f)
 	if (f->len > 1)
 		ft_flags_detector(f);
 	if (f->len > 1)
+	{
+		f->any_flag = TRUE;
 		return (SUCCESS);
+	}
 	else if (f->len == 1)
 	{
 		f->any_flag = FALSE;
@@ -46,10 +49,10 @@ int	ft_flags_detector(t_flags *f)
 	f->any_flag = 1;
 	if (f->arg[0][0] == '-')
 	{
-		while (f->arg[0][i])
+		while (f->any_flag && f->arg[0][i])
 		{
 			if (f->arg[0][i] != 's' && f->arg[0][i] != 'c' && \
-			f->arg[0][i] != 'm')
+			f->arg[0][i] != 'm' && f->arg[0][i] != 'r')
 				f->any_flag = 0;
 			i++;
 		}
@@ -57,6 +60,16 @@ int	ft_flags_detector(t_flags *f)
 			ft_flags_parser(f);
 	}
 	return (SUCCESS);
+}
+
+int	ft_flags_wrong(t_flags *f, int i)
+{
+	if (f->arg[0][i] == 's' || f->arg[0][i] == 'c' || \
+	f->arg[0][i] == 'm' || f->arg[0][i] == 'r')
+		ft_printf("Warning! '%c' flag is repeated!\n", f->arg[0][i]);
+	else
+		ft_printf("Warning: '%c' is not a flag!\n", f->arg[0][i]);
+	return (ERROR);
 }
 
 int	ft_flags_parser(t_flags *f)
@@ -72,14 +85,13 @@ int	ft_flags_parser(t_flags *f)
 			f->show_colors = 1;
 		else if (f->arg[0][i] == 'm' && !f->show_moves)
 			f->show_moves = 1;
-		else
+		else if (f->arg[0][i] == 'r' && !f->save_moves)
 		{
-			if (f->arg[0][i] == 's' || 'c' ||'m')
-			 	ft_printf("Warning! Wrong flag combination: '%c' flag is repeated!\n", f->arg[0][i]);
-			else
-				ft_printf("Warning: '%c' is not a flag!\n", f->arg[0][i]);
-			return (ERROR);
+			f->fd = open("moves.txt", O_CREAT | O_WRONLY | O_TRUNC, 0644);
+			f->save_moves = 1;
 		}
+		else
+			return (ft_flags_wrong(f, i));
 		i++;
 	}
 	f->arg++;
@@ -87,13 +99,13 @@ int	ft_flags_parser(t_flags *f)
 	return (SUCCESS);
 }
 
-void	ft_extra_moves(t_flags *f, char *m)
+void	ft_extra_moves_show(t_flags *f, char *m)
 {
 	if (!*m)
 		return ;
-	if (!f->show_colors)
+	if (!f->show_colors && f->show_moves)
 		ft_printf("->%s", m);
-	else
+	else if (f->show_colors && f->show_moves)
 	{
 		if (m[0] == 's' && (m[1] == 'a' || m[1] == 'b' || \
 		m[1] == 's') && m[2] == '\n')
@@ -108,5 +120,7 @@ void	ft_extra_moves(t_flags *f, char *m)
 		else if (m[0] == 'r' && m[1] == 'r' && m[2] == '\n')
 			ft_printf("%s->%s%s", PPL, m, WTH);
 	}
+	if (f->save_moves)
+		write(f->fd, m, ft_strlen(m));
 	return ;
 }

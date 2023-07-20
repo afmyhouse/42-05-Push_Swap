@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/19 18:56:52 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/19 23:24:07 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ t_flags	*ft_flags_init(int ac, char **av)
 	f = malloc(sizeof(t_flags));
 	if (!f)
 		return (NULL);
-	*f = (t_flags){0, 0, 0, 0, ac, av};
+	*f = (t_flags){0, 0, 0, 0, 0, 0, ac, av};
 	return (f);
 }

@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:25:51 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/19 19:19:43 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/20 14:44:31 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,9 @@
 # define YLW "\033[0;33m"
 # define BLU "\033[0;34m"
 # define PPL "\033[0;35m"
+# define CYN "\033[1;36m"
 # define WTH "\033[0m"
-
+# define BOLD "\033[1;1m"
 /* ************************************************************************** */
 ///	STRUCTS
 /* ************************************************************************** */
@@ -108,6 +109,8 @@ typedef struct s_flags
 	int				show_stacks;
 	int				show_moves;
 	int				show_colors;
+	int				save_moves;
+	int				fd;
 	int				any_flag;
 	int				len;
 	char			**arg;
@@ -197,6 +200,6 @@ int		ft_flags_parser(t_flags *f);
 int		ft_args_build_c(t_flags *f);
 int		ft_flags_detector(t_flags *f);
 char	ft_args_build_checker(int ac, char **av);
-void	ft_extra_moves(t_flags *f, char *move);
+void	ft_extra_moves_show(t_flags *f, char *move);
 //int		ft_args_isflag(char c);
 #endif
