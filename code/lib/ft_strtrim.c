@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 00:28:11 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/13 00:02:56 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/20 17:14:34 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	len;
-	char	*p;
 
 	if (!s1 || !set)
 		return (NULL);
@@ -32,6 +31,5 @@ char	*ft_strtrim(char const *s1, char const *set)
 	len = ft_strlen(s1);
 	while (ft_strchr(set, s1[len - 1]))
 		len--;
-	p = ft_substr(s1, 0, len);
-	return (p);
+	return (ft_substr(s1, 0, len));
 }

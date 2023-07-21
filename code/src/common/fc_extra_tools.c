@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:14:51 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/19 18:53:46 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/20 17:54:54 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,32 @@ void	ft_browse_stacks(t_stack *h, t_flags *f)
 		return ;
 	ft_browse_stack(h, f, 'a');
 	ft_browse_stack(h, f, 'b');
+	return ;
+}
+
+void	ft_extra_moves_show(t_flags *f, char *m)
+{
+	if (!*m)
+		return ;
+	if (!f->show_colors && f->show_moves)
+		ft_printf("->%s", m);
+	else if (f->show_colors && f->show_moves)
+	{
+		if (m[0] == 's' && (m[1] == 'a' || m[1] == 'b' || \
+		m[1] == 's') && m[2] == '\n')
+			ft_printf("%s->%s%s", BLU, m, WTH);
+		else if (m[0] == 'p' && (m[1] == 'a' || m[1] == 'b') && m[2] == '\n')
+			ft_printf("%s->%s%s", YLW, m, WTH);
+		else if (m[0] == 'r' && (m[1] == 'a' || m[1] == 'b') && m[2] == '\n')
+			ft_printf("%s->%s%s", GRN, m, WTH);
+		else if (m[0] == 'r' && m[1] == 'r' && (m[2] == 'a' || m[2] == 'b') \
+		&& m[3] == '\n')
+			ft_printf("%s->%s%s", RED, m, WTH);
+		else if (m[0] == 'r' && m[1] == 'r' && (m[2] == '\n' || m[2] == 'r'))
+			ft_printf("%s->%s%s", CYN, m, WTH);
+	}
+	if (f->save_moves)
+		write(f->fd, m, ft_strlen(m));
 	return ;
 }
 

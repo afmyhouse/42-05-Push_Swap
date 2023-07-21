@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 22:45:26 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/19 23:41:35 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/20 17:16:15 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,10 @@ void	ft_stack_free_f(t_flags *f)
 
 	if (!f)
 		return ;
-	if (!f->any_flag)
-	{
-		i = 0;
-		while (f->arg[i])
-			free(f->arg[i++]);
-		free(f->arg);
-	}
+	i = 0;
+	while (f->arg[i])
+		free(f->arg[i++]);
+	free(f->arg);
 	if (f->save_moves)
 		close(f->fd);
 	*f = (t_flags){0, 0, 0, 0, 0, 0, 0, NULL};

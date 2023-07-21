@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:25:51 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/20 14:44:31 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/21 11:56:13 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 /* ************************************************************************** */
 ///	LIBS
 /* ************************************************************************** */
+# include <signal.h>
+# include <sys/types.h>
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -120,7 +122,7 @@ typedef struct s_flags
 ///	FUNCTIONS PROTOTYPES
 /* ************************************************************************** */
 
-char	**ft_args_build(int ac, char **av);
+int		ft_args_build(t_flags *f);
 int		ft_args_check_isvalid(int len, char **array);
 int		ft_args_check_isint(int len, char **array);
 int		ft_args_check_norepeat(int len, char **array);
@@ -197,9 +199,9 @@ t_flags	*ft_flags_init(int ac, char **av);
 void	ft_flags_show(t_flags *f);
 
 int		ft_flags_parser(t_flags *f);
-int		ft_args_build_c(t_flags *f);
 int		ft_flags_detector(t_flags *f);
 char	ft_args_build_checker(int ac, char **av);
 void	ft_extra_moves_show(t_flags *f, char *move);
+int		ft_args_array(t_flags *f, int splits, int size, char **array);
 //int		ft_args_isflag(char c);
 #endif

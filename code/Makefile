@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:52:10 by antoda-s          #+#    #+#              #
-#    Updated: 2023/07/20 14:34:31 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/07/20 17:22:30 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,8 +64,8 @@ M_SRCS 		= $(DSRC_M)/fm_push_swap.c \
 				$(DSRC_M)/fm_move.c \
 				$(DSRC_M)/fm_sort_3.c \
 				$(DSRC_M)/fm_sort_machine.c \
-				$(DSRC_M)/fm_args_build.c \
 				$(DSRC_M)/fm_stack_b_start.c
+				#$(DSRC_M)/fm_args_build.c \
 
 C_SRCS 		= $(DSRC_C)/fc_action_px.c \
 				$(DSRC_C)/fc_action_rr.c \
@@ -74,17 +74,19 @@ C_SRCS 		= $(DSRC_C)/fc_action_px.c \
 				$(DSRC_C)/fc_action_rx.c \
 				$(DSRC_C)/fc_action_ss.c \
 				$(DSRC_C)/fc_action_sx.c \
+				$(DSRC_C)/fc_args_build.c \
 				$(DSRC_C)/fc_args_check.c \
-				$(DSRC_C)/fc_free.c \
 				$(DSRC_C)/fc_extra_tools.c \
+				$(DSRC_C)/fc_flags_init.c \
+				$(DSRC_C)/fc_free.c \
 				$(DSRC_C)/fc_sort_check.c \
 				$(DSRC_C)/fc_stack_init.c \
 				$(DSRC_C)/fc_stack_limits.c \
 				$(DSRC_C)/fc_utils.c
 
 B_SRCS		= $(DSRC_B)/fb_checker.c \
-				$(DSRC_B)/fb_args_build_flags.c \
-				$(DSRC_B)/fb_flags_init.c \
+#				$(DSRC_B)/fb_args_build_flags.c \
+#				$(DSRC_B)/fb_flags_init.c \
 
 #Objects
 M_OBJS		:= $(subst $(DSRC_M),$(DBIN),$(M_SRCS:.c=.o))
@@ -106,15 +108,9 @@ YLW		=	\e[38;5;226m
 RED		=	\e[38;5;196m
 BLU		=	\e[38:5:31m
 WTH		=	\e[0m
-
-RESET			:= \033[0m
-GREEN			=	\e[32m
-CYAN			:= \33[1;36m
-YELLOW			=	\e[033m
-BLUE			=	\e[34m
-WHITE			=	\e[00m
-RED				:= \033[1;31m
-BOLD			:= \033[1;1m
+CYN		:= \33[1;36m
+RESET	:= \033[0m
+BOLD	:= \033[1m
 
 _INFO		=	[$(YLW)INFO$(WTH)]
 _SUCCESS	=	[$(GRN)DONE$(WTH)]
@@ -133,7 +129,7 @@ bonus: $(B_NAME)
 $(M_NAME): $(LIBFT) $(M_OBJS) $(C_OBJS)
 	@echo "$(_INFO)"
 	@$(CC) $(CFLAGS) $(M_OBJS) $(C_OBJS) $(INCLUDES) $(LIBFT) -o $@
-	@echo "[$(BLU)Compiling MANDATORY $(GRN)$(@) $(BLU)file$(WTH)] $(_SUCCESS)"
+	@echo "[$(BLU)Compiling $(BOLD)MANDATORY$(RESET) $(GRN)$(@) $(BLU)file$(WTH)] $(_SUCCESS)"
 	@echo
 
 $(B_NAME): $(LIBFT) $(B_OBJS) $(C_OBJS)

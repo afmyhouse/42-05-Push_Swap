@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/18 00:17:04 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/21 15:44:53 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,26 @@
 int	main(int ac, char **av)
 {
 	t_stack	*h;
-	char	**array;
-	int		len;
-	int		i;
+	t_flags	*f;
 
-	array = ft_args_build(ac - 1, ++av);
-	if (!array)
+	signal(SIGPIPE, SIG_IGN);
+	if (ac == 1)
 		return (0);
-	if (array == (char **)*(av))
-		len = ac - 1;
-	else
-		len = ft_array_len(array);
-	if (ft_args_check(len, array))
-		return (ft_error());
-	h = ft_stack_init(len, array);
-	if (array != av)
+	f = ft_flags_init(ac - 1, ++av);
+	f->any_flag = TRUE;
+	if (ft_args_build(f) == ERROR || !f->arg)
 	{
-		i = 0;
-		while (array[i])
-			free(array[i++]);
-		free(array);
+		ft_stack_free_f(f);
+		return (0);
 	}
+	if (ft_args_check(f->len, f->arg) == ERROR)
+	{
+		ft_stack_free_f(f);
+		return (ft_error());
+	}
+	h = ft_stack_init(f->len, f->arg);
 	sort_machine(h);
 	ft_stack_free_x(h);
-	return (SUCCESS);
+	ft_stack_free_f(f);
+	return (0);
 }
