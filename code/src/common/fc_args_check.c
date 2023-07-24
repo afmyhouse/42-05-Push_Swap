@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:58:00 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/19 23:59:28 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/24 15:06:11 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	ft_args_check_isvalid(int len, char **array)
 {
 	int		i;
 	int		j;
-	char	c;
+	char	cur;
+	char	next;
 
 	i = 0;
 	while (i < len)
@@ -28,10 +29,13 @@ int	ft_args_check_isvalid(int len, char **array)
 		j = 0;
 		while (array[i][j])
 		{
-			c = array[i][j];
-			if (!ft_isdigit(c) && !ft_isspace(c) && !ft_issign(c))
+			cur = array[i][j];
+			next = array[i][j + 1];
+			if (!ft_isdigit(cur) && !ft_isspace(cur) && !ft_issign(cur))
 				return (ERROR);
-			if (ft_issign(c) && !ft_isdigit(array[i][j + 1]))
+			if ((ft_issign(cur)) && !ft_isdigit(next))
+				return (ERROR);
+			if ((ft_isdigit(cur)) && (next && !ft_isdigit(next)))
 				return (ERROR);
 			j++;
 		}
@@ -111,12 +115,20 @@ int	ft_args_check_isint(int len, char **array)
 int	ft_args_check(int len, char **array)
 {
 	if (ft_args_check_isvalid(len, array))
+	{
 		return (ERROR);
+	}
 	if (ft_args_check_novoid(len, array))
+	{
 		return (ERROR);
+	}
 	if (ft_args_check_norepeat(len, array))
+	{
 		return (ERROR);
+	}
 	if (ft_args_check_isint(len, array))
+	{
 		return (ERROR);
+	}
 	return (SUCCESS);
 }
