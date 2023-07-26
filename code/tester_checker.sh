@@ -1,4 +1,4 @@
-CINCO="386 -384 -228 371 15"; ./push_swap $CINCO | ./checker $CINCO |cat -p
+CINCO="386 -384 -228 371 15"; ./push_swap $CINCO | ./checker $CINCO
 DEZ="386 -384 -228 371 15 -175 312 -108 61 -236"; ./push_swap $DEZ | ./checker $DEZ
 VINTE="386 -384 -228 371 15 -175 312 -108 61 -236 -454 -151 115 -352 -200 -53 -477 -36 -128 424"; ./push_swap $VINTE | ./checker $VINTE
 TRINTA="456 -435 -324 226 -364 -53 -8 118 -390 126 -491 -251 222 353 487 -359 -356 -277 -199 -141 -10 -265 147 -429 392 -114 -436 -178 -168 430"; ./push_swap $TRINTA | ./checker $TRINTA
