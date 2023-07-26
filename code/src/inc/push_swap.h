@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:25:51 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/21 11:56:13 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/26 23:52:21 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@
 # endif
 # ifndef _DEBUG_MALLOC_
 #  define _DEBUG_MALLOC_ 0
+# endif
+# ifndef _CHUNK_
+#  define _CHUNK_ 100
 # endif
 /* ************************************************************************** */
 ///	CONSTANTS
@@ -85,6 +88,7 @@
 typedef struct s_elem
 {
 	int				data;
+	int				i;
 	int				cost_a;
 	int				cost_b;
 	char			move_a;
@@ -103,7 +107,7 @@ typedef struct s_stack
 	int				size_b;
 	int				min_b;
 	int				max_b;
-	int				moves;
+	int				chunk;
 }					t_stack;
 
 typedef struct s_flags
@@ -148,6 +152,7 @@ int		ft_max_int(int a, int b);
 int		ft_min_int(int a, int b);
 void	ft_move_to_top(t_stack *h, t_elem *best);
 void	ft_move_both(t_stack *h, t_elem *best);
+void	ft_move_single(t_stack *h, t_elem *best);
 void	ft_px_dst(t_elem **top_src, t_elem **top_dst);
 void	ft_px_source(t_elem **top_src);
 void	ft_px_stack(t_elem **top_src, t_elem **top_dst);
@@ -203,5 +208,8 @@ int		ft_flags_detector(t_flags *f);
 char	ft_args_build_checker(int ac, char **av);
 void	ft_extra_moves_show(t_flags *f, char *move);
 int		ft_args_array(t_flags *f, int splits, int size, char **array);
-//int		ft_args_isflag(char c);
+void	sort_chunk(t_stack *h, t_flags *f);
+void	ft_sort_index_a(t_stack *h, int j, int k);
+void	ft_browse_stack_print_index(t_stack *h, char stack, char *color);
+void	ft_free_structs(t_stack *h, t_flags *f);
 #endif

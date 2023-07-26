@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 22:45:26 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/20 17:16:15 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/26 18:51:36 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_stack_free_a(t_stack *h)
 	while (node)
 	{
 		tmp = node->n;
-		*node = (t_elem){0, 0, 0, 0, 0, NULL, NULL};
+		*node = (t_elem){0, 0, 0, 0, 0, 0, NULL, NULL};
 		free(node);
 		node = tmp;
 	}
@@ -51,7 +51,7 @@ void	ft_stack_free_b(t_stack *h)
 	while (node)
 	{
 		tmp = node->n;
-		*node = (t_elem){0, 0, 0, 0, 0, NULL, NULL};
+		*node = (t_elem){0, 0, 0, 0, 0, 0, NULL, NULL};
 		free(node);
 		node = tmp;
 	}
@@ -95,5 +95,12 @@ void	ft_stack_free_f(t_flags *f)
 		close(f->fd);
 	*f = (t_flags){0, 0, 0, 0, 0, 0, 0, NULL};
 	free(f);
+	return ;
+}
+
+void	ft_free_structs(t_stack *h, t_flags *f)
+{
+	ft_stack_free_x(h);
+	ft_stack_free_f(f);
 	return ;
 }

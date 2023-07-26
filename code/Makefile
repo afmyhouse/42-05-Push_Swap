@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:52:10 by antoda-s          #+#    #+#              #
-#    Updated: 2023/07/20 17:22:30 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/07/25 11:53:00 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,8 +64,8 @@ M_SRCS 		= $(DSRC_M)/fm_push_swap.c \
 				$(DSRC_M)/fm_move.c \
 				$(DSRC_M)/fm_sort_3.c \
 				$(DSRC_M)/fm_sort_machine.c \
-				$(DSRC_M)/fm_stack_b_start.c
-				#$(DSRC_M)/fm_args_build.c \
+				$(DSRC_M)/fm_stack_b_start.c \
+				$(DSRC_M)/fm_sort_chunk.c
 
 C_SRCS 		= $(DSRC_C)/fc_action_px.c \
 				$(DSRC_C)/fc_action_rr.c \
@@ -77,6 +77,7 @@ C_SRCS 		= $(DSRC_C)/fc_action_px.c \
 				$(DSRC_C)/fc_args_build.c \
 				$(DSRC_C)/fc_args_check.c \
 				$(DSRC_C)/fc_extra_tools.c \
+				$(DSRC_C)/fc_extra_tools2.c \
 				$(DSRC_C)/fc_flags_init.c \
 				$(DSRC_C)/fc_free.c \
 				$(DSRC_C)/fc_sort_check.c \

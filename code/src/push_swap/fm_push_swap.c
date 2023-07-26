@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/21 15:44:53 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/26 23:50:26 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ int	main(int ac, char **av)
 		return (ft_error());
 	}
 	h = ft_stack_init(f->len, f->arg);
-	sort_machine(h);
-	ft_stack_free_x(h);
-	ft_stack_free_f(f);
+	if (h->size_a >= 100)
+		sort_chunk(h, f);
+	else
+		sort_machine(h);
+	ft_free_structs(h, f);
 	return (0);
 }

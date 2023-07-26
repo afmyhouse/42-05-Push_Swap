@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/15 15:27:31 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/25 00:34:44 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ t_elem	*ft_stack_add_first(t_stack *h, int data)
 	h->ta = node;
 	node->p = h->ta;
 	node->n = h->ta;
+	node->i = 0;
 	node->cost_a = 0;
 	node->cost_b = 0;
 	node->data = data;
@@ -81,6 +82,7 @@ t_elem	*ft_stack_add_next(t_elem *node, int data)
 		return (NULL);
 	node->n->p = node;
 	node = node->n;
+	node->i = 0;
 	node->cost_a = 0;
 	node->cost_b = 0;
 	node->data = data;
