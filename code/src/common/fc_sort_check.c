@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_check.c                                    :+:      :+:    :+:   */
+/*   sort_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -18,7 +18,7 @@
 ///					MIN and MAX values of the STACKS A and B,
 ///					SIZE of the STACKS A and B, and quantity of moves
 /// @return			TRUE if sorted, FASLE if not
-int	ft_sort_check(t_stack *h)
+int	sort_check(t_stack *h)
 {
 	t_elem	*tmp;
 

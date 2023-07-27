@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:46:56 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/13 11:52:05 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/27 22:02:49 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@
 ///					SIZE of the STACKS A and B, and quantity of moves
 void	sort_machine(t_stack *h)
 {
-	if (ft_sort_check(h))
+	if (sort_check(h))
 		return ;
 	if (h->size_a <= 3)
-		ft_sort_3(h, 'a');
+		sort_3_x(h, 'a');
 	else
 	{
 		ft_stack_b_start(h);
-		ft_sort_to_b(h);
-		ft_sort_3(h, 'a');
-		ft_sort_to_a(h);
-		ft_sort_final(h);
+		sort_to_x(h, 'b');
+		sort_3_x(h, 'a');
+		sort_to_x(h, 'a');
+		sort_final(h);
 	}
 	return ;
 }
@@ -39,7 +39,7 @@ void	sort_machine(t_stack *h)
 ///					POINTERS to top of the STACKS A and B
 ///					MIN and MAX values of the STACKS A and B,
 ///					SIZE of the STACKS A and B, and quantity of moves
-void	ft_sort_final(t_stack *h)
+void	sort_final(t_stack *h)
 {
 	t_elem	*cur;
 	int		cost;
@@ -56,47 +56,60 @@ void	ft_sort_final(t_stack *h)
 	else if (cost > (mid - h->size_a % 2))
 	{
 		while (h->ta->data != h->min_a)
-			ft_rrx(h, 'a', _PRINT);
+			action_rrx(h, 'a', _PRINT);
 	}
 	else
 	{
 		while (h->ta->data != h->min_a)
-			ft_rx(h, 'a', _PRINT);
+			action_rx(h, 'a', _PRINT);
 	}
 	return ;
 }
 
-/// @brief 			Find the best node to push to stack A
+/// @brief 			Find the best node to push to stack A or B
 /// @param h		Information regarding :
-void	ft_sort_to_a(t_stack *h)
-{
-	t_elem	*best;
-
-	while (h->size_b)
-	{
-		best = ft_cost_get(h, 'b');
-		if (best->cost_a || best->cost_b)
-			ft_move_to_top(h, best);
-		ft_px(h, 'a', _PRINT);
-	}
-	return ;
-}
-
-/// @brief 			Find the best node to push to stack B
-/// @param h	Information regarding :
 ///					POINTERS to top of the STACKS A and B
 ///					MIN and MAX values of the STACKS A and B,
 ///					SIZE of the STACKS A and B, and quantity of moves
-void	ft_sort_to_b(t_stack *h)
+/// @param stack	Stack to push to
+void	sort_to_x(t_stack *h, char stack)
 {
 	t_elem	*best;
 
-	while (h->size_a > 3)
+	if (stack == 'a')
 	{
-		best = ft_cost_get(h, 'a');
-		if (best->cost_a || best->cost_b)
-			ft_move_to_top(h, best);
-		ft_px(h, 'b', _PRINT);
+		while (h->size_b)
+		{
+			best = cost_get(h, 'b');
+			if (best->cost_a || best->cost_b)
+				move_to_top(h, best);
+			action_px(h, 'a', _PRINT);
+		}
+	}
+	else if (stack == 'b')
+	{
+		while (h->size_a > 3)
+		{
+			best = cost_get(h, 'a');
+			if (best->cost_a || best->cost_b)
+				move_to_top(h, best);
+			action_px(h, 'b', _PRINT);
+		}
 	}
 	return ;
+}
+
+/// @brief 			Inializes B stack with the up to 3 elements of A stack
+/// @param h		Information regarding :
+///					POINTERS to top of the STACKS A and B
+///					MIN and MAX values of the STACKS A and B,
+///					SIZE of the STACKS A and B, and quantity of moves
+void	ft_stack_b_start(t_stack *h)
+{
+	int	i;
+
+	i = 3;
+	while (h->size_a > 3 && i--)
+		action_px(h, 'b', _PRINT);
+	sort_3_x(h, 'b');
 }

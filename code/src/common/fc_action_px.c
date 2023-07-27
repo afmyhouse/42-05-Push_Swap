@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_action_px.c                                     :+:      :+:    :+:   */
+/*   fc_action_px.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 22:43:43 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/12 15:33:50 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/27 18:21:07 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /// @brief 			Push TOP element to stack ( A | B)
 /// @param top_src	Pointer to the stack to pull from
 /// @param top_dst	Pointer to the stack to push to
-void	ft_px_dst(t_elem **top_src, t_elem **top_dst)
+void	action_px_dst(t_elem **top_src, t_elem **top_dst)
 {
 	if (!*top_dst)
 	{
@@ -37,7 +37,7 @@ void	ft_px_dst(t_elem **top_src, t_elem **top_dst)
 /// @brief 			Pull TOP element from stack ( A | B)
 /// @param top_src	Pointer to the stack to pull from
 /// @param top_dst	Pointer to the stack to push to
-void	ft_px_source(t_elem **top_src)
+void	action_px_source(t_elem **top_src)
 {
 	if ((*top_src)->n == (*top_src))
 		(*top_src)->n = NULL;
@@ -52,13 +52,13 @@ void	ft_px_source(t_elem **top_src)
 /// @brief 			PUSH the top element of src stack to dst stack
 /// @param top_src	Pointer to the top of the src stack
 /// @param top_dst	Pointer to the top of the dst stack
-void	ft_px_stack(t_elem **top_src, t_elem **top_dst)
+void	action_px_stack(t_elem **top_src, t_elem **top_dst)
 {
 	t_elem	*new_top_src;
 
-	ft_px_source(&(*top_src));
+	action_px_source(&(*top_src));
 	new_top_src = (*top_src)->n;
-	ft_px_dst(&(*top_src), &(*top_dst));
+	action_px_dst(&(*top_src), &(*top_dst));
 	*top_src = new_top_src;
 	return ;
 }
@@ -70,7 +70,7 @@ void	ft_px_stack(t_elem **top_src, t_elem **top_dst)
 ///					SIZE of the STACKS A and B, and quantity of moves
 /// @param stack	stack to push to ('A' | 'B')
 /// @return			1 if success, 0 if fail
-int	ft_px(t_stack *h, char stack, int print)
+int	action_px(t_stack *h, char stack, int print)
 {
 	t_stack	push;
 
@@ -79,7 +79,7 @@ int	ft_px(t_stack *h, char stack, int print)
 		return (ERROR);
 	if (stack == 'a' && push.tb != NULL)
 	{
-		ft_px_stack(&push.tb, &push.ta);
+		action_px_stack(&push.tb, &push.ta);
 		push.size_a++;
 		push.size_b--;
 		if (print)
@@ -87,7 +87,7 @@ int	ft_px(t_stack *h, char stack, int print)
 	}
 	else if (stack == 'b' && push.ta != NULL)
 	{
-		ft_px_stack(&push.ta, &push.tb);
+		action_px_stack(&push.ta, &push.tb);
 		push.size_a--;
 		push.size_b++;
 		if (print)

@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:52:10 by antoda-s          #+#    #+#              #
-#    Updated: 2023/07/27 22:03:13 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/07/27 19:34:04 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,11 +52,15 @@ M_SRCS 		= $(DSRC_M)/fm_push_swap.c \
 				$(DSRC_M)/fm_cost_optimizer.c \
 				$(DSRC_M)/fm_move.c \
 				$(DSRC_M)/fm_sort_3.c \
-				$(DSRC_M)/fm_sort_machine.c \
 				$(DSRC_M)/fm_sort_chunk.c
-
+				$(DSRC_M)/fm_sort_machine.c \
+				$(DSRC_M)/fm_stack_b_start.c
 C_SRCS 		= $(DSRC_C)/fc_action_px.c \
+				$(DSRC_C)/fc_action_rr.c \
+				$(DSRC_C)/fc_action_rrr.c \
+				$(DSRC_C)/fc_action_rrx.c \
 				$(DSRC_C)/fc_action_rx.c \
+				$(DSRC_C)/fc_action_ss.c \
 				$(DSRC_C)/fc_action_sx.c \
 				$(DSRC_C)/fc_args_build.c \
 				$(DSRC_C)/fc_args_check.c \
@@ -66,8 +70,7 @@ C_SRCS 		= $(DSRC_C)/fc_action_px.c \
 				$(DSRC_C)/fc_stack_init.c \
 				$(DSRC_C)/fc_stack_limits.c \
 				$(DSRC_C)/fc_utils.c
-
-B_SRCS		= $(DSRC_B)/fb_checker.c
+B_SRCS		= $(DSRC_B)/fb_checker.c \
 
 #Objects
 M_OBJS		:= $(subst $(DSRC_M),$(DBIN),$(M_SRCS:.c=.o))

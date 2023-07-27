@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:25:51 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/26 23:52:21 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/27 22:16:10 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,90 +126,143 @@ typedef struct s_flags
 ///	FUNCTIONS PROTOTYPES
 /* ************************************************************************** */
 
-int		ft_args_build(t_flags *f);
-int		ft_args_check_isvalid(int len, char **array);
-int		ft_args_check_isint(int len, char **array);
-int		ft_args_check_norepeat(int len, char **array);
-int		ft_args_check_novoid(int len, char **array);
-int		ft_args_check(int len, char **array);
-int		ft_array_len(char **array);
-void	ft_browse_stack(t_stack *h, t_flags *f, char stack);
-void	ft_browse_stacks(t_stack *h, t_flags *f);
-t_elem	*ft_cost_best(t_elem *cur, int size, char stack_src);
-int		ft_cost_dest(t_stack *h, char stack_src);
-int		ft_cost_eval(t_stack *h, char stack_src);
-t_elem	*ft_cost_get(t_stack *h, char stack_src);
-int		ft_cost_min(t_elem *cur);
-int		ft_cost_optimizer(t_stack *h, t_elem *node);
-int		ft_cost_raw(t_stack *h, t_elem *node);
-int		ft_cost_rr(t_elem *node);
-int		ft_cost_rrr(t_stack *h, t_elem *node);
-int		ft_cost_source(t_stack *h, char stack_src);
-int		ft_cost_to_pa(t_stack *h, t_elem *node);
-int		ft_cost_to_pb(t_stack *h, t_elem *node);
-int		ft_error(void);
-int		ft_max_int(int a, int b);
-int		ft_min_int(int a, int b);
-void	ft_move_to_top(t_stack *h, t_elem *best);
-void	ft_move_both(t_stack *h, t_elem *best);
-void	ft_move_single(t_stack *h, t_elem *best);
-void	ft_px_dst(t_elem **top_src, t_elem **top_dst);
-void	ft_px_source(t_elem **top_src);
-void	ft_px_stack(t_elem **top_src, t_elem **top_dst);
-int		ft_px(t_stack *h, char stack, int print);
-int		ft_rr(t_stack *h, int print);
-int		ft_rrr(t_stack *h, int print);
-int		ft_rrx(t_stack *h, char stack, int print);
-int		ft_rx(t_stack *h, char stack, int print);
-void	ft_sort_3(t_stack *h, char stack);
-void	ft_sort_3a(t_stack *h);
-void	ft_sort_3b(t_stack *h);
-int		ft_sort_check(t_stack *h);
-void	ft_sort_final(t_stack *h);
-void	sort_machine(t_stack *h);
-void	ft_sort_to_a(t_stack *h);
-void	ft_sort_to_b(t_stack *h);
-int		ft_ss(t_stack *h, int print);
-int		ft_sx(t_stack *h, char stack, int print);
-void	ft_sx_stack(t_elem **swap_top);
-t_elem	*ft_stack_add_first(t_stack *h, int data);
-t_elem	*ft_stack_add_next(t_elem *stack, int data);
-void	ft_stack_b_start(t_stack *h);
-void	ft_stack_init_status(t_stack *h);
-t_stack	*ft_stack_init(int size, char **array);
-void	ft_stack_limits_chk(t_stack *h, char stack);
-void	ft_stack_limits_updt(t_elem *node, int *max, int *min);
-
-///int		main(int ac, char **av);
-
 /* ************************************************************************** */
-///	CHECKER SPECIFIC FUNCTIONS
+/*                                                                            */
+/*	COMMON FUNCTIONS PROTOTYPES                                               */
+/*                                                                            */
 /* ************************************************************************** */
-int		check_mover(t_stack *h, char *m);
-int		check_machine(t_stack *h, t_flags *f);
-void	ft_stack_free(t_stack *h);
+///	FILE ; fc_action_px.c
+/* ************************************************************************** */
+void	action_px_dst(t_elem **top_src, t_elem **top_dst);
+void	action_px_source(t_elem **top_src);
+void	action_px_stack(t_elem **top_src, t_elem **top_dst);
+int		action_px(t_stack *h, char stack, int print);
+/* ************************************************************************** */
+///	FILE ; fc_action_rx.c
+/* ************************************************************************** */
+int		action_rr(t_stack *h, int print);
+int		action_rrr(t_stack *h, int print);
+int		action_rrx(t_stack *h, char stack, int print);
+int		action_rx(t_stack *h, char stack, int print);
+/* ************************************************************************** */
+///	FILE ; fc_action_sx.c
+/* ************************************************************************** */
+int		action_ss(t_stack *h, int print);
+int		action_sx(t_stack *h, char stack, int print);
+void	action_sx_stack(t_elem **swap_top);
+/* ************************************************************************** */
+///	FILE ; fc_args_build.c
+/* ************************************************************************** */
+int		args_build(t_flags *f);
+int		ft_args_array(t_flags *f, int splits, int size, char **array);
+int		flags_detector(t_flags *f);
+int		flags_parser(t_flags *f);
+int		ft_flags_error(t_flags *f, int i);
+/* ************************************************************************** */
+///	FILE ; fc_args_check.c
+/* ************************************************************************** */
+int		args_check_isvalid(int len, char **array);
+int		args_check_isint(int len, char **array);
+int		args_check_norepeat(int len, char **array);
+int		args_check_novoid(int len, char **array);
+int		args_check(int len, char **array);
+/* ************************************************************************** */
+///	FILE ; fc_extra_tools.c
+/* ************************************************************************** */
+void	extra_browse_stack_print(t_elem *t, t_elem *b, char stack, char *color);
+void	extra_browse_stack(t_stack *h, t_flags *f, char stack);
+void	extra_browse_stacks(t_stack *h, t_flags *f);
+void	extra_moves_show(t_flags *f, char *move);
+/* ************************************************************************** */
+///	FILE ; fc_free.c
+/* ************************************************************************** */
 void	ft_stack_free_a(t_stack *h);
 void	ft_stack_free_b(t_stack *h);
 void	ft_stack_free_x(t_stack *h);
 void	ft_stack_free_f(t_flags *f);
-//int		ft_checker_result(int result);
-int		ft_checker_result(int result, int fcolor);
-int		ft_action(t_stack *h, t_flags *f);
+void	ft_free_structs(t_stack *h, t_flags *f);
+/* ************************************************************************** */
+///	FILE ; fc_sort_check.c
+/* ************************************************************************** */
+int		sort_check(t_stack *h);
+/* ************************************************************************** */
+///	FILE ; fc_stack_init.c
+/* ************************************************************************** */
+t_stack	*ft_stack_init(int size, char **array);
+t_elem	*ft_stack_add_first(t_stack *h, int data);
+t_elem	*ft_stack_add_next(t_elem *stack, int data);
+void	ft_stack_init_status(t_stack *h);
+t_flags	*flags_init(int ac, char **av);
+/* ************************************************************************** */
+///	FILE ; fc_stack_limits.c
+/* ************************************************************************** */
+void	ft_stack_limits_updt(t_elem *node, int *max, int *min);
+void	ft_stack_limits_chk(t_stack *h, char stack);
+/* ************************************************************************** */
+///	FILE ; fc_utils.c
+/* ************************************************************************** */
+int		ft_error(void);
 char	*ps_gnl(void);
 /* ************************************************************************** */
-///	CHECKER SPECIFIC FUNCTIONS
+///	FILE ; fm_cost_action.c
 /* ************************************************************************** */
-void	ft_pause_key_nl(void);
-t_flags	*ft_flags_init(int ac, char **av);
-void	ft_flags_show(t_flags *f);
-
-int		ft_flags_parser(t_flags *f);
-int		ft_flags_detector(t_flags *f);
-char	ft_args_build_checker(int ac, char **av);
-void	ft_extra_moves_show(t_flags *f, char *move);
-int		ft_args_array(t_flags *f, int splits, int size, char **array);
+int		cost_raw(t_stack *h, t_elem *node);
+int		cost_rr(t_elem *node);
+int		cost_rrr(t_stack *h, t_elem *node);
+int		cost_to_pa(t_stack *h, t_elem *node);
+int		cost_to_pb(t_stack *h, t_elem *node);
+/* ************************************************************************** */
+///	FILE ; fm_cost_analytics.c
+/* ************************************************************************** */
+int		cost_source(t_stack *h, char stack_src);
+int		cost_dest(t_stack *h, char stack_src);
+int		cost_eval(t_stack *h, char stack_src);
+t_elem	*cost_best(t_elem *cur, int size, char stack_src);
+t_elem	*cost_get(t_stack *h, char stack_src);
+/* ************************************************************************** */
+///	FILE ; fm_cost_optimizer.c
+/* ************************************************************************** */
+int		cost_optimizer(t_stack *h, t_elem *node);
+int		cost_min(t_elem *cur);
+int		ft_max_int(int a, int b);
+int		ft_min_int(int a, int b);
+/* ************************************************************************** */
+///	FILE ; fm_move.c
+/* ************************************************************************** */
+void	move_both(t_stack *h, t_elem *best);
+void	move_single(t_stack *h, t_elem *best);
+void	move_to_top(t_stack *h, t_elem *best);
+/* ************************************************************************** */
+///	FILE ; fm_sort_3.c
+/* ************************************************************************** */
+void	sort_3_x(t_stack *h, char stack);
+void	sort_3_a(t_stack *h);
+void	sort_3_b(t_stack *h);
+/* ************************************************************************** */
+///	FILE ; fm_sort_chunk.c
+/* ************************************************************************** */
+void	sort_chunk_index_a(t_stack *h, int j, int k);
+void	sort_chunk_index_2b2(t_stack *h, const int lowest);
+int		sort_chunk_index_2b1(t_stack *h, int j, const int i, int lowest);
+void	sort_chunk_index_2b(t_stack *h, t_flags *f);
 void	sort_chunk(t_stack *h, t_flags *f);
-void	ft_sort_index_a(t_stack *h, int j, int k);
-void	ft_browse_stack_print_index(t_stack *h, char stack, char *color);
-void	ft_free_structs(t_stack *h, t_flags *f);
+/* ************************************************************************** */
+///	FILE ; fm_sort_machine.c
+/* ************************************************************************** */
+void	sort_machine(t_stack *h);
+void	sort_final(t_stack *h);
+void	sort_to_x(t_stack *h, char stack);
+void	ft_stack_b_start(t_stack *h);
+/* ************************************************************************** */
+///	FILE ; fb_push_swap.c
+/* ************************************************************************** */
+int		main(int ac, char **av);
+/* ************************************************************************** */
+///	FILE ; fb_checker.c
+/* ************************************************************************** */
+int		main(int ac, char **av);
+int		checker_machine(t_stack *h, t_flags *f);
+int		checker_get_move(t_stack *h, t_flags *f);
+int		checker_mover(t_stack *h, char *m);
+int		checker_result(int result, int fcolor);
 #endif

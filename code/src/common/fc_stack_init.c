@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/25 00:34:44 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/27 20:06:25 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,15 +102,17 @@ void	ft_stack_init_status(t_stack *h)
 	return ;
 }
 
-/// @brief 			Find the length of the integers(ASCII) array
-/// @param array	Pointer to the array
-/// @return			Length of the array
-int	ft_array_len(char **array)
+/// @brief 			Generates a list of elements from an array of arguments
+/// @param array	Arguments
+/// @param ac		Number of arguments
+/// @return			Pointer to the stack
+t_flags	*flags_init(int ac, char **av)
 {
-	int	i;
+	t_flags	*f;
 
-	i = 0;
-	while (array[i])
-		i++;
-	return (i);
+	f = malloc(sizeof(t_flags));
+	if (!f)
+		return (NULL);
+	*f = (t_flags){0, 0, 0, 0, 0, 0, ac, av};
+	return (f);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_action_sx.c                                     :+:      :+:    :+:   */
+/*   fc_action_sx.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 22:51:13 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/12 15:48:24 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/27 19:50:09 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /// @brief 			SWAP the top two elements of the stack
 /// @param swap_top	Pointer to the stack
-void	ft_sx_stack(t_elem **swap_top)
+void	action_sx_stack(t_elem **swap_top)
 {
 	(*swap_top)->p->n = (*swap_top)->n;
 	(*swap_top)->n->p = (*swap_top)->p;
@@ -32,7 +32,7 @@ void	ft_sx_stack(t_elem **swap_top)
 ///					MIN and MAX values of the STACKS A and B,
 ///					SIZE of the STACKS A and B, and quantity of moves
 /// @param stack	stack to swap
-int	ft_sx(t_stack *h, char stack, int print)
+int	action_sx(t_stack *h, char stack, int print)
 {
 	t_stack	swap;
 
@@ -43,17 +43,31 @@ int	ft_sx(t_stack *h, char stack, int print)
 	{
 		if (stack == 'a' && swap.ta != NULL && swap.size_a > 1)
 		{
-			ft_sx_stack(&swap.ta);
+			action_sx_stack(&swap.ta);
 			if (print)
 				write(1, "sa\n", 3);
 		}
 		if (stack == 'b' && swap.tb != NULL && swap.size_b > 1)
 		{
-			ft_sx_stack(&swap.tb);
+			action_sx_stack(&swap.tb);
 			if (print)
 				write(1, "sb\n", 3);
 		}
 		*h = swap;
 		return (SUCCESS);
 	}
+}
+
+/// @brief			SWAP the top two elements of the stack A and B
+/// @param h		Information regarding :
+///					POINTERS to top of the STACKS A and B
+///					MIN and MAX values of the STACKS A and B,
+///					SIZE of the STACKS A and B, and quantity of moves
+int	action_ss(t_stack *h, int print)
+{
+	action_sx(h, 'a', _NOPRINT);
+	action_sx(h, 'b', _NOPRINT);
+	if (print)
+		write(1, "ss\n", 3);
+	return (1);
 }

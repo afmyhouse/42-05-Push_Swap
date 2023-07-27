@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_to_top.c                                   :+:      :+:    :+:   */
+/*   fm_move.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:28:49 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/12 16:45:09 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/27 19:16:32 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 ///					MIN and MAX values of the STACKS A and B,
 ///					SIZE of the STACKS A and B, and quantity of moves
 /// @param best		Pointer to the best element
-void	ft_move_both(t_stack *h, t_elem *best)
+void	move_both(t_stack *h, t_elem *best)
 {
 	while (best->cost_a && best->cost_b)
 	{
 		if (best->move_a == 'F')
-			ft_rr(h, _PRINT);
+			action_rr(h, _PRINT);
 		else if (best->move_a == 'R')
-			ft_rrr(h, _PRINT);
+			action_rrr(h, _PRINT);
 		best->cost_a--;
 		best->cost_b--;
 	}
@@ -37,27 +37,27 @@ void	ft_move_both(t_stack *h, t_elem *best)
 ///					MIN and MAX values of the STACKS A and B,
 ///					SIZE of the STACKS A and B, and quantity of moves
 /// @param best		Pointer to the best element
-void	ft_move_single(t_stack *h, t_elem *best)
+void	move_single(t_stack *h, t_elem *best)
 {
 	while (best->cost_a && best->move_a == 'F')
 	{
 		best->cost_a--;
-		ft_rx(h, 'a', _PRINT);
+		action_rx(h, 'a', _PRINT);
 	}
 	while (best->cost_a && best->move_a == 'R')
 	{
 		best->cost_a--;
-		ft_rrx(h, 'a', _PRINT);
+		action_rrx(h, 'a', _PRINT);
 	}
 	while (best->cost_b && best->move_b == 'F')
 	{
 		best->cost_b--;
-		ft_rx(h, 'b', _PRINT);
+		action_rx(h, 'b', _PRINT);
 	}
 	while (best->cost_b && best->move_b == 'R')
 	{
 		best->cost_b--;
-		ft_rrx(h, 'b', _PRINT);
+		action_rrx(h, 'b', _PRINT);
 	}
 	return ;
 }
@@ -68,11 +68,11 @@ void	ft_move_single(t_stack *h, t_elem *best)
 ///					MIN and MAX values of the STACKS A and B,
 ///					SIZE of the STACKS A and B, and quantity of moves
 /// @param best 	Pointer to the best element
-void	ft_move_to_top(t_stack *h, t_elem *best)
+void	move_to_top(t_stack *h, t_elem *best)
 {
 	if (best->move_a == best->move_b)
-		ft_move_both(h, best);
+		move_both(h, best);
 	if (best->cost_a || best->cost_b)
-		ft_move_single(h, best);
+		move_single(h, best);
 	return ;
 }

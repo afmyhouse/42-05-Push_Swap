@@ -6,13 +6,18 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:14:51 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/24 17:35:22 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/27 22:16:10 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void	ft_browse_stack_print(t_elem *t, t_elem *b, char stack, char *color)
+/// @brief 			Display the stack content
+/// @param t		Pointer to the top of the stack
+/// @param b		Pointer to the bottom of the stack
+/// @param stack	Stack to display
+/// @param color	Color to display the stack
+void	extra_browse_stack_print(t_elem *t, t_elem *b, char stack, char *color)
 {
 	ft_printf("%s%c -> %s", color, stack);
 	while (t != b && t)
@@ -32,7 +37,7 @@ void	ft_browse_stack_print(t_elem *t, t_elem *b, char stack, char *color)
 ///					MIN and MAX values of the STACKS A and B,
 ///					SIZE of the STACKS A and B, and quantity of moves
 /// @param stack	Stack to display
-void	ft_browse_stack(t_stack *h, t_flags *f, char stack)
+void	extra_browse_stack(t_stack *h, t_flags *f, char stack)
 {
 	char	*color;
 
@@ -44,9 +49,9 @@ void	ft_browse_stack(t_stack *h, t_flags *f, char stack)
 	else if (f->show_colors && stack == 'b')
 		color = GRN;
 	if (stack == 'a' && h->ta)
-		ft_browse_stack_print(h->ta, h->ta->p, stack, color);
+		extra_browse_stack_print(h->ta, h->ta->p, stack, color);
 	else if (stack == 'b' && h->tb)
-		ft_browse_stack_print(h->tb, h->tb->p, stack, color);
+		extra_browse_stack_print(h->tb, h->tb->p, stack, color);
 	else if (stack == 'a' && !h->ta)
 		ft_printf("%s%c -> stack is empty, %s\n", color, stack, WTH);
 	else if (stack == 'b' && !h->tb)
@@ -59,16 +64,23 @@ void	ft_browse_stack(t_stack *h, t_flags *f, char stack)
 ///					POINTERS to top of the STACKS A and B
 ///					MIN and MAX values of the STACKS A and B,
 ///					SIZE of the STACKS A and B, and quantity of moves
-void	ft_browse_stacks(t_stack *h, t_flags *f)
+void	extra_browse_stacks(t_stack *h, t_flags *f)
 {
 	if (!f->show_stacks)
 		return ;
-	ft_browse_stack(h, f, 'a');
-	ft_browse_stack(h, f, 'b');
+	extra_browse_stack(h, f, 'a');
+	extra_browse_stack(h, f, 'b');
 	return ;
 }
 
-void	ft_extra_moves_show(t_flags *f, char *m)
+/// @brief 			Displays the moves
+/// @param f		Information regarding flags :
+///					-c show_colors
+///					-m show_moves
+///					-l log moves to file
+///					-s show stack
+/// @param m		Move to display
+void	extra_moves_show(t_flags *f, char *m)
 {
 	if (!*m)
 		return ;
@@ -91,18 +103,5 @@ void	ft_extra_moves_show(t_flags *f, char *m)
 	}
 	if (f->save_moves)
 		write(f->fd, m, ft_strlen(m));
-	return ;
-}
-
-void	ft_pause_key_nl(void)
-{
-	char	*line;
-
-	line = (char *)malloc(2);
-	line[0] = '\0';
-	while (!read(0, line, 1))
-		if (line[0] == ' ')
-			break ;
-	ft_free_str(&line);
 	return ;
 }

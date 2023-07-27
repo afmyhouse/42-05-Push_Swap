@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:58:00 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/24 15:06:11 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/27 18:14:04 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /// @param array	Pointer to the array of args
 /// @param len		Number of args
 /// @return			SUCCESS - all numbers, ERROR - otherwise
-int	ft_args_check_isvalid(int len, char **array)
+int	args_check_isvalid(int len, char **array)
 {
 	int		i;
 	int		j;
@@ -48,7 +48,7 @@ int	ft_args_check_isvalid(int len, char **array)
 /// @param array	Pointer to the array of args
 /// @param len		Number of args
 /// @return			SUCCESS - no voids, ERROR - otherwise
-int	ft_args_check_novoid(int len, char **array)
+int	args_check_novoid(int len, char **array)
 {
 	int	i;
 
@@ -66,7 +66,7 @@ int	ft_args_check_novoid(int len, char **array)
 /// @param array	Pointer to the array of args
 /// @param len		Number of args
 /// @return			SUCCESS - no repetitions, ERROR - otherwise
-int	ft_args_check_norepeat(int len, char **array)
+int	args_check_norepeat(int len, char **array)
 {
 	int		i;
 	int		j;
@@ -92,7 +92,7 @@ int	ft_args_check_norepeat(int len, char **array)
 /// @param array	Pointer to the array of args
 /// @param len		Number of args
 /// @return			SUCCESS - within limits, ERROR - otherwise
-int	ft_args_check_isint(int len, char **array)
+int	args_check_isint(int len, char **array)
 {
 	int			i;
 	long int	nb1;
@@ -112,21 +112,21 @@ int	ft_args_check_isint(int len, char **array)
 /// @param len		Number of args
 /// @param array	Pointer to the array of args
 /// @return			SUCCESS - valid, ERROR - otherwise
-int	ft_args_check(int len, char **array)
+int	args_check(int len, char **array)
 {
-	if (ft_args_check_isvalid(len, array))
+	if (args_check_isvalid(len, array))
 	{
 		return (ERROR);
 	}
-	if (ft_args_check_novoid(len, array))
+	if (args_check_novoid(len, array))
 	{
 		return (ERROR);
 	}
-	if (ft_args_check_norepeat(len, array))
+	if (args_check_norepeat(len, array))
 	{
 		return (ERROR);
 	}
-	if (ft_args_check_isint(len, array))
+	if (args_check_isint(len, array))
 	{
 		return (ERROR);
 	}

@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/26 23:50:26 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/27 22:01:32 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ int	main(int ac, char **av)
 	signal(SIGPIPE, SIG_IGN);
 	if (ac == 1)
 		return (0);
-	f = ft_flags_init(ac - 1, ++av);
+	f = flags_init(ac - 1, ++av);
 	f->any_flag = TRUE;
-	if (ft_args_build(f) == ERROR || !f->arg)
+	if (args_build(f) == ERROR || !f->arg)
 	{
 		ft_stack_free_f(f);
 		return (0);
 	}
-	if (ft_args_check(f->len, f->arg) == ERROR)
+	if (args_check(f->len, f->arg) == ERROR)
 	{
 		ft_stack_free_f(f);
 		return (ft_error());

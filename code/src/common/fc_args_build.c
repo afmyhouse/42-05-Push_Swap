@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/24 15:06:30 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/27 20:06:18 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_flags_error(t_flags *f, int i)
 /// @brief 		Checks if the flag is valid and sets the flag
 /// @param f	Pointer to the structure containing the flags
 /// @return		SUCCESS if the flag is valid, ERROR otherwise
-int	ft_flags_parser(t_flags *f)
+int	flags_parser(t_flags *f)
 {
 	int	i;
 
@@ -59,7 +59,7 @@ int	ft_flags_parser(t_flags *f)
 /// @brief		Checks if there are flags in the command line input
 /// @param f	Pointer to the structure containing the flags
 /// @return		SUCCESS if there are flags ERROR otherwise
-int	ft_flags_detector(t_flags *f)
+int	flags_detector(t_flags *f)
 {
 	int	i;
 
@@ -75,7 +75,7 @@ int	ft_flags_detector(t_flags *f)
 			i++;
 		}
 		if (f->any_flag)
-			ft_flags_parser(f);
+			flags_parser(f);
 	}
 	return (TRUE);
 }
@@ -115,14 +115,14 @@ int	ft_args_array(t_flags *f, int i_dst, int i_src, char **array)
 /// @param ac		Number of arguments
 /// @param av		Pointer to the array of arguments
 /// @return			Pointer to the int array built
-int	ft_args_build(t_flags *f)
+int	args_build(t_flags *f)
 {
 	int		splits;
 	int		size;
 	char	**array;
 
 	if (f->len > 1 && !f->any_flag)
-		ft_flags_detector(f);
+		flags_detector(f);
 	splits = 0;
 	size = 0;
 	while (f->arg[size])

@@ -6,13 +6,13 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:46:56 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/26 23:53:20 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/27 22:10:09 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void	ft_sort_index_a(t_stack *h, int j, int k)
+void	sort_chunk_index_a(t_stack *h, int j, int k)
 {
 	t_elem	*cur;
 	t_elem	*low;
@@ -46,15 +46,15 @@ void	ft_sort_index_a(t_stack *h, int j, int k)
 ///				MIN and MAX values of the STACKS A and B,
 ///				SIZE of the STACKS A and B, and quantity of moves
 /// @param lowest element lowest cost of the chunk
-void	ft_sort_index_2b2(t_stack *h, const int lowest)
+void	sort_chunk_index_2b2(t_stack *h, const int lowest)
 {
 	t_elem	*node;
 
 	node = h->ta;
 	while (node->cost_a != lowest)
 		node = node->n;
-	ft_move_single(h, node);
-	ft_px(h, 'b', _PRINT);
+	move_single(h, node);
+	action_px(h, 'b', _PRINT);
 	return ;
 }
 
@@ -67,7 +67,7 @@ void	ft_sort_index_2b2(t_stack *h, const int lowest)
 /// @param i	Index of the current chunk
 /// @param lowest	element lowest cost of the chunk
 /// @return		1 if new element, 0 otherwise
-int	ft_sort_index_2b1(t_stack *h, int j, const int i, int lowest)
+int	sort_chunk_index_2b1(t_stack *h, int j, const int i, int lowest)
 {
 	int		new_elem;
 	t_elem	*cur;
@@ -91,7 +91,7 @@ int	ft_sort_index_2b1(t_stack *h, int j, const int i, int lowest)
 		j++;
 	}
 	if (new_elem)
-		ft_sort_index_2b2(h, lowest);
+		sort_chunk_index_2b2(h, lowest);
 	return (new_elem);
 }
 
@@ -103,18 +103,18 @@ int	ft_sort_index_2b1(t_stack *h, int j, const int i, int lowest)
 /// @param f	Information regarding :
 ///				display of color (-c), display of stacks (-s),
 ///				display of moves (-m), log moves to file moves.txt (-l)
-void	ft_sort_index2b(t_stack *h, t_flags *f)
+void	sort_chunk_index_2b(t_stack *h, t_flags *f)
 {
 	int		k;
 	int		chunk_size;
 
-	ft_browse_stacks(h, f);
+	extra_browse_stacks(h, f);
 	k = 1;
 	h->chunk = ft_min_int(h->size_a / _CHUNK_, 4);
 	chunk_size = (h->size_a / h->chunk);
 	while (h->size_a > 3)
 	{
-		if (!ft_sort_index_2b1(h, 0, k * chunk_size, \
+		if (!sort_chunk_index_2b1(h, 0, k * chunk_size, \
 		h->size_a / 2 + h->size_a % 2))
 			k++;
 	}
@@ -128,17 +128,17 @@ void	ft_sort_index2b(t_stack *h, t_flags *f)
 ///					SIZE of the STACKS A and B, and quantity of moves
 void	sort_chunk(t_stack *h, t_flags *f)
 {
-	if (ft_sort_check(h))
+	if (sort_check(h))
 		return ;
 	if (h->size_a <= 3)
-		ft_sort_3(h, 'a');
+		sort_3_x(h, 'a');
 	else
 	{
-		ft_sort_index_a(h, 1, 1);
-		ft_sort_index2b(h, f);
-		ft_sort_3(h, 'a');
-		ft_sort_to_a(h);
-		ft_sort_final(h);
+		sort_chunk_index_a(h, 1, 1);
+		sort_chunk_index_2b(h, f);
+		sort_3_x(h, 'a');
+		sort_to_x(h, 'a');
+		sort_final(h);
 	}
 	return ;
 }
