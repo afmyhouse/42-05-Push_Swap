@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:52:10 by antoda-s          #+#    #+#              #
-#    Updated: 2023/07/31 14:56:43 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/07/31 19:23:43 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ DSRC_C		:= src/common
 DSRC_B		:= src/checker
 DBIN		:= bin
 DINC		:= src/inc
-DLIB		:= lib
+DLIB		:= libft
 # VPATH 		= $(DSRC)
 
 #functions & variables libraries:

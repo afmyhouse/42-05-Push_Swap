@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:25:51 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/31 15:06:26 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/31 19:23:13 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
-# include "../../lib/libft.h"
-# include "../../lib/gnl.h"
+# include "../../libft/libft.h"
+# include "../../libft/gnl.h"
 
 /* ************************************************************************** */
 ///	DEBUG
