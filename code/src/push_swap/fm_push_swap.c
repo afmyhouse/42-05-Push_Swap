@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/27 22:01:32 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/31 14:41:05 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int ac, char **av)
 	if (h->size_a >= 100)
 		sort_chunk(h, f);
 	else
-		sort_machine(h);
+		sort_cost(h);
 	ft_free_structs(h, f);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:52:10 by antoda-s          #+#    #+#              #
-#    Updated: 2023/07/27 22:03:13 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/07/31 14:56:43 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ M_SRCS 		= $(DSRC_M)/fm_push_swap.c \
 				$(DSRC_M)/fm_cost_optimizer.c \
 				$(DSRC_M)/fm_move.c \
 				$(DSRC_M)/fm_sort_3.c \
-				$(DSRC_M)/fm_sort_machine.c \
+				$(DSRC_M)/fm_sort_cost.c \
 				$(DSRC_M)/fm_sort_chunk.c
 
 C_SRCS 		= $(DSRC_C)/fc_action_px.c \

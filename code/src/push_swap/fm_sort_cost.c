@@ -6,18 +6,18 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:46:56 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/27 22:02:49 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/31 14:41:05 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-/// @brief			Head function of the 'push swap' function
+/// @brief			Head function of the 'push swap' program
 /// @param h		Information regarding :
 ///					POINTERS to top of the STACKS A and B
 ///					MIN and MAX values of the STACKS A and B,
 ///					SIZE of the STACKS A and B, and quantity of moves
-void	sort_machine(t_stack *h)
+void	sort_cost(t_stack *h)
 {
 	if (sort_check(h))
 		return ;

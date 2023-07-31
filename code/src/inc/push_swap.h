@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:25:51 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/27 22:16:10 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/07/31 15:06:26 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,9 +247,9 @@ int		sort_chunk_index_2b1(t_stack *h, int j, const int i, int lowest);
 void	sort_chunk_index_2b(t_stack *h, t_flags *f);
 void	sort_chunk(t_stack *h, t_flags *f);
 /* ************************************************************************** */
-///	FILE ; fm_sort_machine.c
+///	FILE ; fm_sort_cost.c
 /* ************************************************************************** */
-void	sort_machine(t_stack *h);
+void	sort_cost(t_stack *h);
 void	sort_final(t_stack *h);
 void	sort_to_x(t_stack *h, char stack);
 void	ft_stack_b_start(t_stack *h);
