@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:12:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/27 22:15:54 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/08/09 22:56:21 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,10 @@ int	checker_machine(t_stack *h, t_flags *f)
 	return (ERROR);
 }
 
+/// @brief 			Read move from pipe
+/// @param h		Pointer to the stack
+/// @param f		Pointer to the flags
+/// @return			0 if sorted, 1 otherwise
 int	checker_get_move(t_stack *h, t_flags *f)
 {
 	char	*line;
@@ -110,6 +114,10 @@ int	checker_result(int result, int fcolor)
 	return (result);
 }
 
+/// @brief 			Execute move read from pipe
+/// @param h		Pointer to the stack
+/// @param m		Pointer to the movement string
+/// @return			0 if sorted, 1 otherwise
 int	checker_mover(t_stack *h, char *m)
 {
 	if (!*m)
